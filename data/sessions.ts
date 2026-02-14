@@ -7,17 +7,17 @@ export const sessions: Session[] = [
     description: "گذار از سواد سنتی به سواد دیجیتال و بررسی پدیده اینفودمیک.",
     content: `
       <div class="mb-8 p-6 bg-health-50 border-r-4 border-health-600 rounded-l-2xl animate-fade-in">
-        <h2 class="text-2xl md:text-3xl font-black text-health-900 mb-2">جلسه اول: گذار از سواد سنتی به سواد دیجیتال</h2>
-        <p class="text-health-700 font-medium">مدرس: دکتر فاطمه زارعی</p>
+        <h2 class="text-2xl md:text-3xl font-black text-health-900 mb-2">جلسه اول: پارادایم جدید در سلامت عمومی</h2>
+        <p class="text-health-700 font-bold text-lg">مدرس: دکتر فاطمه زارعی</p>
       </div>
 
-      <div class="space-y-10 text-justify leading-relaxed text-slate-700">
+      <div class="space-y-12 text-justify leading-loose text-slate-700">
         
-        <!-- Section 1: Introduction -->
+        <!-- 1. Introduction -->
         <section>
-          <h3 class="text-xl font-bold text-health-800 mb-4 flex items-center gap-2">
-            <span class="w-2 h-8 bg-health-500 rounded-full"></span>
-            ۱. مقدمه: ظهور اتاق‌های انتظار مجازی
+          <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-8 bg-health-500 rounded-full"></span>
+            ۱. مقدمه: گذار از سواد سنتی به سواد دیجیتال
           </h3>
           <p class="mb-4">
             در دهه‌های گذشته، سواد سلامت تنها به توانایی خواندن نسخه‌ها یا درک دستورالعمل‌های پزشک محدود می‌شد. اما با ظهور عصر دیجیتال و درهم‌تنیدگی رسانه‌ها با زیست‌جهان انسان، مفهوم جدیدی به نام <strong>سواد سلامت رسانه‌ای (Media Health Literacy)</strong> متولد شد.
@@ -27,89 +27,140 @@ export const sessions: Session[] = [
           </p>
         </section>
 
-        <!-- Section 2: Definitions -->
-        <section class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <h3 class="text-xl font-bold text-health-800 mb-6">۲. تعاریف و مرزهای مفهومی</h3>
-          <div class="grid gap-4">
-            <div class="p-4 bg-slate-50 rounded-lg border-r-4 border-slate-400">
-              <strong class="text-slate-900 block mb-1">سواد سلامت (Health Literacy):</strong>
-              ظرفیت کسب، پردازش و درک اطلاعات اولیه سلامت و خدمات مورد نیاز برای تصمیم‌گیری درست.
+        <!-- Keywords Box -->
+        <div class="bg-white border-2 border-dashed border-health-200 p-6 rounded-2xl">
+             <h4 class="font-bold text-center mb-4 text-health-800">کلیدواژگان علمی این جلسه</h4>
+             <div class="flex flex-wrap gap-2 justify-center">
+                <span class="px-3 py-1 bg-health-50 text-health-700 rounded-lg text-sm font-medium">Infodemic</span>
+                <span class="px-3 py-1 bg-health-50 text-health-700 rounded-lg text-sm font-medium">Confirmation Bias</span>
+                <span class="px-3 py-1 bg-health-50 text-health-700 rounded-lg text-sm font-medium">Media Health Literacy</span>
+                <span class="px-3 py-1 bg-health-50 text-health-700 rounded-lg text-sm font-medium">Critical Appraisal</span>
+             </div>
+        </div>
+
+        <!-- 2. Definitions -->
+        <section>
+          <h3 class="text-2xl font-bold text-health-900 mb-6">۲. تعاریف و مرزهای مفهومی</h3>
+          <div class="grid gap-6">
+            <div class="p-5 bg-white shadow-sm rounded-xl border-r-4 border-slate-400">
+              <strong class="text-slate-900 text-lg block mb-2">سواد سلامت (Health Literacy)</strong>
+              <p class="text-slate-600 m-0">ظرفیت کسب، پردازش و درک اطلاعات اولیه سلامت و خدمات مورد نیاز برای تصمیم‌گیری درست.</p>
             </div>
-            <div class="p-4 bg-slate-50 rounded-lg border-r-4 border-slate-400">
-              <strong class="text-slate-900 block mb-1">سواد رسانه‌ای (Media Literacy):</strong>
-              توانایی دسترسی، تحلیل، ارزیابی و تولید پیام در قالب‌های مختلف رسانه‌ای.
+            <div class="p-5 bg-white shadow-sm rounded-xl border-r-4 border-slate-400">
+              <strong class="text-slate-900 text-lg block mb-2">سواد رسانه‌ای (Media Literacy)</strong>
+              <p class="text-slate-600 m-0">توانایی دسترسی، تحلیل، ارزیابی و تولید پیام در قالب‌های مختلف رسانه‌ای.</p>
             </div>
-            <div class="p-4 bg-health-50 rounded-lg border-r-4 border-health-500">
-              <strong class="text-health-900 block mb-1">سواد سلامت رسانه‌ای (MHL):</strong>
-              نقطه‌ی تلاقی این دو که به معنای مهارتِ واکاوی نقادانه‌ی پیام‌های سلامتی است که از فیلتر رسانه‌های جمعی و اجتماعی عبور کرده‌اند.
+            <div class="p-5 bg-health-50 shadow-sm rounded-xl border-r-4 border-health-500">
+              <strong class="text-health-900 text-lg block mb-2">سواد سلامت رسانه‌ای (MHL)</strong>
+              <p class="text-health-800 m-0">نقطه‌ی تلاقی این دو که به معنای مهارتِ واکاوی نقادانه‌ی پیام‌های سلامتی است که از فیلتر رسانه‌های جمعی و اجتماعی عبور کرده‌اند.</p>
             </div>
           </div>
         </section>
 
-        <!-- Section 3: Infodemic -->
+        <!-- 3. Infodemic -->
         <section>
-          <h3 class="text-xl font-bold text-health-800 mb-4 flex items-center gap-2">
-            <span class="w-2 h-8 bg-health-500 rounded-full"></span>
-            ۳. پدیده اینفودمیک و اختلالات اطلاعاتی
+          <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">
+            <span class="w-1.5 h-8 bg-health-500 rounded-full"></span>
+            ۳. پدیده اینفودمیک (Infodemic) و سلامت عمومی
           </h3>
-          <p class="mb-4">
+          <p class="mb-6">
             واژه‌ی <strong>Infodemic</strong> (ترکیب Information و Epidemic) که توسط سازمان جهانی بهداشت (WHO) به رسمیت شناخته شد، به معنای شیوع بیش از حد اطلاعات (درست یا نادرست) در حین یک اپیدمی است.
+            در اینفودمیک، ما با سه نوع اختلال اطلاعاتی روبرو هستیم:
           </p>
-          <div class="grid md:grid-cols-3 gap-4 mt-6">
-            <div class="bg-blue-50 p-4 rounded-xl">
-              <div class="font-bold text-blue-800 mb-2">Mis-information</div>
-              <p class="text-sm text-blue-700">اطلاعات نادرستی که بدون نیت بد منتشر می‌شوند (مثل بازنشر یک شایعه از روی دلسوزی).</p>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-blue-50 p-5 rounded-2xl border border-blue-100">
+              <div class="font-bold text-blue-800 text-lg mb-2">Mis-information</div>
+              <p class="text-sm text-blue-700 leading-relaxed">اطلاعات نادرستی که بدون نیت بد منتشر می‌شوند (مثل بازنشر یک شایعه از روی دلسوزی).</p>
             </div>
-            <div class="bg-red-50 p-4 rounded-xl">
-              <div class="font-bold text-red-800 mb-2">Dis-information</div>
-              <p class="text-sm text-red-700">اطلاعات غلطی که به عمد برای فریب دادن یا سودجویی تولید می‌شوند (مثل تبلیغات داروهای تقلبی).</p>
+            <div class="bg-red-50 p-5 rounded-2xl border border-red-100">
+              <div class="font-bold text-red-800 text-lg mb-2">Dis-information</div>
+              <p class="text-sm text-red-700 leading-relaxed">اطلاعات غلطی که به عمد برای فریب دادن یا سودجویی تولید می‌شوند (مثل تبلیغات داروهای تقلبی).</p>
             </div>
-            <div class="bg-orange-50 p-4 rounded-xl">
-              <div class="font-bold text-orange-800 mb-2">Mal-information</div>
-              <p class="text-sm text-orange-700">اطلاعات درستی که برای آسیب زدن به یک فرد یا نهاد (خارج از متن اصلی) منتشر می‌شوند.</p>
+            <div class="bg-orange-50 p-5 rounded-2xl border border-orange-100">
+              <div class="font-bold text-orange-800 text-lg mb-2">Mal-information</div>
+              <p class="text-sm text-orange-700 leading-relaxed">اطلاعات درستی که برای آسیب زدن به یک فرد یا نهاد (خارج از متن اصلی) منتشر می‌شوند.</p>
             </div>
           </div>
         </section>
 
-        <!-- Section 4: Psychology -->
+        <!-- Critical Reflection -->
+        <section class="bg-health-900 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-300">
+                    تامل نقادانه (Critical Reflection)
+                </h3>
+                <p class="text-health-50 mb-6 leading-relaxed text-lg">
+                    آخرین باری که یک خبر سلامتی را در اینستاگرام دیدید و بدون تحقیق برای دیگران فرستادید کی بود؟ چه عاملی باعث شد به آن اعتماد کنید؟ رنگ‌بندی صفحه؟ تعداد لایک‌ها؟ یا عنوان دکتر؟
+                </p>
+                <div class="bg-white/10 p-4 rounded-xl italic border-r-4 border-emerald-400">
+                    "سواد رسانه‌ای یعنی مکث کردن قبل از کلیک کردن."
+                </div>
+            </div>
+            <!-- Abstract BG Shape -->
+            <div class="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2"></div>
+        </section>
+
+        <!-- 4. Psychology -->
         <section>
-          <h3 class="text-xl font-bold text-health-800 mb-4">۴. چرا مغز ما فریب می‌خورد؟ (روانشناسی شایعه)</h3>
-          <ul class="space-y-3 list-disc list-inside marker:text-health-500">
-            <li><strong>سوگیری تایید (Confirmation Bias):</strong> تمایل ما به پذیرش اطلاعاتی که با باورهای قبلی ما (مثلاً طب سنتی یا مدرن) سازگار است.</li>
-            <li><strong>اثر تکرار (Illusory Truth Effect):</strong> وقتی یک مطلب نادرست را بارها در گروه‌های مختلف می‌بینیم، مغز ما به اشتباه «تکرار» را معادل «حقیقت» می‌پندارد.</li>
-            <li><strong>اتاق‌های پژواک (Echo Chambers):</strong> الگوریتم‌های شبکه‌های اجتماعی ما را در فضایی قرار می‌دهند که فقط نظرات مشابه خودمان را بشنویم.</li>
-          </ul>
-        </section>
-
-        <!-- Section 5: Dimensions -->
-        <section class="bg-health-900 text-white p-6 rounded-2xl shadow-lg">
-          <h3 class="text-lg font-bold mb-4 text-health-100">۵. ابعاد چهارگانه سواد سلامت رسانه‌ای</h3>
-          <div class="grid grid-cols-2 gap-4 text-sm">
-            <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-              <div class="font-bold text-health-200">۱. دسترسی (Access)</div>
-              <div>توانایی جستجوی موثر و فیلتر کردن نویزها.</div>
-            </div>
-            <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-              <div class="font-bold text-health-200">۲. تحلیل (Analysis)</div>
-              <div>درک ساختار پیام (خبر علمی یا رپرتاژ؟).</div>
-            </div>
-            <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-              <div class="font-bold text-health-200">۳. ارزیابی (Evaluation)</div>
-              <div>سنجش اعتبار منبع و شواهد (Evidence-based).</div>
-            </div>
-            <div class="bg-white/10 p-3 rounded-lg backdrop-blur-sm">
-              <div class="font-bold text-health-200">۴. تولید (Communication)</div>
-              <div>توانایی تولید محتوای صحیح و مقابله با شایعات.</div>
-            </div>
+          <h3 class="text-2xl font-bold text-health-900 mb-4">۴. چرا مغز ما فریب رسانه‌ها را می‌خورد؟ (روانشناسیِ پذیرش شایعه)</h3>
+          <p class="mb-4">سواد رسانه‌ای در سلامت صرفاً یک مهارت فنی نیست، بلکه یک مبارزه با خطاهای شناختی است.</p>
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+              <ul class="space-y-4">
+                <li class="flex gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-health-500 flex items-center justify-center text-white font-bold text-xs mt-1">1</div>
+                    <div>
+                        <strong class="text-slate-900 block">سوگیری تایید (Confirmation Bias)</strong>
+                        <span class="text-slate-600">تمایل ما به پذیرش اطلاعاتی که با باورهای قبلی ما (مثلاً طب سنتی یا مدرن) سازگار است.</span>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-health-500 flex items-center justify-center text-white font-bold text-xs mt-1">2</div>
+                    <div>
+                        <strong class="text-slate-900 block">اثر تکرار (Illusory Truth Effect)</strong>
+                        <span class="text-slate-600">وقتی یک مطلب نادرست را بارها در گروه‌های مختلف تلگرامی یا اینستاگرامی می‌بینیم، مغز ما به اشتباه «تکرار» را معادل «حقیقت» می‌پندارد.</span>
+                    </div>
+                </li>
+                <li class="flex gap-3">
+                    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-health-500 flex items-center justify-center text-white font-bold text-xs mt-1">3</div>
+                    <div>
+                        <strong class="text-slate-900 block">اتاق‌های پژواک (Echo Chambers)</strong>
+                        <span class="text-slate-600">الگوریتم‌های شبکه‌های اجتماعی ما را در فضایی قرار می‌دهند که فقط نظرات مشابه خودمان را بشنویم و از نقد علمی دور بمانیم.</span>
+                    </div>
+                </li>
+              </ul>
           </div>
         </section>
 
-        <!-- Section 6: Necessity -->
-        <section class="border-t pt-4">
-          <h3 class="text-lg font-bold text-slate-800 mb-2">ضرورت برای متخصصان سلامت</h3>
-          <p>
-            متخصص سلامتِ آینده، علاوه بر گوشی پزشکی، باید به <strong>«سپر سواد رسانه‌ای»</strong> مجهز باشد. اگر ما نتوانیم سواد رسانه‌ای جامعه را ارتقا دهیم، بهترین پروتکل‌های درمانی نیز تحت تاثیر شایعات (مانند جنبش‌های ضد واکسن) شکست خواهند خورد.
-          </p>
+        <!-- 5. Dimensions -->
+        <section>
+            <h3 class="text-2xl font-bold text-health-900 mb-4">۵. ابعاد چهارگانه سواد سلامت رسانه‌ای</h3>
+            <p class="mb-4">بر اساس مدل‌های نظری (مانند مدل زارکادولاس)، سواد سلامت رسانه‌ای دارای چهار رکن اساسی است:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 hover:shadow-md transition-shadow">
+                    <div class="font-bold text-emerald-800 mb-1">۱. دسترسی (Access)</div>
+                    <div class="text-sm text-emerald-700">توانایی جستجوی موثر در پایگاه‌های داده و فیلتر کردن نویزهای تبلیغاتی.</div>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 hover:shadow-md transition-shadow">
+                    <div class="font-bold text-emerald-800 mb-1">۲. تجزیه و تحلیل (Analysis)</div>
+                    <div class="text-sm text-emerald-700">درک ساختار پیام. آیا این یک خبر علمی است یا یک رپرتاژ آگهی؟</div>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 hover:shadow-md transition-shadow">
+                    <div class="font-bold text-emerald-800 mb-1">۳. ارزیابی (Evaluation)</div>
+                    <div class="text-sm text-emerald-700">سنجش اعتبار منبع. آیا نویسنده ذینفع مالی است؟ آیا شواهد مبتنی بر کارآزمایی بالینی است یا صرفاً تجربه‌ی شخصی؟</div>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 hover:shadow-md transition-shadow">
+                    <div class="font-bold text-emerald-800 mb-1">۴. تولید و انتقال (Communication)</div>
+                    <div class="text-sm text-emerald-700">توانایی دانشجو یا متخصص سلامت برای تولید محتوای صحیح و مقابله با شایعات در فضای مجازی.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Necessity -->
+        <section class="mt-8 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-bold text-slate-800 mb-3">۶. ضرورت آموزشی برای متخصصان سلامت</h3>
+            <p class="bg-slate-50 p-4 rounded-lg border-r-4 border-slate-600 italic text-slate-700 leading-8">
+                «استاد گرامی، متخصص سلامتِ آینده، علاوه بر گوشی پزشکی، باید به <strong>سپر سواد رسانه‌ای</strong> مجهز باشد. اگر ما نتوانیم سواد رسانه‌ای جامعه را ارتقا دهیم، بهترین پروتکل‌های درمانی نیز تحت تاثیر شایعات (مانند جنبش‌های ضد واکسن) شکست خواهند خورد.»
+            </p>
         </section>
 
       </div>
