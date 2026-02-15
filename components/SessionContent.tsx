@@ -139,18 +139,21 @@ export const SessionContent: React.FC<SessionContentProps> = ({ session, onCompl
         {/* VIDEO PLAYER */}
         {activeTab === 'video' && (
           <div className="flex flex-col items-center animate-fade-in">
-             <div className="w-full max-w-3xl aspect-video bg-slate-900 rounded-xl overflow-hidden shadow-lg mb-6">
+             <div className="w-full max-w-3xl bg-slate-900 rounded-xl overflow-hidden shadow-lg mb-6">
                {session.videoUrl ? (
-                 <iframe 
-                   src={session.videoUrl} 
-                   className="w-full h-full" 
-                   frameBorder="0" 
-                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                   allowFullScreen
-                   title={session.title}
-                 ></iframe>
+                 <div className="aparat-container">
+                   <iframe 
+                     src={session.videoUrl} 
+                     frameBorder="0" 
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                     allowFullScreen
+                     title={session.title}
+                     webkitallowfullscreen="true"
+                     mozallowfullscreen="true"
+                   ></iframe>
+                 </div>
                ) : (
-                 <div className="flex items-center justify-center h-full text-slate-400 flex-col gap-3">
+                 <div className="flex items-center justify-center aspect-video text-slate-400 flex-col gap-3">
                    <MonitorPlay size={48} />
                    <p>ویدیو برای این جلسه بارگذاری نشده است.</p>
                  </div>
