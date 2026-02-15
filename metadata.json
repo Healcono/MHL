@@ -1,5 +1,5 @@
 {
-  "name": "Media Health Literacy - Vanilla JS Edition",
-  "description": "Stable dynamic educational platform using standard web technologies.",
+  "name": "Media Health Literacy Platform",
+  "description": "High-performance educational web app built with Vanilla JS and Tailwind CSS.",
   "requestFramePermissions": []
 }

@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سواد رسانه‌ای در سلامت | Dr. Fatemeh Zarei</title>
+    <title>سواد رسانه‌ای در سلامت | دکتر فاطمه زارعی</title>
     
+    <!-- External Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
         tailwind.config = {
@@ -15,10 +16,19 @@
                 extend: {
                     fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
                     colors: {
-                        health: {
-                            50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac',
-                            400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d',
-                            800: '#166534', 900: '#14532d', 950: '#052e16',
+                        nude: {
+                            50: '#fdfbf7', 100: '#f7f2ea', 200: '#eee4d5', 300: '#e0d1bc',
+                            400: '#ccb59a', 500: '#b89a7a', 600: '#a38161', 700: '#89684f',
+                            800: '#715543', 900: '#5c4639', 950: '#32251e',
+                        }
+                    },
+                    animation: {
+                        'slow-zoom': 'slowZoom 20s infinite alternate',
+                    },
+                    keyframes: {
+                        slowZoom: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.15)' },
                         }
                     }
                 }
@@ -27,23 +37,32 @@
     </script>
 
     <style>
-        body { background-color: #f8fafc; color: #1e293b; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        body { background-color: #fdfbf7; color: #32251e; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; -webkit-font-smoothing: antialiased; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .aparat-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; background: #000; margin-bottom: 2rem; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #eee4d5; border-radius: 10px; }
+        
+        .aparat-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 2.5rem; background: #1a1a1a; margin-bottom: 4rem; shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
         .aparat-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .active-session { background-color: #f0fdf4; border-right: 4px solid #16a34a; }
+        
+        .active-session { background-color: #f7f2ea; border-right: 4px solid #a38161; color: #5c4639 !important; }
         .hidden { display: none; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade { animation: fadeIn 0.4s ease-out forwards; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        
+        .raw-content-area h3 { color: #32251e; font-weight: 900; font-size: 2.25rem; letter-spacing: -0.05em; line-height: 1.2; }
+        .raw-content-area p { line-height: 2.2; margin-bottom: 1.5rem; text-align: justify; font-size: 1.125rem; }
+        
+        button:disabled { cursor: not-allowed; }
     </style>
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
-    "lucide-react": "https://esm.sh/lucide-react@^0.564.0"
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+    "lucide": "https://esm.sh/lucide@^0.564.0"
   }
 }
 </script>
@@ -51,59 +70,60 @@
 <body class="overflow-hidden">
     <div id="app" class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-y-0 right-0 z-50 w-72 bg-white border-l shadow-xl transform translate-x-full transition-transform duration-300 lg:relative lg:translate-x-0 flex flex-col">
-            <div class="p-4 border-b h-16 flex items-center justify-between bg-white sticky top-0">
-                <h1 class="font-bold text-health-900 flex items-center gap-2">
-                    <i data-lucide="graduation-cap" class="text-health-600"></i>
-                    سواد سلامت رسانه‌ای
+        <aside id="sidebar" class="fixed inset-y-0 right-0 z-50 w-80 bg-white border-l border-nude-200 shadow-2xl transform translate-x-full transition-transform duration-700 lg:relative lg:translate-x-0 flex flex-col">
+            <div class="p-8 border-b border-nude-100 h-24 flex items-center justify-between">
+                <h1 class="font-black text-nude-950 flex items-center gap-3 text-lg tracking-tighter">
+                    <div class="p-2 bg-nude-900 rounded-xl text-white">
+                        <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                    </div>
+                    سواد سلامت
                 </h1>
-                <button onclick="toggleSidebar()" class="lg:hidden p-1 text-slate-500"><i data-lucide="x"></i></button>
+                <button onclick="toggleSidebar()" class="lg:hidden p-2 text-nude-400"><i data-lucide="x"></i></button>
             </div>
-            <div id="session-list" class="flex-1 overflow-y-auto custom-scrollbar py-2">
-                <!-- لیست جلسات توسط JS پر می‌شود -->
-            </div>
-            <div class="p-4 border-t bg-slate-50">
-                <div class="text-xs text-slate-500">
-                    <p class="font-bold text-slate-700 mb-1">ارتباط با مدرس</p>
-                    <p>Dr. Fatemeh Zarei</p>
-                    <p>healcono@gmail.com</p>
+            
+            <div id="session-list" class="flex-1 overflow-y-auto custom-scrollbar py-6"></div>
+
+            <div class="p-8 border-t border-nude-100 bg-nude-50/50">
+                <div class="text-[10px] text-nude-600 space-y-2">
+                    <p class="font-black text-nude-900 mb-3 tracking-widest uppercase opacity-40">Academic Contact</p>
+                    <p class="flex items-center gap-2 hover:text-nude-900 transition-colors"><i data-lucide="mail" class="w-3 h-3"></i> healcono@gmail.com</p>
+                    <p class="flex items-center gap-2 hover:text-nude-900 transition-colors"><i data-lucide="instagram" class="w-3 h-3"></i> @healthcono</p>
                 </div>
             </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-y-auto">
-            <!-- Mobile Header -->
-            <header class="lg:hidden h-16 bg-white border-b px-4 flex items-center justify-between sticky top-0 z-40">
-                <button onclick="toggleSidebar()" class="p-2 text-slate-600"><i data-lucide="menu"></i></button>
-                <span class="font-bold text-health-900">سواد سلامت</span>
-                <div class="w-8"></div>
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col min-w-0 bg-white overflow-y-auto relative custom-scrollbar">
+            <header class="lg:hidden h-20 bg-white/90 backdrop-blur-xl border-b border-nude-100 px-8 flex items-center justify-between sticky top-0 z-40">
+                <button onclick="toggleSidebar()" class="p-3 bg-nude-50 rounded-2xl text-nude-900"><i data-lucide="menu"></i></button>
+                <span class="font-black text-nude-950 text-sm tracking-tighter">MEDIA HEALTH LITERACY</span>
+                <div class="w-10"></div>
             </header>
 
-            <div class="max-w-4xl mx-auto w-full p-4 md:p-8 pb-32">
-                <!-- Progress bar -->
-                <div class="mb-6 flex items-center justify-between">
+            <div class="w-full">
+                <!-- Top Progress Stats -->
+                <div class="max-w-5xl mx-auto px-8 md:px-16 pt-12 flex items-center justify-between mb-8">
                     <div>
-                        <h2 class="text-sm font-semibold text-slate-500 uppercase">دوره آموزشی دانشگاهی</h2>
+                        <h2 class="text-[10px] font-black text-nude-300 uppercase tracking-widest mb-1">Interactive University Course</h2>
+                        <div id="session-counter" class="text-3xl font-black text-nude-950 tracking-tighter">جلسه اول</div>
                     </div>
                     <div class="text-left">
-                        <div id="progress-text" class="text-sm font-medium text-health-700 mb-1">پیشرفت: ۰٪</div>
-                        <div class="w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
-                            <div id="progress-bar" class="h-full bg-health-500 transition-all duration-500 w-0"></div>
+                        <div id="progress-text" class="text-[9px] font-black text-nude-400 mb-2 uppercase tracking-[0.2em]">PROGRESS: 0%</div>
+                        <div class="w-40 h-1.5 bg-nude-100 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="h-full bg-nude-950 transition-all duration-1000 w-0 shadow-lg shadow-nude-200"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Session View Container -->
-                <div id="session-view" class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden min-h-[500px] p-6 md:p-10">
-                    <!-- محتوای جلسه دقیقاً طبق استرینگ HTML در اینجا جایگذاری می‌شود -->
+                <div id="main-display-area" class="bg-white min-h-screen">
+                    <!-- Dynamic Content Injected Here -->
                 </div>
             </div>
         </main>
     </div>
 
-    <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
+    <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-nude-950/40 backdrop-blur-md z-40 hidden lg:hidden"></div>
 
-    <script type="module" src="main.js"></script>
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
