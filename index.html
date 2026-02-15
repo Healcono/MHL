@@ -24,11 +24,16 @@
                     },
                     animation: {
                         'slow-zoom': 'slowZoom 20s infinite alternate',
+                        'fade': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: {
                         slowZoom: {
                             '0%': { transform: 'scale(1)' },
                             '100%': { transform: 'scale(1.15)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(15px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -48,21 +53,19 @@
         .active-session { background-color: #f7f2ea; border-right: 4px solid #a38161; color: #5c4639 !important; }
         .hidden { display: none; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .raw-content-area h3 { color: #32251e; font-weight: 900; font-size: 2.25rem; letter-spacing: -0.05em; line-height: 1.2; margin-bottom: 1rem; }
+        .raw-content-area p { line-height: 2.2; margin-bottom: 1.5rem; text-align: justify; font-size: 1.125rem; color: #475569; }
         
-        .raw-content-area h3 { color: #32251e; font-weight: 900; font-size: 2.25rem; letter-spacing: -0.05em; line-height: 1.2; }
-        .raw-content-area p { line-height: 2.2; margin-bottom: 1.5rem; text-align: justify; font-size: 1.125rem; }
-        
-        button:disabled { cursor: not-allowed; }
+        button:disabled { cursor: not-allowed; opacity: 0.6; }
     </style>
-<script type="importmap">
+    
+    <script type="importmap">
 {
   "imports": {
+    "lucide": "https://esm.sh/lucide@^0.564.0",
     "react": "https://esm.sh/react@^19.2.4",
     "react/": "https://esm.sh/react@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
-    "lucide": "https://esm.sh/lucide@^0.564.0"
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0"
   }
 }
 </script>
@@ -115,8 +118,9 @@
                     </div>
                 </div>
 
-                <div id="main-display-area" class="bg-white min-h-screen">
-                    <!-- Dynamic Content Injected Here -->
+                <!-- MAIN DISPLAY AREA / SESSION CONTENT -->
+                <div id="session-content" class="bg-white min-h-screen pb-20">
+                    <!-- Dynamic Content Injected Here by main.js -->
                 </div>
             </div>
         </main>
@@ -124,6 +128,7 @@
 
     <div id="overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-nude-950/40 backdrop-blur-md z-40 hidden lg:hidden"></div>
 
-    <script type="module" src="index.tsx"></script>
+    <!-- Script loaded as module -->
+    <script type="module" src="main.js"></script>
 </body>
 </html>
