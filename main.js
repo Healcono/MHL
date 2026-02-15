@@ -52,8 +52,8 @@ const sessions = [
             </div>
             <div class="p-6 bg-nude-900 text-white rounded-3xl hover:shadow-md transition-shadow">
               <div class="text-2xl mb-3">⚔️</div>
-              <h4 class="font-bold mb-2 text-nude-100">Mal-information</h4>
-              <p class="text-xs text-nude-300 leading-6">اطلاعات درستی که برای آسیب زدن به اعتبار یک شخص یا نهاد علمی منتشر می‌شوند.</p>
+              <h4 class="font-bold mb-2 text-nude-50">Mal-information</h4>
+              <p class="text-xs text-nude-50 leading-6 font-medium">اطلاعات درستی که برای آسیب زدن به اعتبار یک شخص یا نهاد علمی منتشر می‌شوند.</p>
             </div>
           </div>
         </section>
@@ -139,17 +139,17 @@ const sessions = [
             <div class="group p-8 bg-nude-900 rounded-3xl border border-nude-800 transition-all hover:border-nude-400">
               <div class="flex items-center gap-4 mb-4">
                 <i data-lucide="camera" class="text-nude-400 group-hover:scale-110 transition-transform"></i>
-                <h4 class="text-xl font-bold">بازی اول: کارگردانِ فریبکار</h4>
+                <h4 class="text-xl font-bold text-white">بازی اول: کارگردانِ فریبکار</h4>
               </div>
-              <p class="text-nude-300 text-sm leading-8 opacity-80">ماموریت: گروه‌های ۳ نفره تشکیل دهید و یک وسیله بی‌ارزش (مثل لنگه جوراب) را به عنوان یک کالای لوکس در یک سناریوی ۳۰ ثانیه‌ای بفروشید!</p>
+              <p class="text-nude-50 text-sm leading-8 font-medium">ماموریت: گروه‌های ۳ نفره تشکیل دهید و یک وسیله بی‌ارزش (مثل لنگه جوراب) را به عنوان یک کالای لوکس در یک سناریوی ۳۰ ثانیه‌ای بفروشید!</p>
             </div>
 
             <div class="group p-8 bg-nude-900 rounded-3xl border border-nude-800 transition-all hover:border-nude-400">
               <div class="flex items-center gap-4 mb-4">
                 <i data-lucide="music" class="text-nude-400 group-hover:scale-110 transition-transform"></i>
-                <h4 class="text-xl font-bold">بازی دوم: صداگذاری متفاوت</h4>
+                <h4 class="text-xl font-bold text-white">بازی دوم: صداگذاری متفاوت</h4>
               </div>
-              <p class="text-nude-300 text-sm leading-8 opacity-80">روش: یک ویدیو را یکبار با موسیقی ترسناک و بار دوم با موسیقی خنده‌دار تماشا کنید. درک خواهید کرد که موسیقی چطور احساسات شما را مدیریت می‌کند.</p>
+              <p class="text-nude-50 text-sm leading-8 font-medium">روش: یک ویدیو را یکبار با موسیقی ترسناک و بار دوم با موسیقی خنده‌دار تماشا کنید. درک خواهید کرد که موسیقی چطور احساسات شما را مدیریت می‌کند.</p>
             </div>
           </div>
         </section>
