@@ -2,14 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
+window.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.getElementById('root');
+  
+  if (!rootElement) {
+    console.error("Critical Error: Root element '#root' not found in DOM.");
+    const errorOverlay = document.createElement('div');
+    errorOverlay.style.cssText = "position:fixed;inset:0;background:white;display:flex;align-items:center;justify-center:center;padding:2rem;text-align:center;direction:rtl;font-family:sans-serif;";
+    errorOverlay.innerHTML = "<div><h1 style='color:#ef4444;font-size:1.5rem;font-weight:bold;'>خطا در بارگذاری برنامه</h1><p style='color:#6b7280;margin-top:1rem;'>متأسفانه مشکلی در شناسایی ریشه برنامه رخ داده است. لطفاً صفحه را رفرش کنید.</p></div>";
+    document.body.appendChild(errorOverlay);
+    return;
+  }
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  try {
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  } catch (error) {
+    console.error("Mounting Error:", error);
+    rootElement.innerHTML = "<div style='padding:2rem;text-align:center;color:#ef4444;direction:rtl;'>خطای سیستمی رخ داد. لطفاً لاگ کنسول را بررسی کنید.</div>";
+  }
+});
