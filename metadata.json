@@ -1,5 +1,5 @@
 {
-  "name": "Media Health Literacy Course",
-  "description": "An interactive educational platform for the Media Health Literacy course by Dr. Fatemeh Zarei.",
+  "name": "Media Health Literacy - Vanilla JS Edition",
+  "description": "Stable dynamic educational platform using standard web technologies.",
   "requestFramePermissions": []
 }

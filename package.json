@@ -1,5 +1,5 @@
 {
-  "name": "media-health-literacy-course",
+  "name": "media-health-literacy---vanilla-js-edition",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,10 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "lucide-react": "0.460.0",
-    "@google/genai": "latest"
+    "react": "^19.2.4",
+    "lucide-react": "^0.564.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
