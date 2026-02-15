@@ -1,2 +1,1 @@
-// React entry point disabled for Vanilla JS transition.
-// The application logic has moved to main.js.
+// فایل ری‌اکت غیرفعال شد. برنامه از main.js استفاده می‌کند.
