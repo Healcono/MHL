@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 const renderApp = () => {
+  console.log("Initializing Media Health Literacy App...");
   const rootElement = document.getElementById('root');
   
   if (!rootElement) {
@@ -16,18 +17,23 @@ const renderApp = () => {
 
   try {
     const root = ReactDOM.createRoot(rootElement);
-    root.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
+    // Rendering without StrictMode to ensure maximum compatibility in specific ESM environments
+    // where dual-rendering cycles can cause version validation issues.
+    root.render(<App />);
+    console.log("App mounted successfully.");
   } catch (error) {
-    console.error("Mounting Error:", error);
-    rootElement.innerHTML = "<div style='padding:2rem;text-align:center;color:#ef4444;direction:rtl;'>خطای سیستمی در اجرای React رخ داد.</div>";
+    console.error("React Mounting Error:", error);
+    rootElement.innerHTML = `
+      <div style='padding:2rem;text-align:center;color:#ef4444;direction:rtl;font-family:sans-serif;'>
+        <h2 style='font-weight:bold;'>خطای سیستمی</h2>
+        <p style='color:#666;margin-top:0.5rem;'>مشکلی در اجرای رابط کاربری رخ داده است. لطفاً حافظه کش مرورگر را پاک کرده و مجدداً امتحان کنید.</p>
+        <code style='display:block;margin-top:1rem;font-size:0.75rem;background:#fef2f2;padding:0.5rem;border-radius:4px;'>${error instanceof Error ? error.message : String(error)}</code>
+      </div>
+    `;
   }
 };
 
-// If DOM is already ready (likely for type=module), run immediately
+// Module scripts are already deferred, but checking readyState adds an extra layer of safety.
 if (document.readyState === 'loading') {
   window.addEventListener('DOMContentLoaded', renderApp);
 } else {
