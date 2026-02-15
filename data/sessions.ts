@@ -77,6 +77,7 @@ export const sessions: Session[] = [
     id: 2,
     title: "پشت پرده پیام‌ها؛ چه کسی و چگونه؟",
     description: "هدف درس: درک ساختار پیام‌های رسانه‌ای و آشنایی با تکنیک‌های اقناع.",
+    videoUrl: "https://www.aparat.com/video/video/embed/videohash/a2769/vt/frame",
     content: `
       <div class="space-y-12 text-justify leading-loose text-slate-700 animate-fade-in">
         <section>
