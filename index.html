@@ -820,11 +820,113 @@
                 visualAnalysisPrompt: "در این تصویر چه عناصری برای تأثیرگذاری بر احساسات مخاطب (ترس، امید، قدرت) به کار رفته است؟",
                 factOrMyth: [],
                 quiz: []
+            },
+            {
+                id: 9,
+                title: "رسانه و سلامت (جسم و روان در عصر دیجیتال)",
+                description: "بررسی تأثیرات رسانه‌ها بر سلامت جسم و روان، از جمله عزت‌نفس، تصویر بدنی، و آسیب‌های فیزیکی ناشی از استفاده نادرست از ابزارهای دیجیتال.",
+                content: `
+                    <div class="space-y-8 animate-fade-in">
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">مقدمه: فراتر از یک نمایشگر</h3>
+                            <p>ما معمولاً فکر می‌کنیم رسانه چیزی «بیرون» از ماست، اما واقعیت این است که تعامل با دنیای دیجیتال، واکنش‌های بیولوژیکی و روانی عمیقی در بدن ما ایجاد می‌کند. در این جلسه بررسی می‌کنیم که چگونه از آسیب‌های پنهان رسانه‌ها در امان بمانیم.</p>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش اول: سلامت روان و «تله مقایسه»</h3>
+                            <p>یکی از بزرگترین چالش‌های سلامت در عصر رسانه‌های اجتماعی، ضربه به عزت‌نفس است.</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">زیباییِ فیلتر شده</strong>
+                                    <p class="text-slate-600 text-sm">رسانه‌ها (به‌ویژه اینستاگرام و تیک‌تاک) نسخه‌ای دستکاری شده و بی‌نقص از چهره و بدن انسان‌ها را نشان می‌دهند. این موضوع باعث می‌شود مخاطب (به‌خصوص نوجوانان) دچار «بدشکلی‌هراسی» شود و احساس کند بدن او به اندازه کافی خوب نیست.</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">مقایسه زندگی معمولی با پشت‌صحنه دیگران</strong>
+                                    <p class="text-slate-600 text-sm">ما لحظات معمولی و دشوار زندگی خود را با لحظات درخشان و گزینش‌شده دیگران مقایسه می‌کنیم که منجر به افسردگی و اضطراب می‌شود.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش دوم: سلامت جسم و ارگونومی دیجیتال</h3>
+                            <p>استفاده مداوم از ابزارهای رسانه‌ای می‌تواند آسیب‌های فیزیکی پایداری ایجاد کند:</p>
+                            <div class="space-y-3 mt-4">
+                                <div class="bg-red-50 p-4 rounded-xl border border-red-100 flex gap-4">
+                                    <div class="shrink-0 text-red-500"><i data-lucide="smartphone" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <strong class="text-red-900 block mb-1">سندرم گردن پیامکی (Text Neck)</strong>
+                                        <p class="text-red-800 text-sm">خم شدن مداوم روی گوشی، فشاری معادل ۲۷ کیلوگرم به مهره‌های گردن وارد می‌کند.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-4">
+                                    <div class="shrink-0 text-blue-500"><i data-lucide="moon" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <strong class="text-blue-900 block mb-1">نور آبی و اختلال خواب</strong>
+                                        <p class="text-blue-800 text-sm">نور آبی ساطع شده از نمایشگرها، ترشح هورمون ملاتونین (هورمون خواب) را متوقف می‌کند. این کار باعث می‌شود مغز تصور کند هنوز روز است، در نتیجه کیفیت خواب به شدت کاهش می‌یابد.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش سوم: سلامت و اطلاعات پزشکی (دکتر گوگل!)</h3>
+                            <p>رسانه‌ها پر از توصیه‌های سلامتی، رژیم‌های غذایی عجیب و درمان‌های خانگی هستند.</p>
+                            <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg mt-4 space-y-4">
+                                <div>
+                                    <strong class="text-orange-900 block mb-1">خطر خودتشخیصی</strong>
+                                    <p class="text-orange-800 text-sm">جستجوی علائم بیماری در فضای مجازی می‌تواند منجر به «سایبرکندریا» (اضطراب بیماری دیجیتال) شود؛ وضعیتی که در آن فرد با خواندن اطلاعات غیرتخصصی، تصور می‌کند به بیماری‌های سختی مبتلا شده است.</p>
+                                </div>
+                                <div>
+                                    <strong class="text-orange-900 block mb-1">تبلیغات داروهای معجزه‌آسا</strong>
+                                    <p class="text-orange-800 text-sm">بسیاری از این تبلیغات توسط فنون اقناع (که در جلسه سوم خواندیم) ساخته شده‌اند تا محصولات غیراستاندارد را به فروش برسانند.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش چهارم: راهکارهای حفظ سلامت رسانه‌ای</h3>
+                            <p>برای اینکه رسانه بلای جانمان نشود، این قوانین را رعایت کنیم:</p>
+                            <ul class="space-y-3 mt-4">
+                                <li class="flex items-start gap-3 bg-emerald-50 p-3 rounded-lg">
+                                    <span class="bg-emerald-200 text-emerald-800 w-6 h-6 flex items-center justify-center rounded-full text-sm font-bold shrink-0">1</span>
+                                    <span class="text-emerald-900 text-sm"><strong>قانون ساعت طلایی:</strong> حداقل یک ساعت قبل از خواب، تمام نمایشگرها را خاموش کنید تا ملاتونین فرصت ترشح پیدا کند.</span>
+                                </li>
+                                <li class="flex items-start gap-3 bg-emerald-50 p-3 rounded-lg">
+                                    <span class="bg-emerald-200 text-emerald-800 w-6 h-6 flex items-center justify-center rounded-full text-sm font-bold shrink-0">2</span>
+                                    <span class="text-emerald-900 text-sm"><strong>فالو/آنفالو (پاکسازی محتوا):</strong> هر پیجی که باعث می‌شود نسبت به بدن یا زندگی خود احساس بدی پیدا کنید، آنفالو کنید. سلامتی روان شما مهم‌تر از پیگیری زندگی سلبریتی‌هاست.</span>
+                                </li>
+                                <li class="flex items-start gap-3 bg-emerald-50 p-3 rounded-lg">
+                                    <span class="bg-emerald-200 text-emerald-800 w-6 h-6 flex items-center justify-center rounded-full text-sm font-bold shrink-0">3</span>
+                                    <span class="text-emerald-900 text-sm"><strong>تکنیک چشم‌ها:</strong> هنگام کار با سیستم، مانیتور را هم‌سطح چشم قرار دهید تا فشار از روی گردن برداشته شود.</span>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="bg-white border-2 border-dashed border-health-300 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-health-800 mb-4">فعالیت عملی: چکاپ سلامت رسانه‌ای</h3>
+                            <p class="mb-3 text-slate-700">امشب قبل از خواب، به این سه مورد دقت کنید و یادداشت کنید:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm">
+                                <li>آیا بلافاصله بعد از بیدار شدن و قبل از خواب گوشی چک می‌کنید؟ (نشانه اعتیاد دیجیتال)</li>
+                                <li>آیا هنگام استفاده از گوشی، شانه‌ها و گردن شما منقبض است؟</li>
+                                <li>یک پیج را پیدا کنید که محتوای آن به شما استرس می‌دهد و همین الان آن را «Mute» یا «Unfollow» کنید.</li>
+                            </ul>
+                        </section>
+
+                        <div class="bg-health-50 border-r-4 border-health-500 p-6 rounded-l-2xl my-6">
+                            <strong class="text-health-900 block mb-2 text-lg">خلاصه جلسه</strong>
+                            <p class="text-health-800 m-0">سواد رسانه‌ای فقط یک مهارت ذهنی نیست؛ یک مهارت زیستی است. بدن ما برای نشستن طولانی‌مدت پشت میز و دیدن تصاویر فیلترشده طراحی نشده است. با آگاهی از این تاثیرات، می‌توانیم تکنولوژی را به خدمت بگیریم، بدون اینکه سلامتی‌مان را فدای آن کنیم.</p>
+                        </div>
+                    </div>
+                `,
+                imageUrl: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=1000",
+                visualAnalysisPrompt: "با توجه به تصویر، چه نشانه‌هایی از تأثیر فیزیکی یا روانی استفاده از ابزارهای دیجیتال را مشاهده می‌کنید؟",
+                factOrMyth: [],
+                quiz: []
             }
         ];
 
         // Generate placeholder sessions
-        for (let i = 9; i <= 17; i++) {
+        for (let i = 10; i <= 17; i++) {
             sessions.push({
                 id: i,
                 title: `جلسه ${i}`,
