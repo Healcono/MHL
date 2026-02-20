@@ -542,11 +542,289 @@
                 visualAnalysisPrompt: "با توجه به تصویر، فکر می‌کنید این فرد دچار کدام یک از آسیب‌های پرخوری رسانه‌ای شده است؟",
                 factOrMyth: [],
                 quiz: []
+            },
+            {
+                id: 6,
+                title: "حقیقت یا فریب؟ (اعتبارسنجی و اخبار جعلی)",
+                description: "بررسی پدیده اخبار جعلی، دلایل ساخت آن‌ها و آموزش ۵ گام طلایی برای اعتبارسنجی و مقابله با اطلاعات نادرست.",
+                content: `
+                    <div class="space-y-8 animate-fade-in">
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">مقدمه</h3>
+                            <p>در دنیای امروز، ما با پدیده‌ای به نام «انفجار اطلاعات» روبرو هستیم. اما مشکل اینجاست که همه این اطلاعات لزوماً «درست» نیستند. اخبار جعلی (Fake News) مانند ویروسی هستند که با استفاده از احساسات ما، به سرعت در شبکه‌های اجتماعی پخش می‌شوند. در این جلسه یاد می‌گیریم که چگونه فریب نخوریم.</p>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش اول: اخبار جعلی (Fake News) چیست؟</h3>
+                            <p>اخبار جعلی صرفاً یک «دروغ ساده» نیستند؛ آنها اطلاعاتی هستند که عمداً برای گمراه کردن، تخریب شخصیت‌ها، یا کسب درآمد (از طریق کلیک) ساخته می‌شوند.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">تیترهای فریبنده (Clickbait)</strong>
+                                    <p class="text-slate-600 text-sm">تیترهایی که با متن خبر همخوانی ندارند و فقط برای وسوسه کردن شما به کلیک طراحی شده‌اند.</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">محتوای دستکاری شده</strong>
+                                    <p class="text-slate-600 text-sm">عکس‌ها یا ویدیوهایی که با فتوشاپ یا هوش مصنوعی (Deepfake) تغییر یافته‌اند.</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">زمینه نادرست</strong>
+                                    <p class="text-slate-600 text-sm">استفاده از یک عکس واقعی مربوط به ۵ سال پیش برای یک اتفاق در زمان حال!</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">شایعات شبکه‌های اجتماعی</strong>
+                                    <p class="text-slate-600 text-sm">پیام‌هایی که با جملاتی مثل «همین الآن به دستم رسید» یا «فوری» شروع می‌شوند اما منبع رسمی ندارند.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش دوم: چرا اخبار جعلی ساخته می‌شوند؟</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                                    <span class="bg-red-100 text-red-600 p-1 rounded shrink-0"><i data-lucide="flag" class="w-5 h-5"></i></span>
+                                    <div>
+                                        <strong class="text-slate-900 block">اهداف سیاسی</strong>
+                                        <span class="text-slate-600 text-sm">برای تخریب چهره یک رقیب یا تغییر افکار عمومی در زمان انتخابات.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                                    <span class="bg-green-100 text-green-600 p-1 rounded shrink-0"><i data-lucide="dollar-sign" class="w-5 h-5"></i></span>
+                                    <div>
+                                        <strong class="text-slate-900 block">اهداف اقتصادی</strong>
+                                        <span class="text-slate-600 text-sm">هرچه خبر جنجالی‌تر باشد، بازدید بیشتر و در نتیجه درآمد تبلیغاتی بیشتری نصیب سایت سازنده می‌شود.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                                    <span class="bg-orange-100 text-orange-600 p-1 rounded shrink-0"><i data-lucide="skull" class="w-5 h-5"></i></span>
+                                    <div>
+                                        <strong class="text-slate-900 block">جنگ روانی</strong>
+                                        <span class="text-slate-600 text-sm">ایجاد ترس، ناامیدی یا خشم در جامعه.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش سوم: پنج گام طلایی برای اعتبارسنجی (Fact-Checking)</h3>
+                            <p class="mb-4">هر زمان که با یک خبر جنجالی روبرو شدید، قبل از «اشتراک‌گذاری» (Share)، این ۵ سوال را بپرسید:</p>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100 text-emerald-900">
+                                    <span class="font-bold bg-emerald-200 w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span>
+                                    <span>منبع اصلی کجاست؟ آیا خبر از یک خبرگزاری معتبر است یا یک کانال تلگرامی بی‌نام و نشان؟</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100 text-emerald-900">
+                                    <span class="font-bold bg-emerald-200 w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span>
+                                    <span>آیا رسانه‌های دیگر هم آن را پوشش داده‌اند؟ اگر خبری خیلی مهم است اما فقط در یک جای عجیب دیده می‌شود، احتمالاً جعلی است.</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100 text-emerald-900">
+                                    <span class="font-bold bg-emerald-200 w-6 h-6 flex items-center justify-center rounded-full text-sm">3</span>
+                                    <span>تاریخ انتشار خبر چه زمانی است؟ خیلی وقت‌ها اخبار قدیمی به عنوان خبرِ داغِ روز بازنشر می‌شوند.</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100 text-emerald-900">
+                                    <span class="font-bold bg-emerald-200 w-6 h-6 flex items-center justify-center rounded-full text-sm">4</span>
+                                    <span>نویسنده یا منبع چه سودی می‌برد؟ آیا این خبر می‌خواهد شما را به شدت خشمگین یا خوشحال کند؟ اخبار جعلی روی احساسات سوار می‌شوند.</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100 text-emerald-900">
+                                    <span class="font-bold bg-emerald-200 w-6 h-6 flex items-center justify-center rounded-full text-sm">5</span>
+                                    <span>آیا عکس یا ویدیو واقعی است؟ با استفاده از ابزارهایی مثل "Google Reverse Image Search" می‌توان فهمید یک عکس اولین بار کی و کجا منتشر شده است.</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش چهارم: اتاق پژواک (Echo Chamber)</h3>
+                            <p>یکی از خطرات فضای مجازی این است که الگوریتم‌ها فقط مطالبی را به ما نشان می‌دهند که دوست داریم و با عقاید ما جور درمی‌آیند. این باعث می‌شود ما در یک «اتاق پژواک» قرار بگیریم و فکر کنیم حقیقت فقط همان چیزی است که ما می‌بینیم.</p>
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mt-4">
+                                <p class="text-yellow-800 text-sm font-bold m-0">نکته: یک مخاطب باسواد رسانه‌ای، گاهی عمداً نظرات مخالف را هم می‌خواند تا دچار تعصب نشود.</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white border-2 border-dashed border-health-300 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-health-800 mb-4">فعالیت عملی: کارآگاه شوید!</h3>
+                            <p class="mb-3 text-slate-700">یک پیام یا خبری را که اخیراً در گروه‌های خانوادگی یا دوستانه منتشر شده و به نظر مشکوک می‌آید انتخاب کنید.</p>
+                            <ul class="list-decimal list-inside space-y-2 text-slate-600 text-sm">
+                                <li>نام خبرگزاری یا منبع را جستجو کنید.</li>
+                                <li>ببینید آیا سایت‌های معتبرِ "شایعه‌زدایی" درباره آن مطلبی نوشته‌اند؟</li>
+                                <li>نتیجه تحقیق خود را در یک پاراگراف بنویسید.</li>
+                            </ul>
+                        </section>
+
+                        <div class="bg-health-50 border-r-4 border-health-500 p-6 rounded-l-2xl my-6">
+                            <strong class="text-health-900 block mb-2 text-lg">خلاصه جلسه</strong>
+                            <p class="text-health-800 m-0">به یاد داشته باشید: «توقف و تامل» بزرگترین دشمن اخبار جعلی است. قبل از اینکه دکمه "ارسال" را لمس کنید، از خود بپرسید: «آیا از صحت این مطلب اطمینان دارم؟» با اشتراک‌گذاریِ آگاهانه، زنجیره دروغ را قطع کنید.</p>
+                        </div>
+                    </div>
+                `,
+                imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=1000",
+                visualAnalysisPrompt: "آیا می‌توانید تشخیص دهید کدام بخش از این تصویر دستکاری شده است؟ چه نشانه‌هایی برای تشخیص جعلی بودن آن وجود دارد؟",
+                factOrMyth: [],
+                quiz: []
+            },
+            {
+                id: 7,
+                title: "پشت پرده رسانه (مالکیت و اقتصاد)",
+                description: "بررسی نقش پول و مالکیت در تولید محتوای رسانه‌ای و مفهوم «اگر محصول رایگان است، شما محصول هستید».",
+                content: `
+                    <div class="space-y-8 animate-fade-in">
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">مقدمه: قانون طلایی رسانه</h3>
+                            <p>یک ضرب‌المثل قدیمی می‌گوید: «هر که پولِ ویولن‌زن را می‌دهد، آهنگ را هم او انتخاب می‌کند.» در دنیای رسانه، هیچ محتوایی (اعم از فیلم، خبر، بازی یا اپلیکیشن) به صورت کاملاً «مجانی» تولید نمی‌شود. هزینه‌های تولید بسیار بالاست؛ پس باید پرسید: چرا این محتوا به رایگان در اختیار من قرار گرفته است؟</p>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش اول: اگر محصول رایگان است، «شما» محصول هستید!</h3>
+                            <p>بسیاری از ما از اینستاگرام، تلگرام یا یوتیوب به رایگان استفاده می‌کنیم. اما حقیقت این است که ما «مشتری» این شرکت‌ها نیستیم، بلکه ما «محصول» آنها هستیم.</p>
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mt-4">
+                                <p class="text-blue-800 text-sm">رسانه‌ها «توجه» و «داده‌های شخصی» ما را به تبلیغ‌دهندگان می‌فروشند. هر لایک، جستجو و مکث روی یک عکس، اطلاعاتی درباره علایق ما به شرکت‌های بزرگ می‌دهد تا آنها بتوانند دقیق‌تر به ما کالا بفروشند.</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش دوم: انواع مالکیت رسانه و تأثیر آن بر محتوا</h3>
+                            <p class="mb-4">صاحبان رسانه اهداف متفاوتی دارند که مستقیماً روی چیزی که ما می‌بینیم اثر می‌گذارد:</p>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">رسانه‌های دولتی/حکومتی</strong>
+                                    <p class="text-slate-600 text-sm">هدفشان ترویج سیاست‌های رسمی، حفظ ثبات و گاهی تبلیغات سیاسی (Propaganda) است. بودجه آنها از مالیات یا منابع ملی تأمین می‌شود.</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">رسانه‌های تجاری (خصوصی)</strong>
+                                    <p class="text-slate-600 text-sm">هدف اصلی آنها سودآوری است. آنها محتوایی تولید می‌کنند که بیشترین مخاطب را جذب کند تا تبلیغات بیشتری بگیرند (حتی اگر آن محتوا زرد یا بی‌ارزش باشد).</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">رسانه‌های عمومی</strong>
+                                    <p class="text-slate-600 text-sm">تلاش می‌کنند مستقل از دولت و بازرگانی عمل کنند و بودجه‌شان را مردم می‌دهند تا فرهنگ و آموزش را ارتقا دهند (هرچند همیشه در معرض فشار هستند).</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش سوم: تمرکز مالکیت (غول‌های رسانه‌ای)</h3>
+                            <p>آیا می‌دانستید که بیش از ۹۰ درصد رسانه‌های بزرگ جهان (هالیوود، شبکه‌های خبری جهانی، انتشاراتی‌ها) تنها در اختیار ۵ یا ۶ شرکت غول‌آسا (مثل دیزنی، وارنر، سونی و...) هستند؟</p>
+                            <div class="bg-red-50 p-4 rounded-xl border border-red-100 mt-4">
+                                <strong class="text-red-900 block mb-1">خطر تمرکز مالکیت</strong>
+                                <p class="text-red-800 text-sm">وقتی تنوع مالکان کم باشد، تنوع ایده‌ها هم کم می‌شود. این غول‌ها تصمیم می‌گیرند که مردم جهان به چه چیزی بخندند، از چه چیزی بترسند و چه سبک زندگی‌ای را انتخاب کنند.</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش چهارم: سانسور اقتصادی</h3>
+                            <p>سانسور همیشه توسط دولت‌ها انجام نمی‌شود؛ گاهی «پول» سانسور می‌کند.</p>
+                            <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm mt-4">
+                                <strong class="text-health-700 block mb-2">مثال:</strong>
+                                <p class="text-slate-600 text-sm">اگر یک روزنامه، بخش بزرگی از درآمدش را از یک شرکت خودروسازی تأمین کند، آیا جرأت می‌کند گزارشی درباره نقص فنی خودروهای آن شرکت منتشر کند؟ احتمالاً خیر. به این پدیده «خودسانسوری برای بقای اقتصادی» می‌گویند.</p>
+                            </div>
+                        </section>
+
+                        <section class="bg-white border-2 border-dashed border-health-300 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-health-800 mb-4">فعالیت عملی: ردِ پول را بگیرید (Follow the Money)</h3>
+                            <p class="mb-3 text-slate-700">یک خبرگزاری یا شبکه تلویزیونی (داخلی یا خارجی) را انتخاب کنید و تحقیق کنید:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm">
+                                <li>مالک اصلی آن کیست؟ (دولت؟ یک میلیاردر؟ یا یک هلدینگ تجاری؟)</li>
+                                <li>درآمد آن از کجا تأمین می‌شود؟ (تبلیغات؟ بودجه دولتی؟ یا اشتراک ماهانه؟)</li>
+                                <li>آیا می‌توانید مثالی بزنید که این رسانه به خاطر منافع مالکش، خبری را بزرگنمایی یا سانسور کرده باشد؟</li>
+                            </ul>
+                        </section>
+
+                        <div class="bg-health-50 border-r-4 border-health-500 p-6 rounded-l-2xl my-6">
+                            <strong class="text-health-900 block mb-2 text-lg">خلاصه جلسه</strong>
+                            <p class="text-health-800 m-0">سواد رسانه‌ای در این جلسه به ما هشدار می‌دهد: «هیچ ناهار مجانی‌ای وجود ندارد.» وقتی می‌دانیم پشت یک پیام رسانه‌ای چه قدرت اقتصادی یا سیاسی‌ای ایستاده است، دیگر به راحتی فریب ظاهرِ خیرخواهانه یا سرگرم‌کننده آن را نمی‌خوریم. ما یاد می‌گیریم که بپرسیم: «این پیام به نفع چه کسی است؟»</p>
+                        </div>
+                    </div>
+                `,
+                imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1000",
+                visualAnalysisPrompt: "به نظر شما این تصویر چگونه رابطه بین پول و رسانه را نشان می‌دهد؟",
+                factOrMyth: [],
+                quiz: []
+            },
+            {
+                id: 8,
+                title: "عملیات روانی و تکنیک‌های نفوذ",
+                description: "بررسی مفهوم عملیات روانی، تکنیک‌های پیشرفته نفوذ و اقناع، و تأثیر آن بر افکار عمومی.",
+                content: `
+                    <div class="space-y-8 animate-fade-in">
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">مقدمه: جنگ بدون خونریزی</h3>
+                            <p>در گذشته، کشورها برای تسلط بر یکدیگر از ابزارهای نظامی استفاده می‌کردند؛ اما امروزه رسانه‌ها ابزار اصلی «نفوذ» هستند. عملیات روانی (Psychological Operations) یعنی استفاده برنامه‌ریزی‌شده از رسانه‌ها برای القای اطلاعات و نشانه‌ها به مخاطب، با هدف تغییر رفتار و نگرش او. در این حالت، هدف تسخیر «خاک» نیست، بلکه تسخیر «افکار» است.</p>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش اول: تکنیک‌های پیشرفته نفوذ و اقناع</h3>
+                            <p class="mb-4">رسانه‌ها در سطوح کلان از روش‌های زیر برای جهت‌دهی به افکار عمومی استفاده می‌کنند:</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">برچسب‌زنی (Labeling)</strong>
+                                    <p class="text-slate-600 text-sm mb-2">استفاده از کلمات مثبت یا منفی برای برانگیختن احساسات، بدون ارائه دلیل.</p>
+                                    <div class="bg-slate-50 p-3 rounded-lg text-xs text-slate-500">
+                                        <strong>مثال:</strong> چسباندن القابی مثل «تندرو»، «آزادی‌خواه»، «دیکتاتور» یا «قهرمان» به یک فرد یا جریان برای قضاوت زودهنگام مخاطب.
+                                    </div>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">دروغ بزرگ (Big Lie)</strong>
+                                    <p class="text-slate-600 text-sm">تکنیکی که می‌گوید اگر دروغی را به اندازه کافی بزرگ بگویید و مدام تکرار کنید، مردم در نهایت آن را باور می‌کنند؛ چون ذهن تصور نمی‌کند کسی جرأت داشته باشد حقیقتی به این بزرگی را جعل کند.</p>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">پاره‌حقیقت‌گویی (Card Stacking)</strong>
+                                    <p class="text-slate-600 text-sm">در این روش، رسانه بخشی از واقعیت را که به نفع اوست می‌گوید و بخش‌های دیگر را که ممکن است نظر مخاطب را عوض کند، حذف می‌کند. (دروغ نمی‌گوید، اما تمامِ حقیقت را هم نمی‌گوید!)</p>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">تکنیک انتقال (Transfer)</strong>
+                                    <p class="text-slate-600 text-sm mb-2">پیوند دادن اعتبار یا منفور بودنِ یک چیز به چیز دیگر.</p>
+                                    <div class="bg-slate-50 p-3 rounded-lg text-xs text-slate-500">
+                                        <strong>مثال:</strong> استفاده از نمادهای مذهبی یا ملی در کنار یک شخصیت سیاسی برای جلب اعتماد مردم.
+                                    </div>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2 text-lg">اهریمن‌سازی (Demonization)</strong>
+                                    <p class="text-slate-600 text-sm">تصویری کاملاً غیرانسانی و شیطانی از دشمن ارائه دادن، تا هرگونه اقدام علیه او در نظر مخاطب موجه جلوه کند.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش دوم: بمباران اطلاعاتی و ابهام</h3>
+                            <p>گاهی هدف رسانه، «باوراندن» یک چیز نیست، بلکه «گیج کردن» مخاطب است. وقتی اخبار متناقض و انبوه درباره یک واقعه منتشر می‌شود، مخاطب دچار خستگی ذهنی شده و در نهایت می‌گوید: «اصلاً معلوم نیست حقیقت چیست!»</p>
+                            <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg mt-4">
+                                <p class="text-orange-800 text-sm">در این فضا، حقیقت گم می‌شود و مردم نسبت به همه چیز بی‌تفاوت یا بدبین می‌شوند. این یکی از خطرناک‌ترین نتایج عملیات روانی است.</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش سوم: مارپیچ سکوت (Spiral of Silence)</h3>
+                            <p>رسانه‌ها می‌توانند این حس را القا کنند که اکثریت جامعه با یک نظر خاص موافق هستند. کسانی که نظر متفاوتی دارند، از ترس انزوا یا طرد شدن، سکوت می‌کنند. این سکوت باعث می‌شود نظرِ اکثریتِ ساختگی، قوی‌تر به نظر برسد و به تدریج نظرات مخالف کاملاً حذف شوند.</p>
+                        </section>
+
+                        <section class="bg-white border-2 border-dashed border-health-300 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-health-800 mb-4">فعالیت عملی: کالبدشکافی یک پیام سیاسی</h3>
+                            <p class="mb-3 text-slate-700">یک سخنرانی، پوستر یا کلیپ کوتاه سیاسی (داخلی یا خارجی) را انتخاب کنید:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm">
+                                <li>آیا در آن از کلمات احساسی برای برچسب‌زنی استفاده شده است؟</li>
+                                <li>کدام بخش از واقعیت ممکن است در این پیام سانسور شده باشد؟</li>
+                                <li>این پیام سعی دارد شما را نسبت به چه کسی خشمگین یا به چه کسی امیدوار کند؟</li>
+                            </ul>
+                        </section>
+
+                        <div class="bg-health-50 border-r-4 border-health-500 p-6 rounded-l-2xl my-6">
+                            <strong class="text-health-900 block mb-2 text-lg">خلاصه جلسه</strong>
+                            <p class="text-health-800 m-0">سواد رسانه‌ای به ما می‌گوید که در طوفان عملیات روانی، «احساسات» بدترین مشاور هستند. رسانه‌ها با تحریک خشم، ترس یا عشق، عقلانیت ما را گروگان می‌گیرند. شناخت این تکنیک‌ها به ما کمک می‌کند تا به جای واکنش‌های احساسی و سریع، با «تفکر انتقادی» با پیام‌ها مواجه شویم.</p>
+                        </div>
+                    </div>
+                `,
+                imageUrl: "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&q=80&w=1000",
+                visualAnalysisPrompt: "در این تصویر چه عناصری برای تأثیرگذاری بر احساسات مخاطب (ترس، امید، قدرت) به کار رفته است؟",
+                factOrMyth: [],
+                quiz: []
             }
         ];
 
         // Generate placeholder sessions
-        for (let i = 6; i <= 17; i++) {
+        for (let i = 9; i <= 17; i++) {
             sessions.push({
                 id: i,
                 title: `جلسه ${i}`,
