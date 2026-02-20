@@ -1739,6 +1739,34 @@
             `;
         }
 
+        function renderSessionSummaryCard(session) {
+            // Extract key takeaways from content (simplified for this example)
+            // In a real app, this might be a separate field in the session object
+            const summaryMatch = session.content.match(/<strong class="text-health-900 block mb-2 text-lg">خلاصه (جلسه|مدیریتی)<\/strong>\s*<p.*?>(.*?)<\/p>/s);
+            const summaryText = summaryMatch ? summaryMatch[1] : session.description;
+
+            return `
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-health-50 flex items-center justify-center text-health-600 font-bold text-sm">
+                            ${session.id}
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg line-clamp-1" title="${session.title}">${session.title}</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed flex-grow mb-4 line-clamp-4">
+                        ${summaryText.replace(/<[^>]*>/g, '')}
+                    </p>
+                    <button 
+                        onclick="app.selectSession(${session.id})"
+                        class="text-health-600 text-sm font-medium hover:text-health-700 flex items-center gap-1 mt-auto self-end"
+                    >
+                        مشاهده کامل
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+        }
+
         function renderContact() {
             return `
                 <div class="bg-slate-900 text-white p-12 text-center mt-12">
