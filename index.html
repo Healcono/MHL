@@ -332,11 +332,103 @@
                 visualAnalysisPrompt: "در این تصویر چه تکنیک‌های بصری (نور، رنگ، زاویه) برای جلب توجه شما استفاده شده است؟",
                 factOrMyth: [],
                 quiz: []
+            },
+            {
+                id: 4,
+                title: "بازنمایی و غولِ کلیشه‌ها",
+                description: "بررسی مفهوم بازنمایی رسانه‌ای، کلیشه‌سازی و تأثیر آن بر باورهای عمومی و خودپنداره.",
+                content: `
+                    <div class="space-y-8 animate-fade-in">
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">مقدمه</h3>
+                            <p>رسانه‌ها مانند یک «آینه» نیستند که واقعیت را دقیقاً همانطور که هست نشان دهند؛ بلکه بیشتر شبیه یک «منشور» یا «فیلتر» عمل می‌کنند. آنها بخشی از واقعیت را انتخاب، بخشی را حذف و بخشی را بزرگنمایی می‌کنند. به این فرآیند بازنمایی (Representation) می‌گویند.</p>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش اول: مفهوم بازنمایی (Representation)</h3>
+                            <p>بازنمایی یعنی رسانه «نسخه‌ای از واقعیت» را به ما نشان می‌دهد، نه خودِ واقعیت را.</p>
+                            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm mt-4">
+                                <strong class="text-health-700 block mb-2">مثال:</strong>
+                                <p class="text-slate-600 text-sm">تصویری که یک سریال تلویزیونی از زندگی دانشجویی نشان می‌دهد، با زندگی واقعی یک دانشجو تفاوت‌های زیادی دارد. رسانه انتخاب می‌کند که کدام جنبه‌ها (مثلاً عاشقانه‌های دانشجویی) را نشان دهد و کدام را (مثلاً شب‌بیداری برای امتحان) حذف کند.</p>
+                            </div>
+                            <div class="bg-yellow-50 border-r-4 border-yellow-400 p-4 rounded-r-lg mt-4">
+                                <p class="text-yellow-800 text-sm font-bold">نکته کلیدی: ما نباید بازنمایی رسانه‌ای را با حقیقت اشتباه بگیریم.</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش دوم: کلیشه‌سازی (Stereotyping)</h3>
+                            <p>یکی از ابزارهای اصلی بازنمایی، «کلیشه‌سازی» است. کلیشه یعنی نسبت دادن مجموعه‌ای از صفات ثابت، ساده‌انگاشته و اغلب اغراق‌آمیز به یک گروه از مردم.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                <div class="bg-blue-50 p-5 rounded-2xl border border-blue-100">
+                                    <strong class="text-blue-900 block mb-3 border-b border-blue-200 pb-2">چرا رسانه‌ها از کلیشه استفاده می‌کنند؟</strong>
+                                    <ul class="space-y-2 text-sm text-blue-800">
+                                        <li><strong>سرعت در انتقال پیام:</strong> برای اینکه مخاطب سریعاً شخصیت را بشناسد (مثلاً نشان دادن یک فرد با عینک ته استکانی و کتاب برای معرفی یک آدم درسخوان).</li>
+                                        <li><strong>کاهش هزینه‌های فکری:</strong> ذهن انسان دوست دارد دسته‌بندی کند تا کمتر انرژی مصرف کند.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-purple-50 p-5 rounded-2xl border border-purple-100">
+                                    <strong class="text-purple-900 block mb-3 border-b border-purple-200 pb-2">نمونه‌های رایج کلیشه‌سازی</strong>
+                                    <ul class="space-y-2 text-sm text-purple-800">
+                                        <li><strong>نوجوانان:</strong> در رسانه‌ها اغلب یا "نابغه کامپیوتر" هستند یا "شورشی و بی‌ادب".</li>
+                                        <li><strong>سالمندان:</strong> غالباً ناتوان، فراموشکار یا فقط در حال پند دادن تصویر می‌شوند.</li>
+                                        <li><strong>ملیت‌ها:</strong> مثلاً تصویر کلیشه‌ای که هالیوود از خاورمیانه‌ای‌ها (ثروتمندان نفتی یا تروریست‌ها) ارائه می‌دهد.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش سوم: پیامدهای بازنمایی غلط</h3>
+                            <p>وقتی رسانه‌ها به طور مداوم یک گروه را به شکلی خاص نشان می‌دهند، دو اتفاق می‌افتد:</p>
+                            <div class="flex flex-col md:flex-row gap-4 mt-4">
+                                <div class="flex-1 bg-red-50 p-4 rounded-xl border border-red-100">
+                                    <strong class="text-red-900 block mb-1">باور عمومی</strong>
+                                    <p class="text-red-800 text-sm">مردم واقعاً باور می‌کنند که آن گروه همگی همانگونه هستند.</p>
+                                </div>
+                                <div class="flex-1 bg-orange-50 p-4 rounded-xl border border-orange-100">
+                                    <strong class="text-orange-900 block mb-1">خودپنداره</strong>
+                                    <p class="text-orange-800 text-sm">افراد آن گروه (مثلاً نوجوانان) سعی می‌کنند شبیه آن تصویر رسانه‌ای رفتار کنند تا پذیرفته شوند.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش چهارم: مخاطب فعال در برابر بازنمایی</h3>
+                            <p>یک مخاطب باسواد رسانه‌ای در مواجهه با هر پیام، این سوالات را از خود می‌پرسد:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-700 mt-2 bg-slate-50 p-6 rounded-2xl">
+                                <li>چه کسی در این پیام غایب است؟</li>
+                                <li>این تصویر چقدر با تجربه واقعی من تفاوت دارد؟</li>
+                                <li>این بازنمایی به نفع چه کسی و به ضرر چه کسی است؟</li>
+                            </ul>
+                        </section>
+
+                        <section class="bg-white border-2 border-dashed border-health-300 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-health-800 mb-4">فعالیت عملی / تحلیل موردی</h3>
+                            <p class="mb-3 text-slate-700">یک فیلم سینمایی یا انیمیشن محبوب را در نظر بگیرید:</p>
+                            <ul class="list-decimal list-inside space-y-3 text-slate-600 text-sm">
+                                <li>شخصیت منفی داستان چه ویژگی‌های ظاهری یا ملیتی دارد؟ آیا این یک کلیشه است؟</li>
+                                <li>اگر جای شخصیت اصلی و فرعی را عوض می‌کردیم، داستان چه تغییری می‌کرد؟</li>
+                                <li>چه لایه‌هایی از زندگی واقعی آن شخصیت در فیلم سانسور شده است؟</li>
+                            </ul>
+                        </section>
+
+                        <div class="bg-health-50 border-r-4 border-health-500 p-6 rounded-l-2xl my-6">
+                            <strong class="text-health-900 block mb-2 text-lg">خلاصه جلسه</strong>
+                            <p class="text-health-800 m-0">در این جلسه یاد گرفتیم که رسانه‌ها معماران دنیای ذهنی ما هستند. آنها با "بازنمایی" به ما می‌گویند چه کسی خوب، چه کسی بد و چه چیزی ارزشمند است. شناخت فنون کلیشه‌سازی به ما کمک می‌کند تا اسیر قضاوت‌های نادرست نشویم.</p>
+                        </div>
+                    </div>
+                `,
+                imageUrl: "https://images.unsplash.com/photo-1533561052604-c3beb6d55760?auto=format&fit=crop&q=80&w=1000",
+                visualAnalysisPrompt: "در این تصویر چه کلیشه‌هایی را مشاهده می‌کنید؟ آیا این تصویر واقعیت را نشان می‌دهد یا بازنمایی است؟",
+                factOrMyth: [],
+                quiz: []
             }
         ];
 
         // Generate placeholder sessions
-        for (let i = 4; i <= 17; i++) {
+        for (let i = 5; i <= 17; i++) {
             sessions.push({
                 id: i,
                 title: `جلسه ${i}`,
