@@ -922,20 +922,112 @@
                 visualAnalysisPrompt: "با توجه به تصویر، چه نشانه‌هایی از تأثیر فیزیکی یا روانی استفاده از ابزارهای دیجیتال را مشاهده می‌کنید؟",
                 factOrMyth: [],
                 quiz: []
+            },
+            {
+                id: 10,
+                title: "اخلاق رسانه‌ای و ردپای دیجیتال",
+                description: "بررسی مفهوم ردپای دیجیتال، اخلاق در فضای مجازی (Netiquette)، مسئولیت اجتماعی کاربران و راهکارهای حفاظت از حریم خصوصی.",
+                content: `
+                    <div class="space-y-8 animate-fade-in">
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4 flex items-center gap-2">مقدمه: ما دیگر فقط بیننده نیستیم!</h3>
+                            <p>در گذشته، مردم فقط مصرف‌کننده رسانه بودند (فقط تلویزیون می‌دیدند یا روزنامه می‌خواندند). اما امروز با وجود شبکه‌های اجتماعی، هر یک از ما خودمان یک «رسانه» هستیم. هر لایک، کامنت و اشتراک‌گذاری ما، باری اخلاقی و حقوقی دارد. در این جلسه یاد می‌گیریم که چگونه در این فضا، انسانیت و اخلاق را حفظ کنیم.</p>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش اول: ردپای دیجیتال (Digital Footprint)</h3>
+                            <p>هر فعالیتی که شما در اینترنت انجام می‌دهید، اثری از خود به جای می‌گذارد که به آن «ردپای دیجیتال» می‌گویند.</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">ماندگاری</strong>
+                                    <p class="text-slate-600 text-sm">برخلاف حرف‌های شفاهی، محتوای دیجیتال (حتی اگر پاک شود) ممکن است در سرورها یا با اسکرین‌شات دیگران برای همیشه باقی بماند.</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                                    <strong class="text-health-700 block mb-2">هویت شغلی و تحصیلی</strong>
+                                    <p class="text-slate-600 text-sm">امروزه بسیاری از دانشگاه‌ها و شرکت‌های بزرگ، قبل از پذیرش افراد، «ردپای دیجیتال» آنها را در سال‌های گذشته بررسی می‌کنند تا با شخصیت واقعی آنها آشنا شوند.</p>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-50 border-r-4 border-yellow-400 p-4 rounded-r-lg mt-4">
+                                <p class="text-yellow-800 text-sm font-bold">نکته طلایی: قبل از منتشر کردن هر چیزی از خود بپرسید: «آیا دوست دارم ۱۰ سال دیگر، رئیس شرکت یا فرزندم این مطلب را از من ببیند؟»</p>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش دوم: اخلاق در بازنشر و تعامل (Netiquette)</h3>
+                            <p>سواد رسانه‌ای در لایه اخلاقی، ما را به رعایت این موارد ملزم می‌کند:</p>
+                            <div class="space-y-3 mt-4">
+                                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex gap-4">
+                                    <div class="shrink-0 text-blue-500"><i data-lucide="shield" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <strong class="text-blue-900 block mb-1">حفظ حریم خصوصی دیگران</strong>
+                                        <p class="text-blue-800 text-sm">هرگز عکس، ویدیو یا اسکرین‌شات چت‌های دیگران را بدون اجازه صریح آنها منتشر نکنید.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-xl border border-red-100 flex gap-4">
+                                    <div class="shrink-0 text-red-500"><i data-lucide="message-circle-off" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <strong class="text-red-900 block mb-1">پرهیز از خشونت کلامی (Cyberbullying)</strong>
+                                        <p class="text-red-800 text-sm">پشت نمایشگر بودن نباید باعث شود ادب را فراموش کنیم. کامنت‌های توهین‌آمیز می‌تواند آسیب‌های روانی جبران‌ناپذیری به گیرنده پیام وارد کند.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 flex gap-4">
+                                    <div class="shrink-0 text-emerald-500"><i data-lucide="copyright" class="w-6 h-6"></i></div>
+                                    <div>
+                                        <strong class="text-emerald-900 block mb-1">حق مالکیت معنوی (Copyright)</strong>
+                                        <p class="text-emerald-800 text-sm">هنگام استفاده از عکس یا متن دیگران، به منبع اصلی اشاره کنید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش سوم: مسئولیت اجتماعی؛ توقفِ زنجیره تخریب</h3>
+                            <p>هر کاربر در زنجیره انتقال پیام نقش دارد. اخلاق رسانه‌ای حکم می‌کند:</p>
+                            <ul class="space-y-2 mt-2 list-disc list-inside text-slate-700">
+                                <li><strong>زنجیره شایعه را قطع کنید:</strong> اگر از درستی خبری مطمئن نیستید، حتی اگر خیلی جذاب بود، آن را ارسال نکنید.</li>
+                                <li><strong>عدم حمایت از محتوای مبتذل یا خشونت‌آمیز:</strong> لایک کردن یا کامنت گذاشتن برای محتوای زرد، باعث می‌شود الگوریتم‌ها آن را به افراد بیشتری نشان دهند. با ندیدن و حمایت نکردن، به ارتقای سطح فرهنگ جامعه کمک کنید.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3 class="text-2xl font-bold text-health-900 mb-4">بخش چهارم: امنیت و صیانت از خود</h3>
+                            <p>بخشی از اخلاق نسبت به خودمان، محافظت از داده‌هایمان است:</p>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-slate-100 p-4 rounded-xl">
+                                    <strong class="text-slate-900 block mb-1">اطلاعات حساس</strong>
+                                    <p class="text-slate-600 text-sm">آدرس دقیق منزل، لوکیشن لحظه‌ای و مدارک شناسایی را در فضای عمومی به اشتراک نگذارید.</p>
+                                </div>
+                                <div class="bg-slate-100 p-4 rounded-xl">
+                                    <strong class="text-slate-900 block mb-1">گذرواژه‌های قوی</strong>
+                                    <p class="text-slate-600 text-sm">از حریم شخصی خود با رمزهای پیچیده و تایید دو مرحله‌ای محافظت کنید.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="bg-white border-2 border-dashed border-health-300 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-health-800 mb-4">فعالیت عملی پایانی: پاکسازی دیجیتال</h3>
+                            <ul class="list-decimal list-inside space-y-3 text-slate-700">
+                                <li>نام خود را در گوگل جستجو کنید؛ ببینید چه اطلاعاتی از شما در دسترس عموم است.</li>
+                                <li>به پست‌های قدیمی خود در شبکه‌های اجتماعی نگاهی بیندازید؛ اگر مطلبی هست که دیگر با افکار امروز شما سازگار نیست یا ممکن است به اعتبار شما آسیب بزند، آن را حذف یا آرشیو کنید.</li>
+                                <li>یک «منشور اخلاق رسانه‌ای شخصی» برای خود بنویسید (مثلاً: من هرگز بدون تحقیق خبر منتشر نمی‌کنم).</li>
+                            </ul>
+                        </section>
+
+                        <div class="bg-health-900 text-white p-8 rounded-3xl shadow-xl mt-8">
+                            <h3 class="text-2xl font-bold mb-4 text-emerald-400">خلاصه دوره (پیام نهایی)</h3>
+                            <p class="text-slate-300 leading-loose">دوره «تفکر و سواد رسانه‌ای» اینجا به پایان می‌رسد، اما سفر شما تازه آغاز شده است. سواد رسانه‌ای یعنی «بیداری». یعنی به جای آنکه اجازه دهید رسانه‌ها برای شما فکر کنند، خودتان با چشمان باز و ذهنی نقاد، دنیای اطرافتان را تحلیل کنید.</p>
+                            <div class="mt-6 text-center">
+                                <span class="inline-block bg-emerald-600 text-white px-6 py-2 rounded-full font-bold shadow-lg">به یاد داشته باشید: قدرت در دست کسی است که می‌پرسد «چرا؟».</span>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000",
+                visualAnalysisPrompt: "با دیدن این تصویر، چه حسی نسبت به ردپای دیجیتال خود پیدا می‌کنید؟ آیا فکر می‌کنید ردپای شما امن است؟",
+                factOrMyth: [],
+                quiz: []
             }
         ];
-
-        // Generate placeholder sessions
-        for (let i = 10; i <= 17; i++) {
-            sessions.push({
-                id: i,
-                title: `جلسه ${i}`,
-                description: "در حال آماده‌سازی محتوا توسط تیم آموزشی...",
-                content: "<div class='py-20 text-center text-slate-400'>محتوای این جلسه به زودی بارگذاری خواهد شد.</div>",
-                quiz: [],
-                factOrMyth: []
-            });
-        }
 
         // --- STATE MANAGEMENT ---
         const state = {
