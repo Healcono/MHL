@@ -1,6 +1,6 @@
 {
   "name": "Media Health Literacy Platform",
-  "description": "High-performance educational web app built with Vanilla JS and Tailwind CSS.",
+  "description": "Interactive educational web app for Media Health Literacy with interactive lessons, quizzes, progress tracking, and downloadable PDF academic reports.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

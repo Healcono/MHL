@@ -8,6 +8,7 @@
     <!-- External Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/html2pdf.bundle.min.js" onerror="this.onerror=null;this.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';"></script>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 
     <script>
@@ -92,6 +93,31 @@
             border-radius: 3px;
             font-weight: 600;
         }
+
+        /* Print and PDF Export Styles */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                overflow: visible !important;
+            }
+            #app-root, #app-toast, .fixed, .modal-backdrop {
+                display: none !important;
+            }
+            #pdf-print-area {
+                display: block !important;
+                position: static !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #ffffff !important;
+            }
+        }
+        @media screen {
+            #pdf-print-area {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="overflow-hidden">
@@ -99,6 +125,12 @@
     <div id="app-root" class="flex h-screen overflow-hidden bg-slate-50 relative">
         <!-- Content will be injected here by JavaScript -->
     </div>
+
+    <!-- Hidden Native Print Area -->
+    <div id="pdf-print-area"></div>
+
+    <!-- Off-screen Render Container for html2pdf Canvas generation -->
+    <div id="pdf-render-container" style="position: fixed; left: -9999px; top: 0; width: 800px; z-index: -999; background: #ffffff; pointer-events: none;"></div>
 
     <script>
         // --- DATA ---
@@ -1468,6 +1500,9 @@
             searchQuery: '',
             contentFontSize: 'normal', // 'sm' | 'normal' | 'lg'
             checkedObjectives: [],
+            studentName: '',
+            isPdfModalOpen: false,
+            isExportingPdf: false,
             toastMessage: null,
             toastTimeout: null,
             game: {
@@ -1504,6 +1539,9 @@
                 } else {
                     state.checkedObjectives = [];
                 }
+
+                const savedStudentName = localStorage.getItem('studentName');
+                if (savedStudentName) state.studentName = savedStudentName;
 
                 const savedFont = localStorage.getItem('contentFontSize');
                 if (savedFont) state.contentFontSize = savedFont;
@@ -1760,6 +1798,92 @@
                     state.toastMessage = null;
                     if (toastEl) toastEl.classList.add('hidden');
                 }, 2800);
+            },
+
+            // PDF Progress & Academic Report Export
+            openPdfExportModal: () => {
+                state.isPdfModalOpen = true;
+                renderApp();
+            },
+            closePdfExportModal: () => {
+                state.isPdfModalOpen = false;
+                renderApp();
+            },
+            setStudentName: (name) => {
+                state.studentName = name;
+                localStorage.setItem('studentName', name);
+            },
+            downloadPdfReport: async () => {
+                if (state.isExportingPdf) return;
+
+                const inputEl = document.getElementById('modal-student-name-input');
+                if (inputEl) {
+                    state.studentName = inputEl.value;
+                    localStorage.setItem('studentName', state.studentName);
+                }
+
+                state.isExportingPdf = true;
+                renderApp();
+                app.showToast('در حال طراحی و ساخت فایل کارنامه PDF...');
+
+                try {
+                    const renderContainer = document.getElementById('pdf-render-container');
+                    if (!renderContainer) throw new Error('PDF container not found');
+
+                    renderContainer.innerHTML = buildPdfReportHtml();
+
+                    // Wait for layout rendering and fonts
+                    await new Promise(resolve => setTimeout(resolve, 350));
+
+                    const studentNameClean = (state.studentName || 'دانشجو').trim().replace(/[\/\?<>\\:\*\|":]/g, '').replace(/\s+/g, '_');
+                    const filename = `کارنامه_سواد_سلامت_رسانه_${studentNameClean}.pdf`;
+
+                    if (typeof html2pdf !== 'undefined') {
+                        const opt = {
+                            margin: [8, 8, 8, 8],
+                            filename: filename,
+                            image: { type: 'jpeg', quality: 0.98 },
+                            html2canvas: {
+                                scale: 2,
+                                useCORS: true,
+                                allowTaint: true,
+                                letterRendering: true,
+                                logging: false,
+                                backgroundColor: '#ffffff'
+                            },
+                            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                        };
+
+                        await html2pdf().set(opt).from(renderContainer).save();
+                        state.isExportingPdf = false;
+                        renderApp();
+                        app.showToast('کارنامه PDF با موفقیت دانلود شد! 🎓📄');
+                    } else {
+                        console.warn('html2pdf is not loaded, falling back to print dialog');
+                        state.isExportingPdf = false;
+                        renderApp();
+                        app.printReport();
+                    }
+                } catch (err) {
+                    console.error('PDF export error:', err);
+                    state.isExportingPdf = false;
+                    renderApp();
+                    app.showToast('خطا در دانلود خودکار، حالت چاپ سیستم فعال شد');
+                    app.printReport();
+                }
+            },
+            printReport: () => {
+                const inputEl = document.getElementById('modal-student-name-input');
+                if (inputEl) {
+                    state.studentName = inputEl.value;
+                    localStorage.setItem('studentName', state.studentName);
+                }
+                const printArea = document.getElementById('pdf-print-area');
+                if (printArea) {
+                    printArea.innerHTML = buildPdfReportHtml();
+                    window.print();
+                }
             }
         };
 
@@ -2689,6 +2813,359 @@
             `;
         }
 
+        // --- PDF REPORT & ACADEMIC CERTIFICATE GENERATOR ---
+
+        function getCompetencyTitle(sessionId) {
+            switch (sessionId) {
+                case 1: return "پدیده اینفودمیک، زیست‌کره اطلاعات و مدل ۵ گام سواد سلامت";
+                case 2: return "کالبدشکافی شایعات، تکنیک CRAAP و اعتبارسنجی منابع سلامت";
+                case 3: return "تکنیک‌های اقناع، تداعی معانی و فریب‌های بازاریابی تجاری";
+                case 4: return "کلیشه‌زدایی رسانه‌ای و نقد برچسب‌های اجتماعی سلامت روان";
+                case 5: return "اقتصاد توجه، مهار دووم‌اسکرولینگ و رژیم سم‌زدایی دیجیتال";
+                case 6: return "کشف دیپ‌فیک، تشخیص اخبار جعلی و راستی‌آزمایی با هوش مصنوعی";
+                case 7: return "تحلیل پیام‌های زیرپوستی و نقد فیلترهای زیبایی و تصویر بدنی";
+                case 8: return "عملیات روانی، غلبه بر مارپیچ سکوت و حفظ استقلال اندیشه";
+                case 9: return "مهار سایبرکندریا، ارگونومی دیجیتال و تنظیم چرخه خواب";
+                case 10: return "ردپای دیجیتال، حریم خصوصی داده‌های بالینی و اخلاق نتیکت";
+                default: return "تفکر نقادانه سلامت و ناوبری زیست‌بوم رسانه";
+            }
+        }
+
+        function buildPdfReportHtml() {
+            const progress = Math.round((state.completedSessions.length / sessions.length) * 100);
+            const completedCount = state.completedSessions.length;
+            const checkedObjectivesCount = (state.checkedObjectives || []).length;
+            
+            let tierTitle = 'سطح ۱: در حال آموزش مقدماتی';
+            let tierShort = 'مقدماتی';
+            if (completedCount === 10) {
+                tierTitle = 'سطح ۴: ممتاز و فارغ‌التحصیل رسمی (سفیر سواد سلامت رسانه‌ای)';
+                tierShort = 'ممتاز (فارغ‌التحصیل)';
+            } else if (completedCount >= 7) {
+                tierTitle = 'سطح ۳: پیشرفته و شایسته تقدیر (در آستانه فارغ‌التحصیلی)';
+                tierShort = 'پیشرفته';
+            } else if (completedCount >= 4) {
+                tierTitle = 'سطح ۲: متوسط و در حال ارتقای مهارت';
+                tierShort = 'متوسط';
+            }
+
+            let persianDate = '۱۱ شهریور ۱۴۰۵';
+            try {
+                persianDate = new Intl.DateTimeFormat('fa-IR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }).format(new Date());
+            } catch (e) {
+                persianDate = new Date().toLocaleDateString('fa-IR');
+            }
+
+            const reportCode = 'TMU-MHL-' + Math.abs(Math.sin(state.currentSessionId * 7 + completedCount * 13) * 10000000).toFixed(0).padStart(8, '0');
+
+            const sessionRowsHtml = sessions.map((s, idx) => {
+                const isCompleted = state.completedSessions.includes(s.id);
+                const objs = (typeof sessionObjectives !== 'undefined' && sessionObjectives[s.id]) ? sessionObjectives[s.id] : [];
+                const checkedForSession = objs.filter((_, oIdx) => (state.checkedObjectives || []).includes(`${s.id}_${oIdx}`)).length;
+                
+                return `
+                    <tr style="border-bottom: 1px solid #e2e8f0; background-color: ${isCompleted ? '#f0fdf4' : (idx % 2 === 0 ? '#ffffff' : '#f8fafc')};">
+                        <td style="padding: 7px 6px; text-align: center; font-weight: bold; color: #334155; font-size: 11px;">
+                            ${s.id}
+                        </td>
+                        <td style="padding: 7px 8px; font-weight: 800; color: #0f172a; font-size: 11px;">
+                            ${s.title}
+                        </td>
+                        <td style="padding: 7px 8px; color: #475569; font-size: 10px; line-height: 1.5;">
+                            ${getCompetencyTitle(s.id)}
+                        </td>
+                        <td style="padding: 7px 6px; text-align: center; font-size: 10px; color: #334155;">
+                            <span style="display: inline-block; padding: 2px 6px; border-radius: 999px; background-color: #e2e8f0; font-weight: 600;">
+                                ${checkedForSession} از ${objs.length}
+                            </span>
+                        </td>
+                        <td style="padding: 7px 8px; text-align: center; font-size: 10px; font-weight: bold;">
+                            ${isCompleted ? `
+                                <span style="display: inline-block; color: #166534; background-color: #dcfce7; padding: 3px 8px; border-radius: 6px; border: 1px solid #bbf7d0;">
+                                    ✔ قبولی در آزمون
+                                </span>
+                            ` : `
+                                <span style="display: inline-block; color: #854d0e; background-color: #fef9c3; padding: 3px 8px; border-radius: 6px; border: 1px solid #fef08a;">
+                                    ⏳ در حال مطالعه
+                                </span>
+                            `}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            return `
+                <div style="width: 100%; max-width: 800px; margin: 0 auto; padding: 24px 28px; background: #ffffff; color: #0f172a; font-family: 'Vazirmatn', sans-serif; direction: rtl; text-align: right; box-sizing: border-box;">
+                    <!-- Academic Header -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2.5px solid #065f46; padding-bottom: 12px; margin-bottom: 14px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="/tmu_logo.png" alt="لوگوی دانشگاه تربیت مدرس" style="height: 62px; width: 62px; object-fit: contain;" />
+                            <div>
+                                <div style="font-size: 10.5px; font-weight: bold; color: #065f46; margin-bottom: 1px;">جمهوری اسلامی ایران</div>
+                                <div style="font-size: 13.5px; font-weight: 900; color: #0f172a;">دانشگاه تربیت مدرس • دانشکده علوم پزشکی</div>
+                                <div style="font-size: 10px; font-weight: 600; color: #475569;">گروه آموزش بهداشت و ارتقای سلامت</div>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 15px; font-weight: 900; color: #065f46; letter-spacing: -0.3px;">
+                                کارنامه پیشرفت تحصیلی و گواهی مهارت
+                            </div>
+                            <div style="font-size: 10.5px; font-weight: bold; color: #0f172a; margin-top: 2px;">
+                                سامانه تعاملی سواد سلامت رسانه‌ای (MHL)
+                            </div>
+                        </div>
+                        <div style="text-align: right; font-size: 9px; color: #475569; line-height: 1.6; border: 1px solid #cbd5e1; border-radius: 8px; padding: 5px 8px; background-color: #f8fafc; min-width: 125px;">
+                            <div><strong>تاریخ صدور:</strong> ${persianDate}</div>
+                            <div><strong>کد رهگیری:</strong> <span style="font-family: monospace; font-weight: bold;">${reportCode}</span></div>
+                            <div><strong>اصالت مدرک:</strong> <span style="color: #16a34a; font-weight: bold;">ثبت سیستمی</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Student Profile Banner -->
+                    <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 10px 14px; margin-bottom: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px;">
+                        <div>
+                            <span style="color: #64748b;">نام و نام خانوادگی فراگیر: </span>
+                            <strong style="color: #065f46; font-size: 12.5px;">${state.studentName || 'دانشجوی گرامی'}</strong>
+                        </div>
+                        <div>
+                            <span style="color: #64748b;">مدرس و طراح دوره: </span>
+                            <strong style="color: #0f172a;">دکتر فاطمه زارعی</strong> <span style="font-size: 9.5px; color: #475569;">(دانشیار دانشگاه تربیت مدرس)</span>
+                        </div>
+                        <div>
+                            <span style="color: #64748b;">عنوان برنامه آموزشی: </span>
+                            <strong style="color: #0f172a;">سواد سلامت رسانه‌ای، مهار اینفودمیک و زیست‌کره دیجیتال</strong>
+                        </div>
+                        <div>
+                            <span style="color: #64748b;">ارزیابی صلاحیت: </span>
+                            <strong style="color: #065f46;">${tierTitle}</strong>
+                        </div>
+                    </div>
+
+                    <!-- 4 KPI Performance Tiles -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px;">
+                        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px; text-align: center; background-color: #ffffff;">
+                            <div style="font-size: 9px; color: #64748b; font-weight: bold;">درصد پیشرفت کل</div>
+                            <div style="font-size: 16px; font-weight: 900; color: #065f46; margin-top: 1px;">${progress}%</div>
+                        </div>
+                        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px; text-align: center; background-color: #ffffff;">
+                            <div style="font-size: 9px; color: #64748b; font-weight: bold;">جلسات با قبولی آزمون</div>
+                            <div style="font-size: 16px; font-weight: 900; color: #0f172a; margin-top: 1px;">${completedCount} <span style="font-size: 9.5px; font-weight: normal; color: #64748b;">از ۱۰</span></div>
+                        </div>
+                        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px; text-align: center; background-color: #ffffff;">
+                            <div style="font-size: 9px; color: #64748b; font-weight: bold;">اهداف مهارتی احرازشده</div>
+                            <div style="font-size: 16px; font-weight: 900; color: #0f172a; margin-top: 1px;">${checkedObjectivesCount} <span style="font-size: 9.5px; font-weight: normal; color: #64748b;">مورد</span></div>
+                        </div>
+                        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px; text-align: center; background-color: #ffffff;">
+                            <div style="font-size: 9px; color: #64748b; font-weight: bold;">سطح شایستگی نهایی</div>
+                            <div style="font-size: 11px; font-weight: 800; color: #065f46; margin-top: 4px;">${tierShort}</div>
+                        </div>
+                    </div>
+
+                    <!-- 10 Sessions Matrix Table -->
+                    <div style="border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; margin-bottom: 12px;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: right;">
+                            <thead>
+                                <tr style="background-color: #065f46; color: #ffffff; font-size: 10px;">
+                                    <th style="padding: 7px 6px; text-align: center; width: 34px;">#</th>
+                                    <th style="padding: 7px 8px; width: 170px;">سرفصل درس</th>
+                                    <th style="padding: 7px 8px;">محور شایستگی و صلاحیت آموزشی</th>
+                                    <th style="padding: 7px 6px; text-align: center; width: 75px;">اهداف محقق</th>
+                                    <th style="padding: 7px 8px; text-align: center; width: 145px;">وضعیت ارزشیابی</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${sessionRowsHtml}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Competency Core Summary -->
+                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; margin-bottom: 12px; font-size: 9.5px; color: #475569; line-height: 1.55;">
+                        <strong style="color: #0f172a; font-size: 9.5px; display: block; margin-bottom: 2px;">سرفصل‌های مهارتی احراز شده در این دوره:</strong>
+                        واکاوی نقادانه پیام‌های سلامت، کشف تکنیک‌های اقناع و بازاریابی تجاری، مهار فست‌فود دوپامینی و اسکرولینگ وسواسی، تشخیص تصاویر دیپ‌فیک و دستکاری‌شده پزشکی، شکستن مارپیچ سکوت در شبکه‌های اجتماعی، محافظت از ارگونومی فیزیکی و حریم خصوصی در داده‌های سلامت.
+                    </div>
+
+                    <!-- Endorsement & Official Signature -->
+                    <div style="border-top: 1.5px solid #e2e8f0; padding-top: 8px; display: flex; align-items: flex-end; justify-content: space-between;">
+                        <div style="max-width: 480px; font-size: 9px; color: #475569; line-height: 1.6; text-align: justify;">
+                            <strong style="color: #0f172a; display: block; margin-bottom: 1px;">گواهی اصالت علمی و تاییدیه پیشرفت تحصیلی:</strong>
+                            بدین‌وسیله گواهی می‌شود که دارنده این کارنامه، در سامانه تعاملی سواد سلامت رسانه‌ای دانشگاه تربیت مدرس، مباحث آموزشی و آزمون‌های سنجش صلاحیت را طی نموده و کارنامه فوق منعکس‌کننده پیشرفت و اهداف کسب‌شده وی در این برنامه می‌باشد.
+                            <div style="margin-top: 2px; font-size: 8.5px; color: #64748b;">
+                                ایمیل رسمی مدرس: f.zarei@modares.ac.ir • نشانی: تهران، جلال آل‌احمد، دانشگاه تربیت مدرس، دانشکده علوم پزشکی
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; border: 1.5px dashed #065f46; border-radius: 10px; padding: 7px 12px; background-color: #f0fdf4; min-width: 165px;">
+                            <div style="font-size: 8.5px; font-weight: bold; color: #065f46; margin-bottom: 1px;">مهر و تاییدیه علمی مدرس دوره</div>
+                            <div style="font-size: 11.5px; font-weight: 900; color: #064e3b;">دکتر فاطمه زارعی</div>
+                            <div style="font-size: 8px; color: #065f46; margin-top: 1px;">دانشیار گروه آموزش بهداشت و ارتقای سلامت</div>
+                            <div style="margin-top: 3px; display: inline-block; padding: 2px 6px; background-color: #065f46; color: #ffffff; border-radius: 4px; font-size: 8px; font-weight: bold;">
+                                تایید و ثبت دیجیتال ✔
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPdfExportModal() {
+            if (!state.isPdfModalOpen) return '';
+            const progress = Math.round((state.completedSessions.length / sessions.length) * 100);
+            const completedCount = state.completedSessions.length;
+            const checkedObjectivesCount = (state.checkedObjectives || []).length;
+            
+            let tierTitle = 'در حال آموزش مقدماتی';
+            let tierBadgeColor = 'bg-amber-50 text-amber-900 border-amber-300';
+            if (completedCount === 10) {
+                tierTitle = 'ممتاز و فارغ‌التحصیل رسمی (سفیر سواد سلامت)';
+                tierBadgeColor = 'bg-emerald-50 text-emerald-900 border-emerald-300';
+            } else if (completedCount >= 6) {
+                tierTitle = 'سطح پیشرفته و شایسته تقدیر';
+                tierBadgeColor = 'bg-teal-50 text-teal-900 border-teal-300';
+            } else if (completedCount >= 1) {
+                tierTitle = 'سطح متوسط و در حال رشد';
+                tierBadgeColor = 'bg-blue-50 text-blue-900 border-blue-300';
+            }
+
+            return `
+                <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+                    <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full border border-slate-200 overflow-hidden flex flex-col max-h-[90vh]">
+                        <!-- Modal Header -->
+                        <div class="bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-900 text-white p-5 flex items-center justify-between flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-emerald-300"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-base text-white">صدور کارنامه و گزارش پیشرفت تحصیلی (PDF)</h3>
+                                    <p class="text-xs text-emerald-200/90 mt-0.5">دانشگاه تربیت مدرس • سامانه سواد سلامت رسانه‌ای</p>
+                                </div>
+                            </div>
+                            <button onclick="app.closePdfExportModal()" class="text-white/80 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="p-5 overflow-y-auto space-y-4 no-scrollbar">
+                            <!-- Student Name Input -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                                    <i data-lucide="user" class="w-3.5 h-3.5 text-emerald-700"></i>
+                                    <span>نام و نام خانوادگی فراگیر / دانشجو (جهت درج در کارنامه):</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="modal-student-name-input"
+                                    value="${state.studentName || ''}" 
+                                    oninput="app.setStudentName(this.value)"
+                                    placeholder="نام خود را وارد کنید (مثال: سارا محمدی)..." 
+                                    class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-600 transition-all font-medium text-slate-800"
+                                />
+                                <span class="text-[11px] text-slate-400 mt-1 block">در صورت خالی گذاشتن، عبارت «دانشجوی گرامی» در کارنامه درج خواهد شد.</span>
+                            </div>
+
+                            <!-- Progress Cards Summary -->
+                            <div class="grid grid-cols-3 gap-2.5">
+                                <div class="p-3 bg-emerald-50/70 border border-emerald-200/80 rounded-xl text-center">
+                                    <span class="block text-[11px] text-emerald-800 font-semibold mb-0.5">پیشرفت کل</span>
+                                    <strong class="text-lg font-black text-emerald-950">${progress}%</strong>
+                                </div>
+                                <div class="p-3 bg-teal-50/70 border border-teal-200/80 rounded-xl text-center">
+                                    <span class="block text-[11px] text-teal-800 font-semibold mb-0.5">جلسات تکمیل</span>
+                                    <strong class="text-lg font-black text-teal-950">${completedCount} <span class="text-xs font-normal text-slate-500">از ۱۰</span></strong>
+                                </div>
+                                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
+                                    <span class="block text-[11px] text-slate-600 font-semibold mb-0.5">اهداف محقق</span>
+                                    <strong class="text-lg font-black text-slate-800">${checkedObjectivesCount} <span class="text-xs font-normal text-slate-500">مورد</span></strong>
+                                </div>
+                            </div>
+
+                            <!-- Evaluation Tier Badge -->
+                            <div class="p-3 rounded-xl border flex items-center justify-between text-xs ${tierBadgeColor}">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="award" class="w-4 h-4 text-emerald-700"></i>
+                                    <span class="font-bold">ارزیابی صلاحیت:</span>
+                                    <span>${tierTitle}</span>
+                                </div>
+                                <span class="font-bold text-[11px]">${completedCount >= 5 ? 'مجاز به صدور کارنامه' : 'کارنامه در حال تدوین'}</span>
+                            </div>
+
+                            <!-- Report Features Checklist -->
+                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 text-xs text-slate-600 space-y-1.5">
+                                <div class="font-bold text-slate-800 text-[11px] mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                                    <span>مشخصات مندرج در فایل گزارش PDF:</span>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px]">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span>سربرگ رسمی دانشگاه تربیت مدرس</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span>تاییدیه و امضای دکتر فاطمه زارعی</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span>جدول ریز نمرات و وضعیت ۱۰ جلسه</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span>کد رهگیری و تاریخ ثبت سیستمی</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Footer Actions -->
+                        <div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5 flex-shrink-0">
+                            <button 
+                                type="button" 
+                                onclick="app.closePdfExportModal()" 
+                                class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-800 hover:bg-slate-200/60 rounded-xl transition-colors"
+                            >
+                                انصراف
+                            </button>
+
+                            <div class="flex items-center gap-2">
+                                <button 
+                                    type="button" 
+                                    onclick="app.printReport()" 
+                                    class="px-3 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer"
+                                    title="پیش‌نمایش چاپ در مرورگر"
+                                >
+                                    <i data-lucide="printer" class="w-4 h-4"></i>
+                                    <span>چاپ / پرینت</span>
+                                </button>
+
+                                <button 
+                                    type="button" 
+                                    id="btn-download-pdf"
+                                    onclick="app.downloadPdfReport()" 
+                                    class="px-5 py-2.5 bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2 cursor-pointer ${state.isExportingPdf ? 'opacity-75 pointer-events-none' : ''}"
+                                >
+                                    ${state.isExportingPdf ? `
+                                        <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+                                        <span>در حال تولید PDF...</span>
+                                    ` : `
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                        <span>دانلود مستقیم فایل PDF</span>
+                                    `}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // --- RENDER FUNCTIONS ---
         function renderApp() {
             const root = document.getElementById('app-root');
@@ -2705,6 +3182,7 @@
                 ${renderSidebarOverlay()}
                 ${renderSidebar()}
                 ${renderMainContent(currentSession)}
+                ${renderPdfExportModal()}
             `;
             
             // Initialize Icons
@@ -2964,6 +3442,17 @@
                         ${listHtml}
                     </div>
 
+                    <!-- PDF Report Export CTA in Sidebar -->
+                    <div class="p-2.5 border-t border-slate-200/80 bg-slate-50/70 flex-shrink-0">
+                        <button 
+                            onclick="app.openPdfExportModal()"
+                            class="w-full flex items-center justify-center gap-2 py-2 px-3 bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow cursor-pointer"
+                        >
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                            <span>دریافت کارنامه تحصیلی (PDF)</span>
+                        </button>
+                    </div>
+
                     <!-- Keyboard Shortcuts Helper Tip -->
                     <div class="px-3 py-2 bg-slate-50 border-t border-slate-200/60 text-[10px] text-slate-400 flex justify-between items-center flex-shrink-0">
                         <span>میانبر کیبورد:</span>
@@ -3009,6 +3498,16 @@
                             </div>
 
                             <div class="flex items-center gap-3 self-end sm:self-auto">
+                                <button 
+                                    onclick="app.openPdfExportModal()"
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white rounded-xl text-xs font-bold shadow-xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
+                                    title="دریافت کارنامه تحصیلی و گزارش پیشرفت به صورت فایل PDF"
+                                >
+                                    <i data-lucide="file-down" class="w-4 h-4"></i>
+                                    <span class="hidden sm:inline">گزارش و کارنامه PDF</span>
+                                    <span class="sm:hidden">کارنامه PDF</span>
+                                </button>
+
                                 <div class="text-left sm:text-right">
                                     <div class="flex items-center gap-2">
                                         <span class="text-xs font-semibold text-health-700">
