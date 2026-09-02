@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <!-- Top Diamond Pattern -->
+    <pattern id="diamondPattern" x="0" y="0" width="40" height="24" patternUnits="userSpaceOnUse">
+      <polygon points="10,2 18,12 10,22 2,12" fill="#5e1525" />
+      <polygon points="30,2 38,12 30,22 22,12" fill="#8f4a66" />
+      <polygon points="20,0 26,6 20,12 14,6" fill="#c497ab" opacity="0.8" />
+      <polygon points="0,0 6,6 0,12 -6,6" fill="#eed9e2" opacity="0.9" />
+      <polygon points="40,0 46,6 40,12 34,6" fill="#eed9e2" opacity="0.9" />
+      <polygon points="20,12 26,18 20,24 14,18" fill="#a4617c" opacity="0.8" />
+      <polygon points="0,12 6,18 0,24 -6,18" fill="#5e1525" opacity="0.7" />
+      <polygon points="40,12 46,18 40,24 34,18" fill="#5e1525" opacity="0.7" />
+    </pattern>
+
+    <!-- Subtle Background Organic Blur -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- 1. Background -->
+  <rect width="1920" height="1080" fill="#f8f1e5" />
+
+  <!-- Background Decorative Organic Shapes -->
+  <path d="M -50 -50 Q 150 50 180 250 Q 50 350 -100 200 Z" fill="#ebdcc8" opacity="0.6" filter="url(#softGlow)" />
+  <path d="M 50 -20 Q 220 80 120 280 Q -20 220 50 -20 Z" fill="#e2cfbb" opacity="0.4" />
+  <path d="M 1750 900 Q 1850 850 1950 980 L 1950 1080 L 1650 1080 Q 1700 950 1750 900 Z" fill="#ebdcc8" opacity="0.5" />
+
+  <!-- 2. Top Decorative Border -->
+  <rect x="0" y="0" width="1920" height="24" fill="url(#diamondPattern)" />
+  <line x1="0" y1="26" x2="1920" y2="26" stroke="#9e586f" stroke-width="2" />
+
+  <!-- 3. Top Center Subtle Divider -->
+  <line x1="720" y1="180" x2="1200" y2="180" stroke="#9e586f" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="960" cy="180" r="14" fill="#601525" />
+  <path d="M 665 180 Q 675 174 685 180 Q 675 186 665 180 Z" fill="#7a4257" />
+  <path d="M 1235 180 Q 1245 174 1255 180 Q 1245 186 1235 180 Z" fill="#7a4257" />
+
+  <!-- 4. Left Side: Circular Character Badge (Student in Hijab with Smartphone) -->
+  <g id="characterBadge">
+    <!-- Outer Dotted Orbit Circle -->
+    <circle cx="500" cy="620" r="290" fill="none" stroke="#956b7c" stroke-width="2.5" stroke-dasharray="2, 8" />
+
+    <!-- Leaf/Petal Accents along Orbit -->
+    <!-- 12 pairs of decorative leaves around the circle -->
+    <g transform="translate(500, 620)">
+      <!-- 0 deg -->
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#601525" transform="rotate(0)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#8f4a66" transform="rotate(30)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#ba889e" transform="rotate(60)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#601525" transform="rotate(90)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#a86982" transform="rotate(120)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#601525" transform="rotate(150)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#8f4a66" transform="rotate(180)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#ba889e" transform="rotate(210)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#601525" transform="rotate(240)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#a86982" transform="rotate(270)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#8f4a66" transform="rotate(300)" />
+      <path d="M 292 -6 Q 306 0 320 -6 Q 306 -12 292 -6 Z" fill="#ba889e" transform="rotate(330)" />
+    </g>
+
+    <!-- Main Inner Badge Circle -->
+    <circle cx="500" cy="620" r="255" fill="#f8f1e5" stroke="#48111e" stroke-width="4.5" />
+
+    <!-- Character Body Clip Path (optional, keep character inside circle boundary for lower body) -->
+    <clipPath id="circleClip">
+      <circle cx="500" cy="620" r="252" />
+    </clipPath>
+
+    <!-- Character Drawing -->
+    <g id="studentCharacter">
+      <!-- Blouse / Shoulders -->
+      <path d="M 330 840 C 340 720 400 660 500 660 C 600 660 660 720 670 840 Z" fill="#7a5578" stroke="#48111e" stroke-width="4" />
+
+      <!-- Neck -->
+      <path d="M 470 600 L 470 670 L 530 670 L 530 600 Z" fill="#fae2d7" stroke="#48111e" stroke-width="3.5" />
+
+      <!-- Hijab - Back & Drapes -->
+      <!-- Left side wing/flap -->
+      <path d="M 430 460 C 370 480 330 550 330 650 C 360 630 400 580 430 520 Z" fill="#8b1e36" stroke="#48111e" stroke-width="4" stroke-linejoin="round" />
+      <!-- Right side hanging drape (prominent scarf tail) -->
+      <path d="M 560 560 C 585 620 595 720 575 790 C 545 770 545 700 540 640 Z" fill="#8b1e36" stroke="#48111e" stroke-width="4" stroke-linejoin="round" />
+
+      <!-- Face Oval -->
+      <ellipse cx="500" cy="535" rx="75" ry="85" fill="#fae2d7" stroke="#48111e" stroke-width="4" />
+
+      <!-- Cheeks Blush -->
+      <ellipse cx="445" cy="552" rx="14" ry="10" fill="#f0bec6" opacity="0.85" />
+      <ellipse cx="555" cy="552" rx="14" ry="10" fill="#f0bec6" opacity="0.85" />
+
+      <!-- Eyebrows -->
+      <path d="M 450 505 Q 465 498 480 505" fill="none" stroke="#48111e" stroke-width="3.2" stroke-linecap="round" />
+      <path d="M 520 505 Q 535 498 550 505" fill="none" stroke="#48111e" stroke-width="3.2" stroke-linecap="round" />
+
+      <!-- Eyes (friendly curved dots/arcs) -->
+      <circle cx="465" cy="520" r="5.5" fill="#48111e" />
+      <circle cx="535" cy="520" r="5.5" fill="#48111e" />
+
+      <!-- Nose (simple subtle line) -->
+      <path d="M 500 525 L 496 542 L 504 542" fill="none" stroke="#48111e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+
+      <!-- Smile -->
+      <path d="M 475 565 Q 500 580 525 565" fill="none" stroke="#48111e" stroke-width="3.8" stroke-linecap="round" />
+
+      <!-- Hijab - Front Framing Hood -->
+      <path d="M 425 530 C 420 440 450 385 500 385 C 550 385 580 440 575 530 C 560 480 540 445 500 445 C 460 445 440 480 425 530 Z" fill="#8b1e36" stroke="#48111e" stroke-width="4" stroke-linejoin="round" />
+
+      <!-- Smartphone & Hands in front of chest -->
+      <g id="holdingPhone" transform="translate(0, -10)">
+        <!-- Phone Body -->
+        <rect x="435" y="740" width="130" height="180" rx="18" fill="#241e24" stroke="#48111e" stroke-width="4" />
+        <!-- Phone Screen -->
+        <rect x="447" y="752" width="106" height="156" rx="12" fill="#ffffff" />
+
+        <!-- Shield Icon on Screen -->
+        <path d="M 500 780 C 525 780 535 788 535 815 C 535 845 500 868 500 868 C 500 868 465 845 465 815 C 465 788 475 780 500 780 Z" fill="#8b1e36" stroke="#48111e" stroke-width="2.5" />
+        <!-- White Checkmark on Shield -->
+        <path d="M 483 816 L 495 828 L 518 802" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- Hands Grasping Phone -->
+        <!-- Left Hand -->
+        <path d="M 405 840 C 405 815 440 815 444 835 L 444 875 C 440 895 405 895 405 870 Z" fill="#fae2d7" stroke="#48111e" stroke-width="3.5" />
+        <path d="M 405 880 C 420 895 440 895 450 885" fill="none" stroke="#48111e" stroke-width="3" stroke-linecap="round" />
+        <!-- Right Hand -->
+        <path d="M 595 840 C 595 815 560 815 556 835 L 556 875 C 560 895 595 895 595 870 Z" fill="#fae2d7" stroke="#48111e" stroke-width="3.5" />
+        <path d="M 595 880 C 580 895 560 895 550 885" fill="none" stroke="#48111e" stroke-width="3" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Thought Bubble with Search Magnifying Glass (Top Right of Character Head) -->
+    <g id="searchBubble">
+      <!-- Trailing Thought Circles -->
+      <circle cx="630" cy="505" r="14" fill="#f8f1e5" stroke="#48111e" stroke-width="3.5" />
+      <circle cx="650" cy="470" r="10" fill="#f8f1e5" stroke="#48111e" stroke-width="3" />
+      <!-- Main Bubble -->
+      <circle cx="725" cy="400" r="75" fill="#f8f1e5" stroke="#48111e" stroke-width="4.5" />
+
+      <!-- Magnifying Glass Icon inside Bubble -->
+      <g transform="translate(710, 385)">
+        <circle cx="0" cy="0" r="28" fill="none" stroke="#8b1e36" stroke-width="5.5" />
+        <line x1="20" y1="20" x2="42" y2="42" stroke="#8b1e36" stroke-width="7" stroke-linecap="round" />
+      </g>
+    </g>
+  </g>
+
+  <!-- 5. Right Side: 5 Infographic Rows (Cards / Pillars of Media Literacy) -->
+  <g id="infographicCards">
+    <!-- ================= CARD 1 (Search / Verification) ================= -->
+    <g transform="translate(1010, 240)">
+      <!-- Pill Container -->
+      <rect x="0" y="0" width="840" height="115" rx="25" fill="#fdfaf4" stroke="#48111e" stroke-width="4" />
+      <!-- Left Solid Bullet -->
+      <circle cx="50" cy="57" r="26" fill="#2d131b" />
+      <!-- Right Circular Icon Badge -->
+      <circle cx="780" cy="57" r="50" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <!-- Magnifying Glass Icon -->
+      <circle cx="773" cy="50" r="20" fill="none" stroke="#7e3b52" stroke-width="4" />
+      <line x1="787" y1="64" x2="801" y2="78" stroke="#7e3b52" stroke-width="5.5" stroke-linecap="round" />
+    </g>
+
+    <!-- ================= CARD 2 (Gear / Settings / Sun / Processing) ================= -->
+    <g transform="translate(1010, 390)">
+      <!-- Pill Container -->
+      <rect x="0" y="0" width="840" height="115" rx="25" fill="#fdfaf4" stroke="#48111e" stroke-width="4" />
+      <!-- Left Solid Bullet -->
+      <circle cx="50" cy="57" r="26" fill="#2d131b" />
+      <!-- Right Circular Icon Badge -->
+      <circle cx="780" cy="57" r="50" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <!-- Gear/Sun Icon with spokes -->
+      <g transform="translate(780, 57)">
+        <circle cx="0" cy="0" r="16" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+        <line x1="0" y1="-26" x2="0" y2="-17" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="0" y1="17" x2="0" y2="26" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="-26" y1="0" x2="-17" y2="0" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="17" y1="0" x2="26" y2="0" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="-18" y1="-18" x2="-12" y2="-12" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="12" y1="12" x2="18" y2="18" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="18" y1="-18" x2="12" y2="-12" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+        <line x1="-12" y1="12" x2="-18" y2="18" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- ================= CARD 3 (Shield / Security / Protection) ================= -->
+    <g transform="translate(1010, 540)">
+      <!-- Pill Container -->
+      <rect x="0" y="0" width="840" height="115" rx="25" fill="#fdfaf4" stroke="#48111e" stroke-width="4" />
+      <!-- Left Solid Bullet -->
+      <circle cx="50" cy="57" r="26" fill="#2d131b" />
+      <!-- Right Circular Icon Badge -->
+      <circle cx="780" cy="57" r="50" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <!-- Shield with Checkmark Icon -->
+      <path d="M 780 32 C 798 32 804 38 804 57 C 804 77 780 90 780 90 C 780 90 756 77 756 57 C 756 38 762 32 780 32 Z" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <path d="M 769 57 L 777 65 L 793 48" fill="none" stroke="#7e3b52" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- ================= CARD 4 (Medal / Ribbon / Quality / Ethics) ================= -->
+    <g transform="translate(1010, 690)">
+      <!-- Pill Container -->
+      <rect x="0" y="0" width="840" height="115" rx="25" fill="#fdfaf4" stroke="#48111e" stroke-width="4" />
+      <!-- Left Solid Bullet -->
+      <circle cx="50" cy="57" r="26" fill="#2d131b" />
+      <!-- Right Circular Icon Badge -->
+      <circle cx="780" cy="57" r="50" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <!-- Medal & Ribbons Icon -->
+      <circle cx="780" cy="48" r="22" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <path d="M 771 67 L 766 84 L 774 80 L 780 84 L 780 70" fill="none" stroke="#7e3b52" stroke-width="3" stroke-linejoin="round" />
+      <path d="M 780 70 L 780 84 L 786 80 L 794 84 L 789 67" fill="none" stroke="#7e3b52" stroke-width="3" stroke-linejoin="round" />
+    </g>
+
+    <!-- ================= CARD 5 (Flag / Goal / Netiquette) ================= -->
+    <g transform="translate(1010, 840)">
+      <!-- Pill Container -->
+      <rect x="0" y="0" width="840" height="115" rx="25" fill="#fdfaf4" stroke="#48111e" stroke-width="4" />
+      <!-- Left Solid Bullet -->
+      <circle cx="50" cy="57" r="26" fill="#2d131b" />
+      <!-- Right Circular Icon Badge -->
+      <circle cx="780" cy="57" r="50" fill="none" stroke="#7e3b52" stroke-width="3.5" />
+      <!-- Flagpole & Pennant Flag Icon -->
+      <line x1="768" y1="32" x2="768" y2="82" stroke="#7e3b52" stroke-width="4" stroke-linecap="round" />
+      <path d="M 768 35 L 802 49 L 768 63 Z" fill="none" stroke="#7e3b52" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- 6. Bottom Solid Dark Maroon Bar -->
+  <rect x="0" y="1000" width="1920" height="80" fill="#601525" />
+</svg>
