@@ -1905,6 +1905,26 @@
                     "ترویج فرهنگ شکاکیت سازنده در برابر ادعاهای تصویری شگفت‌انگیز در فضای مجازی"
                 ],
                 description: "اصول و شیوه‌های حقیقت‌سنجی تصویری در عصر هوش مصنوعی زایشی برای کشف جعل‌های هوشمندانه و دفاع از سلامت جامعه در برابر دیپ‌فیک‌های پزشکی."
+            },
+            {
+                id: 6,
+                number: "۶",
+                title: "اینفوگرافیک ۶: انواع اینفودمیک و اطلاعات مسئله‌دار در بحران‌های سلامت",
+                subtitle: "تمایز ساختاری کج‌خبری (Malinformation)، بدخبری (Disinformation) و غلط‌خبری (Misinformation)",
+                topic: "آسیب‌شناسی اینفودمیک",
+                localSrc: "/infographic_06.png",
+                remoteSrc: "https://uploadkon.ir/uploads/53d604_26ChatGPT-Image-Sep-4-2026-05-27-34-PM.png",
+                thumbSrc: "https://uploadkon.ir/uploads/thumbs/53d604_26ChatGPT-Image-Sep-4-2026-05-27-34-PM.png",
+                badge: "دسته‌بندی سه‌گانه اطلاعات",
+                points: [
+                    "کج‌خبری (Malinformation): اطلاعات واقعی و درست که خارج از زمینه یا با قصد آسیب، تخریب یا منفعت‌طلبی منتشر می‌شود",
+                    "بدخبری (Disinformation): اطلاعات نادرست و ساختگی که آگاهانه و با قصد آسیب و دستکاری افکار عمومی تولید می‌گردد",
+                    "غلط‌خبری (Misinformation): اطلاعات نادرست که بدون قصد آسیب و معمولاً با نیت خیرخواهانه در شبکه‌ها بازنشر می‌شود",
+                    "ماتریس دوبعدی تمایز اطلاعات: سنجش همزمان «صحت محتوا (درست/نادرست)» و «قصد آسیب (دارد/ندارد)»",
+                    "نکته کلیدی سواد سلامت: برای تحلیل محتوای سلامت، تنها درست یا نادرست بودن کافی نیست؛ «قصد آسیب» نیز تعیین‌کننده است",
+                    "استناد به مراجع علمی بین‌المللی: برگرفته از مدل نظری واردل و درخشان (Wardle & Derakhshan, 2017) و سازمان جهانی بهداشت (WHO, 2022)"
+                ],
+                description: "اینفوگرافیک تحلیلی و راهبردی برای کالبدشکافی انواع اطلاعات مسئله‌دار در بحران‌های سلامت بر اساس ماتریس دوبعدی صحت محتوا و قصد آسیب، تدوین‌شده جهت تقویت سواد سلامت رسانه‌ای."
             }
         ];
 
@@ -1912,7 +1932,7 @@
         const state = {
             currentSessionId: 1,
             currentView: 'session', // 'session' | 'infographics'
-            selectedInfographicIndex: null, // 0..4 for lightbox modal
+            selectedInfographicIndex: null, // 0..5 for lightbox modal
             infographicZoom: 1,
             completedSessions: [],
             bookmarkedSessions: [],
@@ -4128,10 +4148,10 @@
                                 <button 
                                     onclick="app.showInfographicsView()"
                                     class="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F3EDF6] hover:bg-[#E7DCED] text-[#4B2E83] border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
-                                    title="مشاهده ۵ اینفوگرافیک علمی و تحلیلی دوره"
+                                    title="مشاهده ۶ اینفوگرافیک علمی و تحلیلی دوره"
                                 >
                                     <i data-lucide="sparkles" class="w-4 h-4 text-[#7A5C9E]"></i>
-                                    <span>اینفوگرافیک‌ها (۵)</span>
+                                    <span>اینفوگرافیک‌ها (${infographics.length})</span>
                                 </button>
 
                                 <button 
@@ -4935,7 +4955,7 @@
                                     </div>
                                     <h2 class="text-2xl md:text-3xl font-black text-white font-display">تالار نگاره‌ها و اینفوگرافیک‌های سواد سلامت</h2>
                                     <p class="text-xs md:text-sm text-[#FAF8F6]/85 max-w-2xl leading-relaxed font-serif">
-                                        ۵ اثر تصویری با کیفیت بالا و تحلیلی برای تثبیت مفاهیم راهبردی سواد سلامت، مهار اینفودمیک و تکنیک‌های راستی‌آزمایی علمی، تدوین‌شده توسط دکتر فاطمه زارعی.
+                                        ۶ اثر تصویری با کیفیت بالا و تحلیلی برای تثبیت مفاهیم راهبردی سواد سلامت، مهار اینفودمیک و تکنیک‌های راستی‌آزمایی علمی، تدوین‌شده توسط دکتر فاطمه زارعی.
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-3 flex-shrink-0">
