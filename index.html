@@ -13,6 +13,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
@@ -103,6 +104,26 @@
             --color-accent-calm: #68796C;
         }
 
+        /* Dark Mode Semantic Variables (Academic Nocturne) */
+        html.dark {
+            --color-primary: #C5A5E3;
+            --color-primary-dark: #271738;
+            --color-secondary: #D8C2EF;
+            --color-mauve: #D5C4DF;
+            --color-rose: #E7DCED;
+            --color-nude: #281D35;
+            --color-beige: #20172B;
+            --color-bg: #120D18;
+            --color-bg-secondary: #181121;
+            --color-card: #1D1527;
+            --color-text: #F3EEF6;
+            --color-text-secondary: #B9ADBF;
+            --color-border: rgba(197, 165, 227, 0.18);
+            --color-border-strong: rgba(197, 165, 227, 0.3);
+            --color-accent-calm: #7FA287;
+            color-scheme: dark;
+        }
+
         body { 
             background-color: #F1EFEC; 
             color: #27232A; 
@@ -116,6 +137,17 @@
                 radial-gradient(circle at 50% 50%, rgba(232, 223, 217, 0.25), transparent 60%),
                 url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
             background-attachment: fixed;
+            transition: background-color 300ms ease, color 300ms ease;
+        }
+
+        html.dark body {
+            background-color: #120D18 !important;
+            color: #F3EEF6 !important;
+            background-image: 
+                radial-gradient(circle at 85% 15%, rgba(122, 92, 158, 0.18), transparent 40%),
+                radial-gradient(circle at 15% 75%, rgba(184, 142, 158, 0.10), transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(35, 23, 46, 0.45), transparent 65%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E") !important;
         }
 
         #app-root {
@@ -167,13 +199,15 @@
             border-right: 4px solid #7A5C9E;
             padding-right: 0.75rem;
             letter-spacing: -0.01em;
+            transition: color 200ms ease;
         }
         .prose p { 
-            line-height: 2.05; 
+            line-height: 2.1; 
             margin-bottom: 1.5rem; 
             text-align: justify; 
             color: #27232A; 
-            font-size: 1.025rem;
+            font-size: 1.05rem;
+            transition: color 200ms ease;
         }
         .prose strong { 
             color: #4B2E83; 
@@ -187,13 +221,166 @@
         }
         .prose li { 
             margin-bottom: 0.6rem; 
-            line-height: 1.95;
+            line-height: 2.0;
         }
 
-        /* Font Size Variants */
-        .font-size-sm p { font-size: 0.925rem; line-height: 1.95; }
-        .font-size-normal p { font-size: 1.05rem; line-height: 2.1; }
-        .font-size-lg p { font-size: 1.2rem; line-height: 2.25; }
+        /* Comprehensive Dynamic Font Size System */
+        .font-size-sm,
+        .font-size-sm p,
+        .font-size-sm li,
+        .font-size-sm .font-medium,
+        .font-size-sm section p,
+        .font-size-sm div:not([class*="w-"]):not([class*="h-"]):not([class*="flex"]):not([class*="grid"]) {
+            font-size: 0.92rem !important;
+            line-height: 1.95 !important;
+        }
+        .font-size-sm h3 {
+            font-size: 1.22rem !important;
+        }
+        .font-size-sm h4 {
+            font-size: 1.08rem !important;
+        }
+        .font-size-sm strong {
+            font-size: inherit !important;
+        }
+
+        .font-size-normal,
+        .font-size-normal p,
+        .font-size-normal li,
+        .font-size-normal .font-medium,
+        .font-size-normal section p {
+            font-size: 1.06rem !important;
+            line-height: 2.15 !important;
+        }
+        .font-size-normal h3 {
+            font-size: 1.4rem !important;
+        }
+        .font-size-normal h4 {
+            font-size: 1.22rem !important;
+        }
+        .font-size-normal strong {
+            font-size: inherit !important;
+        }
+
+        .font-size-lg,
+        .font-size-lg p,
+        .font-size-lg li,
+        .font-size-lg .font-medium,
+        .font-size-lg section p,
+        .font-size-lg div:not([class*="w-"]):not([class*="h-"]):not([class*="flex"]):not([class*="grid"]) {
+            font-size: 1.28rem !important;
+            line-height: 2.38 !important;
+        }
+        .font-size-lg h3 {
+            font-size: 1.7rem !important;
+        }
+        .font-size-lg h4 {
+            font-size: 1.45rem !important;
+        }
+        .font-size-lg strong {
+            font-size: inherit !important;
+        }
+
+        /* Dark Mode Component Adaptations */
+        html.dark .bg-\[\#FAF8F6\] { background-color: #1D1527 !important; }
+        html.dark .bg-\[\#F1EFEC\] { background-color: #140E1B !important; }
+        html.dark .bg-\[\#F8F6F4\] { background-color: #191222 !important; }
+        html.dark .bg-\[\#F3ECF5\] { background-color: #271B38 !important; }
+        html.dark .bg-\[\#F3EDF6\] { background-color: #281C38 !important; }
+        html.dark .bg-\[\#FAF6F8\] { background-color: #291A3A !important; }
+        html.dark .bg-\[\#EFECE8\] { background-color: #271B38 !important; }
+        html.dark .bg-\[\#bad4c4\] { background-color: #162B1F !important; border-color: #386A4C !important; }
+        html.dark .bg-\[\#bad4c4\] p, html.dark .bg-\[\#bad4c4\] strong { color: #DCF2E3 !important; }
+        html.dark .bg-white { background-color: #22182E !important; }
+        html.dark .bg-white\/85 { background-color: rgba(34, 24, 46, 0.9) !important; }
+        html.dark .bg-white\/70 { background-color: rgba(34, 24, 46, 0.75) !important; }
+        html.dark .bg-slate-50 { background-color: #1B1324 !important; }
+        html.dark .bg-slate-100 { background-color: #251B31 !important; }
+        html.dark .bg-slate-200 { background-color: #30233E !important; }
+        
+        /* Dark Mode Text Colors */
+        html.dark .text-\[\#27232A\] { color: #F3EEF6 !important; }
+        html.dark .text-\[\#35224F\] { color: #F0EAF5 !important; }
+        html.dark .text-\[\#4B2E83\] { color: #C5A5E3 !important; }
+        html.dark .text-\[\#7A5C9E\] { color: #D8C3EE !important; }
+        html.dark .text-slate-800 { color: #EAE4F0 !important; }
+        html.dark .text-slate-700 { color: #DBD4E1 !important; }
+        html.dark .text-slate-600 { color: #BEB2C4 !important; }
+        html.dark .text-slate-500 { color: #A699AC !important; }
+        html.dark .text-slate-400 { color: #8F8297 !important; }
+
+        /* Dark Mode Borders */
+        html.dark .border-\[rgba\(75\,46\,131\,0\.10\)\],
+        html.dark .border-\[rgba\(75\,46\,131\,0\.12\)\],
+        html.dark .border-\[rgba\(75\,46\,131\,0\.14\)\],
+        html.dark .border-\[rgba\(75\,46\,131\,0\.16\)\],
+        html.dark .border-\[rgba\(75\,46\,131\,0\.08\)\] {
+            border-color: rgba(197, 165, 227, 0.18) !important;
+        }
+        html.dark .border-slate-200,
+        html.dark .border-slate-100,
+        html.dark .border-slate-300 {
+            border-color: rgba(197, 165, 227, 0.16) !important;
+        }
+
+        /* Dark Mode Prose Content */
+        html.dark .prose p {
+            color: #E2DCE8 !important;
+        }
+        html.dark .prose h3 {
+            color: #F8F3FA !important;
+            border-right-color: #A379C7 !important;
+        }
+        html.dark .prose strong {
+            color: #E2CEE6 !important;
+        }
+        html.dark .prose ul, html.dark .prose li {
+            color: #DDD6E3 !important;
+        }
+
+        /* Dark Mode Infodemic and Callout Boxes */
+        html.dark .bg-blue-50 {
+            background-color: #142033 !important;
+            border-color: #24416B !important;
+            color: #BFDBFE !important;
+        }
+        html.dark .bg-blue-50 strong { color: #93C5FD !important; }
+        html.dark .bg-red-50 {
+            background-color: #33151A !important;
+            border-color: #6B242D !important;
+            color: #FECDD3 !important;
+        }
+        html.dark .bg-red-50 strong { color: #FDA4AF !important; }
+        html.dark .bg-orange-50 {
+            background-color: #332015 !important;
+            border-color: #6B3C24 !important;
+            color: #FED7AA !important;
+        }
+        html.dark .bg-orange-50 strong { color: #FDBA74 !important; }
+        html.dark .bg-emerald-50, html.dark .bg-emerald-50\/40, html.dark .bg-emerald-50\/50 {
+            background-color: #16281E !important;
+            border-color: #2A543B !important;
+        }
+        html.dark .text-emerald-700, html.dark .text-emerald-900 {
+            color: #A7F3D0 !important;
+        }
+
+        /* Dark Mode Inputs, Selects and Modals */
+        html.dark input, 
+        html.dark textarea, 
+        html.dark select {
+            background-color: #241A30 !important;
+            color: #F3EEF6 !important;
+            border-color: rgba(197, 165, 227, 0.25) !important;
+        }
+        html.dark input::placeholder {
+            color: #8A7D92 !important;
+        }
+        html.dark kbd {
+            background-color: #2A1E37 !important;
+            color: #B5A7BE !important;
+            border-color: rgba(197, 165, 227, 0.2) !important;
+        }
 
         /* Highlight matching search terms */
         .search-highlight {
@@ -203,6 +390,11 @@
             border-radius: 4px;
             font-weight: 700;
             border-bottom: 2px solid #7A5C9E;
+        }
+        html.dark .search-highlight {
+            background-color: rgba(122, 92, 158, 0.45);
+            color: #F5EEF8;
+            border-bottom: 2px solid #C5A5E3;
         }
 
         /* Smooth calm transitions for interactive controls */
@@ -1729,6 +1921,7 @@
             isSidebarOpen: false,
             searchQuery: '',
             contentFontSize: 'normal', // 'sm' | 'normal' | 'lg'
+            isDarkMode: false,
             checkedObjectives: [],
             studentName: '',
             isPdfModalOpen: false,
@@ -1747,6 +1940,14 @@
                 submitted: false
             }
         };
+
+        function applyTheme() {
+            if (state.isDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
 
         // --- INITIALIZATION ---
         function init() {
@@ -1775,9 +1976,17 @@
 
                 const savedFont = localStorage.getItem('contentFontSize');
                 if (savedFont) state.contentFontSize = savedFont;
+
+                const savedDarkMode = localStorage.getItem('isDarkMode');
+                if (savedDarkMode !== null) {
+                    state.isDarkMode = savedDarkMode === 'true';
+                }
             } catch (e) {
                 console.error("Failed to load local storage state", e);
             }
+
+            // Apply current theme (dark or light)
+            applyTheme();
 
             // Init quiz state for first session
             resetQuizState(sessions[0]);
@@ -2009,12 +2218,26 @@
                 renderApp();
             },
 
+            // Theme Mode Action (Dark / Light)
+            toggleDarkMode: () => {
+                state.isDarkMode = !state.isDarkMode;
+                try {
+                    localStorage.setItem('isDarkMode', state.isDarkMode ? 'true' : 'false');
+                } catch(e) {}
+                applyTheme();
+                renderApp();
+                app.showToast(state.isDarkMode ? 'حالت شب فعال شد 🌙' : 'حالت روز فعال شد ☀️');
+            },
+
             // Font Size Action
             setFontSize: (size) => {
                 state.contentFontSize = size;
-                localStorage.setItem('contentFontSize', size);
+                try {
+                    localStorage.setItem('contentFontSize', size);
+                } catch(e) {}
                 renderApp();
-                app.showToast(`اندازه متن: ${size === 'sm' ? 'کوچک' : size === 'lg' ? 'بزرگ' : 'استاندارد'}`);
+                const sizeLabel = size === 'sm' ? 'کوچک (A-)' : size === 'lg' ? 'بزرگ (A+)' : 'استاندارد (A)';
+                app.showToast(`اندازه قلم تنظیم شد: ${sizeLabel}`);
             },
 
             // Learning Objective Checklist Action
@@ -3491,6 +3714,10 @@
             const root = document.getElementById('app-root');
             const currentSession = sessions.find(s => s.id === state.currentSessionId) || sessions[0];
             
+            // Preserve reading scroll position
+            const prevMainContent = document.getElementById('main-content');
+            const prevScrollTop = prevMainContent ? prevMainContent.scrollTop : null;
+
             // Check if search input was previously focused
             const activeEl = document.activeElement;
             const wasSearchFocused = activeEl && activeEl.id === 'sidebar-search-input';
@@ -3511,6 +3738,14 @@
             
             // Initialize Icons
             lucide.createIcons();
+
+            // Restore scroll position so font size or theme toggle doesn't jump
+            if (prevScrollTop !== null) {
+                const newMainContent = document.getElementById('main-content');
+                if (newMainContent) {
+                    newMainContent.scrollTop = prevScrollTop;
+                }
+            }
 
             // Setup scroll listeners for progress bar and scroll-to-top
             if (typeof setupScrollEvents === 'function') {
@@ -3541,9 +3776,18 @@
                             سواد سلامت رسانه‌ای
                         </span>
                     </div>
-                    <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="دانشگاه تربیت مدرس" class="p-1 rounded-lg hover:bg-white/60 transition-colors">
-                        <img src="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" alt="لوگوی دانشگاه تربیت مدرس" class="h-9 w-9 object-contain" />
-                    </a>
+                    <div class="flex items-center gap-2">
+                        <button 
+                            onclick="app.toggleDarkMode()" 
+                            class="p-2 text-slate-600 hover:text-[#4B2E83] rounded-xl hover:bg-[#F3EDF6] transition-colors cursor-pointer"
+                            title="${state.isDarkMode ? 'تغییر به حالت روز' : 'تغییر به حالت شب'}"
+                        >
+                            <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-5 h-5 ${state.isDarkMode ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
+                        </button>
+                        <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="دانشگاه تربیت مدرس" class="p-1 rounded-lg hover:bg-white/60 transition-colors">
+                            <img src="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" alt="لوگوی دانشگاه تربیت مدرس" class="h-9 w-9 object-contain" />
+                        </a>
+                    </div>
                 </div>
             `;
         }
@@ -3820,13 +4064,20 @@
                         </button>
                     </div>
 
-                    <!-- Keyboard Shortcuts Helper Tip -->
+                    <!-- Keyboard Shortcuts & Theme Toggle in Sidebar -->
                     <div class="px-3 py-2 bg-[#FAF8F6] border-t border-[rgba(75,46,131,0.10)] text-[10px] text-slate-400 flex justify-between items-center flex-shrink-0">
-                        <span>میانبر کیبورد:</span>
+                        <button 
+                            onclick="app.toggleDarkMode()"
+                            class="inline-flex items-center gap-1 text-[11px] text-slate-600 hover:text-[#4B2E83] font-medium transition-colors cursor-pointer"
+                            title="${state.isDarkMode ? 'تغییر به حالت روز' : 'تغییر به حالت شب'}"
+                        >
+                            <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-3.5 h-3.5 ${state.isDarkMode ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
+                            <span>${state.isDarkMode ? 'حالت روز' : 'حالت شب'}</span>
+                        </button>
                         <div class="flex items-center gap-1 font-mono text-[9px] text-slate-500">
                             <kbd class="bg-white border rounded px-1">/</kbd> جستجو
                             <span class="mx-0.5">•</span>
-                            <kbd class="bg-white border rounded px-1">[</kbd><kbd class="bg-white border rounded px-1">]</kbd> تعویض درس
+                            <kbd class="bg-white border rounded px-1">[</kbd><kbd class="bg-white border rounded px-1">]</kbd> درس
                         </div>
                     </div>
                 </div>
@@ -3865,6 +4116,15 @@
                             </div>
 
                             <div class="flex items-center gap-2 self-end sm:self-auto flex-wrap sm:flex-nowrap">
+                                <button 
+                                    onclick="app.toggleDarkMode()"
+                                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-[#F3EDF6] text-slate-700 border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
+                                    title="${state.isDarkMode ? 'تغییر به حالت روز (روشن)' : 'تغییر به حالت شب (تیره)'}"
+                                >
+                                    <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-4 h-4 ${state.isDarkMode ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
+                                    <span>${state.isDarkMode ? 'حالت روز' : 'حالت شب'}</span>
+                                </button>
+
                                 <button 
                                     onclick="app.showInfographicsView()"
                                     class="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F3EDF6] hover:bg-[#E7DCED] text-[#4B2E83] border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
@@ -3907,27 +4167,36 @@
                             
                             <!-- Interactive Study Controls Bar -->
                             <div class="px-4 py-2.5 bg-[#F8F6F4] border-b border-[rgba(75,46,131,0.10)] flex flex-wrap items-center justify-between gap-3 text-xs">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-slate-400 text-[11px]">اندازه قلم:</span>
+                                <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+                                    <span class="text-slate-400 text-[11px] font-medium">اندازه قلم:</span>
                                     <div class="inline-flex bg-white rounded-lg border border-[rgba(75,46,131,0.14)] p-0.5 shadow-2xs">
                                         <button 
                                             onclick="app.setFontSize('sm')" 
-                                            title="قلم کوچک"
-                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'sm' ? 'bg-[#4B2E83] text-white' : 'text-slate-600 hover:text-[#4B2E83]'}"
+                                            title="قلم کوچک (A-)"
+                                            class="px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${state.contentFontSize === 'sm' ? 'bg-[#4B2E83] text-white shadow-2xs' : 'text-slate-600 hover:text-[#4B2E83] hover:bg-slate-50'}"
                                         >A-</button>
                                         <button 
                                             onclick="app.setFontSize('normal')" 
-                                            title="قلم استاندارد"
-                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'normal' ? 'bg-[#4B2E83] text-white' : 'text-slate-600 hover:text-[#4B2E83]'}"
+                                            title="قلم استاندارد (A)"
+                                            class="px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${state.contentFontSize === 'normal' ? 'bg-[#4B2E83] text-white shadow-2xs' : 'text-slate-600 hover:text-[#4B2E83] hover:bg-slate-50'}"
                                         >A</button>
                                         <button 
                                             onclick="app.setFontSize('lg')" 
-                                            title="قلم بزرگ"
-                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'lg' ? 'bg-[#4B2E83] text-white' : 'text-slate-600 hover:text-[#4B2E83]'}"
+                                            title="قلم بزرگ (A+)"
+                                            class="px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${state.contentFontSize === 'lg' ? 'bg-[#4B2E83] text-white shadow-2xs' : 'text-slate-600 hover:text-[#4B2E83] hover:bg-slate-50'}"
                                         >A+</button>
                                     </div>
                                     <span class="text-slate-300 mx-1">|</span>
-                                    <span class="text-slate-500 inline-flex items-center gap-1 text-[11px]">
+                                    <button 
+                                        onclick="app.toggleDarkMode()"
+                                        title="${state.isDarkMode ? 'تغییر به حالت روز' : 'تغییر به حالت مطالعه شب'}"
+                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[rgba(75,46,131,0.14)] bg-white text-slate-700 hover:text-[#4B2E83] hover:border-[#7A5C9E] text-[11px] font-medium transition-colors cursor-pointer"
+                                    >
+                                        <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-3.5 h-3.5 ${state.isDarkMode ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
+                                        <span>${state.isDarkMode ? 'مطالعه روز' : 'مطالعه شب'}</span>
+                                    </button>
+                                    <span class="text-slate-300 mx-1 hidden sm:inline">|</span>
+                                    <span class="text-slate-500 hidden sm:inline-flex items-center gap-1 text-[11px]">
                                         <i data-lucide="clock" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
                                         زمان تقریبی: ۵ الی ۷ دقیقه
                                     </span>
@@ -3936,14 +4205,14 @@
                                 <div class="flex items-center gap-2">
                                     <button 
                                         onclick="app.toggleBookmark(${session.id})" 
-                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-colors ${isBookmarked ? 'bg-[#FDF6E2] border-amber-300 text-amber-800 font-semibold' : 'bg-white border-[rgba(75,46,131,0.14)] text-slate-600 hover:border-amber-400'}"
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-colors cursor-pointer ${isBookmarked ? 'bg-[#FDF6E2] border-amber-300 text-amber-800 font-semibold' : 'bg-white border-[rgba(75,46,131,0.14)] text-slate-600 hover:border-amber-400'}"
                                     >
                                         <i data-lucide="bookmark" class="w-3.5 h-3.5 ${isBookmarked ? 'text-amber-500 fill-amber-500' : ''}"></i>
                                         <span>${isBookmarked ? 'نشان‌شده' : 'نشان کردن'}</span>
                                     </button>
                                     <button 
                                         onclick="app.copySessionLink(${session.id})" 
-                                        class="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-[#F3EDF6] border border-[rgba(75,46,131,0.14)] text-slate-600 rounded-lg transition-colors"
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-[#F3EDF6] border border-[rgba(75,46,131,0.14)] text-slate-600 rounded-lg transition-colors cursor-pointer"
                                         title="کپی پیوند و اشتراک‌گذاری"
                                     >
                                         <i data-lucide="share-2" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
@@ -4670,6 +4939,14 @@
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-3 flex-shrink-0">
+                                    <button 
+                                        onclick="app.toggleDarkMode()"
+                                        class="px-3.5 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 cursor-pointer shadow-sm"
+                                        title="${state.isDarkMode ? 'تغییر به حالت روز' : 'تغییر به حالت شب'}"
+                                    >
+                                        <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-4 h-4 ${state.isDarkMode ? 'text-amber-300' : 'text-[#DABFCC]'}"></i>
+                                        <span>${state.isDarkMode ? 'حالت روز' : 'حالت شب'}</span>
+                                    </button>
                                     <button 
                                         onclick="app.showSessionView(state.currentSessionId || 1)" 
                                         class="px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl text-xs font-bold transition-all inline-flex items-center gap-2 cursor-pointer shadow-sm"
