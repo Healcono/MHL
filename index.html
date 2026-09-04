@@ -17,20 +17,56 @@
                 extend: {
                     fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
                     colors: {
-                        nude: {
-                            50: '#fdfbf7', 100: '#f7f2ea', 200: '#eee4d5', 300: '#e0d1bc',
-                            400: '#ccb59a', 500: '#b89a7a', 600: '#a38161', 700: '#89684f',
-                            800: '#715543', 900: '#5c4639', 950: '#32251e',
+                        aubergine: {
+                            50: '#F6F3F9', 100: '#ECE5F2', 200: '#DCCEEC', 300: '#C1AED7',
+                            400: '#9A7AA9', 500: '#7A5C9E', 600: '#5E3D8F', 700: '#4B2E83',
+                            800: '#3D256E', 900: '#35224F', 950: '#211434',
                         },
+                        plum: {
+                            50: '#F7F3F8', 100: '#EFE7F2', 200: '#DFCFE4', 300: '#CBB2D2',
+                            400: '#B08EBA', 500: '#8E679B', 600: '#6C487B', 700: '#523460',
+                            800: '#3E254A', 900: '#30203D', 950: '#1F1428',
+                        },
+                        mauve: {
+                            50: '#FAF7FB', 100: '#F3EDF6', 200: '#E7DCED', 300: '#D5C4DF',
+                            400: '#BFA6CD', 500: '#9A7AA9', 600: '#7A5C9E', 700: '#634783',
+                            800: '#4E3668', 900: '#3C2851',
+                        },
+                        nude: {
+                            50: '#FAF8F6', 100: '#F1EFEC', 200: '#E9E5E2', 300: '#E8DFD9',
+                            400: '#D8C6BE', 500: '#B88E9E', 600: '#9A7AA9', 700: '#7A5C9E',
+                            800: '#4B2E83', 900: '#35224F', 950: '#27232A',
+                        },
+                        // Cohesive mapping for health tokens
                         health: {
-                            50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac',
-                            400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d',
-                            800: '#166534', 900: '#14532d', 950: '#052e16',
+                            50: '#FAF6F8', 100: '#F3ECF5', 200: '#E8DCED', 300: '#D8C6BE',
+                            400: '#B88E9E', 500: '#7A5C9E', 600: '#4B2E83', 700: '#3D256E',
+                            800: '#35224F', 900: '#27232A', 950: '#1C1620',
+                        },
+                        // Cohesive mapping for emerald and teal tokens
+                        emerald: {
+                            50: '#FAF6F8', 100: '#F3EBF4', 200: '#E8DCED', 300: '#D5C3DF',
+                            400: '#B88E9E', 500: '#7A5C9E', 600: '#4B2E83', 700: '#3D256E',
+                            800: '#35224F', 900: '#27232A', 950: '#1C1620',
+                        },
+                        teal: {
+                            50: '#F8F5F8', 100: '#EFE6F1', 200: '#E2D2E6', 300: '#CBB2D2',
+                            400: '#9A7AA9', 500: '#7A5C9E', 600: '#5E3D8F', 700: '#4B2E83',
+                            800: '#35224F', 900: '#27232A', 950: '#1C1620',
+                        },
+                        // Warm editorial slate mapping
+                        slate: {
+                            50: '#F9F7F9', 100: '#ECE8EE', 200: '#DDD8E0', 300: '#B6ADB8',
+                            400: '#8D858F', 500: '#756D77', 600: '#655D68', 700: '#4C444F',
+                            800: '#27232A', 900: '#1F1A22', 950: '#151117',
+                        },
+                        sage: {
+                            50: '#F4F6F4', 100: '#E6ECE7', 500: '#68796C', 600: '#546357', 700: '#414E44',
                         }
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'fade-in': 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in-up': 'fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
@@ -39,7 +75,7 @@
                             '100%': { opacity: '1' },
                         },
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(12px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -49,7 +85,42 @@
     </script>
 
     <style>
-        body { background-color: #fdfbf7; color: #32251e; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; -webkit-font-smoothing: antialiased; }
+        :root {
+            --color-primary: #4B2E83;
+            --color-primary-dark: #35224F;
+            --color-secondary: #7A5C9E;
+            --color-mauve: #9A7AA9;
+            --color-rose: #B88E9E;
+            --color-nude: #D8C6BE;
+            --color-beige: #E8DFD9;
+            --color-bg: #F1EFEC;
+            --color-bg-secondary: #E9E5E2;
+            --color-card: #FAF8F6;
+            --color-text: #27232A;
+            --color-text-secondary: #655D68;
+            --color-border: rgba(75, 46, 131, 0.14);
+            --color-border-strong: rgba(75, 46, 131, 0.24);
+            --color-accent-calm: #68796C;
+        }
+
+        body { 
+            background-color: #F1EFEC; 
+            color: #27232A; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Vazirmatn', sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            background-image: 
+                radial-gradient(circle at 85% 15%, rgba(122, 92, 158, 0.07), transparent 36%),
+                radial-gradient(circle at 15% 75%, rgba(184, 142, 158, 0.05), transparent 42%),
+                radial-gradient(circle at 50% 50%, rgba(232, 223, 217, 0.25), transparent 60%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+
+        #app-root {
+            background-color: transparent !important;
+        }
         
         /* Complete Scrollbar Elimination */
         html, body, div, main, nav, section, ul, ol, aside, * {
@@ -70,28 +141,73 @@
             scrollbar-width: none !important;
         }
 
-        .aparat-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; background: #1a1a1a; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .aparat-container { 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            overflow: hidden; 
+            border-radius: 1.25rem; 
+            background: #27232A; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 10px 30px -5px rgba(53, 34, 79, 0.15); 
+            border: 1px solid rgba(75, 46, 131, 0.15);
+        }
         .aparat-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
-        /* Typography for Content */
-        .prose h3 { color: #14532d; font-weight: 800; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .prose p { line-height: 2; margin-bottom: 1.5rem; text-align: justify; color: #334155; }
-        .prose strong { color: #166534; font-weight: 700; }
-        .prose ul { list-style-type: disc; padding-right: 1.5rem; margin-bottom: 1.5rem; color: #334155; }
-        .prose li { margin-bottom: 0.5rem; }
+        /* Typography for Academic Editorial Content */
+        .prose h3 { 
+            color: #35224F; 
+            font-weight: 800; 
+            font-size: 1.4rem; 
+            margin-top: 2rem; 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.6rem; 
+            border-right: 4px solid #7A5C9E;
+            padding-right: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        .prose p { 
+            line-height: 2.05; 
+            margin-bottom: 1.5rem; 
+            text-align: justify; 
+            color: #27232A; 
+            font-size: 1.025rem;
+        }
+        .prose strong { 
+            color: #4B2E83; 
+            font-weight: 700; 
+        }
+        .prose ul { 
+            list-style-type: disc; 
+            padding-right: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            color: #352F39; 
+        }
+        .prose li { 
+            margin-bottom: 0.6rem; 
+            line-height: 1.95;
+        }
 
         /* Font Size Variants */
-        .font-size-sm p { font-size: 0.925rem; line-height: 1.9; }
+        .font-size-sm p { font-size: 0.925rem; line-height: 1.95; }
         .font-size-normal p { font-size: 1.05rem; line-height: 2.1; }
         .font-size-lg p { font-size: 1.2rem; line-height: 2.25; }
 
         /* Highlight matching search terms */
         .search-highlight {
-            background-color: #fef08a;
-            color: #854d0e;
-            padding: 0 2px;
-            border-radius: 3px;
-            font-weight: 600;
+            background-color: rgba(216, 198, 190, 0.6);
+            color: #4B2E83;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: 700;
+            border-bottom: 2px solid #7A5C9E;
+        }
+
+        /* Smooth calm transitions for interactive controls */
+        button, a, input, select, textarea {
+            transition: all 200ms ease;
         }
 
         /* Print and PDF Export Styles */
@@ -118,11 +234,23 @@
                 display: none;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-delay: -1ms !important;
+                animation-duration: 1ms !important;
+                animation-iteration-count: 1 !important;
+                background-attachment: initial !important;
+                scroll-behavior: auto !important;
+                transition-delay: 0s !important;
+                transition-duration: 0s !important;
+            }
+        }
     </style>
 </head>
 <body class="overflow-hidden">
 
-    <div id="app-root" class="flex h-screen overflow-hidden bg-slate-50 relative">
+    <div id="app-root" class="flex h-screen overflow-hidden bg-[#F1EFEC] relative">
         <!-- Content will be injected here by JavaScript -->
     </div>
 
@@ -3229,14 +3357,14 @@
                 <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
                     <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full border border-slate-200 overflow-hidden flex flex-col max-h-[90vh]">
                         <!-- Modal Header -->
-                        <div class="bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-900 text-white p-5 flex items-center justify-between flex-shrink-0">
+                        <div class="bg-gradient-to-r from-[#271738] via-[#35224F] to-[#4B2E83] text-white p-5 flex items-center justify-between flex-shrink-0">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20">
-                                    <i data-lucide="file-text" class="w-5 h-5 text-emerald-300"></i>
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20 text-[#DABFCC]">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
                                 </div>
                                 <div>
-                                    <h3 class="font-bold text-base text-white">صدور کارنامه و گزارش پیشرفت تحصیلی (PDF)</h3>
-                                    <p class="text-xs text-emerald-200/90 mt-0.5">دانشگاه تربیت مدرس • سامانه سواد سلامت رسانه‌ای</p>
+                                    <h3 class="font-bold text-base text-white font-display">صدور کارنامه و گزارش پیشرفت تحصیلی (PDF)</h3>
+                                    <p class="text-xs text-[#DABFCC] mt-0.5">دانشگاه تربیت مدرس • سامانه سواد سلامت رسانه‌ای</p>
                                 </div>
                             </div>
                             <button onclick="app.closePdfExportModal()" class="text-white/80 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
@@ -3249,7 +3377,7 @@
                             <!-- Student Name Input -->
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
-                                    <i data-lucide="user" class="w-3.5 h-3.5 text-emerald-700"></i>
+                                    <i data-lucide="user" class="w-3.5 h-3.5 text-[#4B2E83]"></i>
                                     <span>نام و نام خانوادگی فراگیر / دانشجو (جهت درج در کارنامه):</span>
                                 </label>
                                 <input 
@@ -3258,20 +3386,20 @@
                                     value="${state.studentName || ''}" 
                                     oninput="app.setStudentName(this.value)"
                                     placeholder="نام خود را وارد کنید (مثال: سارا محمدی)..." 
-                                    class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-600 transition-all font-medium text-slate-800"
+                                    class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#7A5C9E]/25 focus:border-[#4B2E83] transition-all font-medium text-slate-800"
                                 />
                                 <span class="text-[11px] text-slate-400 mt-1 block">در صورت خالی گذاشتن، عبارت «دانشجوی گرامی» در کارنامه درج خواهد شد.</span>
                             </div>
 
                             <!-- Progress Cards Summary -->
                             <div class="grid grid-cols-3 gap-2.5">
-                                <div class="p-3 bg-emerald-50/70 border border-emerald-200/80 rounded-xl text-center">
-                                    <span class="block text-[11px] text-emerald-800 font-semibold mb-0.5">پیشرفت کل</span>
-                                    <strong class="text-lg font-black text-emerald-950">${progress}%</strong>
+                                <div class="p-3 bg-[#FAF6F8] border border-[rgba(75,46,131,0.14)] rounded-xl text-center">
+                                    <span class="block text-[11px] text-[#4B2E83] font-semibold mb-0.5">پیشرفت کل</span>
+                                    <strong class="text-lg font-black text-[#35224F]">${progress}%</strong>
                                 </div>
-                                <div class="p-3 bg-teal-50/70 border border-teal-200/80 rounded-xl text-center">
-                                    <span class="block text-[11px] text-teal-800 font-semibold mb-0.5">جلسات تکمیل</span>
-                                    <strong class="text-lg font-black text-teal-950">${completedCount} <span class="text-xs font-normal text-slate-500">از ۱۰</span></strong>
+                                <div class="p-3 bg-[#F8F6F4] border border-[rgba(75,46,131,0.14)] rounded-xl text-center">
+                                    <span class="block text-[11px] text-[#7A5C9E] font-semibold mb-0.5">جلسات تکمیل</span>
+                                    <strong class="text-lg font-black text-[#35224F]">${completedCount} <span class="text-xs font-normal text-slate-500">از ۱۰</span></strong>
                                 </div>
                                 <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center">
                                     <span class="block text-[11px] text-slate-600 font-semibold mb-0.5">اهداف محقق</span>
@@ -3282,7 +3410,7 @@
                             <!-- Evaluation Tier Badge -->
                             <div class="p-3 rounded-xl border flex items-center justify-between text-xs ${tierBadgeColor}">
                                 <div class="flex items-center gap-2">
-                                    <i data-lucide="award" class="w-4 h-4 text-emerald-700"></i>
+                                    <i data-lucide="award" class="w-4 h-4 text-[#4B2E83]"></i>
                                     <span class="font-bold">ارزیابی صلاحیت:</span>
                                     <span>${tierTitle}</span>
                                 </div>
@@ -3290,26 +3418,26 @@
                             </div>
 
                             <!-- Report Features Checklist -->
-                            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 text-xs text-slate-600 space-y-1.5">
-                                <div class="font-bold text-slate-800 text-[11px] mb-1 flex items-center gap-1.5">
-                                    <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                            <div class="bg-[#FAF8F6] p-3.5 rounded-xl border border-[rgba(75,46,131,0.12)] text-xs text-slate-600 space-y-1.5 font-serif">
+                                <div class="font-bold text-slate-800 text-[11px] mb-1 flex items-center gap-1.5 font-sans">
+                                    <i data-lucide="check-check" class="w-3.5 h-3.5 text-[#4B2E83]"></i>
                                     <span>مشخصات مندرج در فایل گزارش PDF:</span>
                                 </div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px]">
                                     <div class="flex items-center gap-1.5">
-                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span class="text-[#4B2E83] font-bold">✔</span>
                                         <span>سربرگ رسمی دانشگاه تربیت مدرس</span>
                                     </div>
                                     <div class="flex items-center gap-1.5">
-                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span class="text-[#4B2E83] font-bold">✔</span>
                                         <span>تاییدیه و امضای دکتر فاطمه زارعی</span>
                                     </div>
                                     <div class="flex items-center gap-1.5">
-                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span class="text-[#4B2E83] font-bold">✔</span>
                                         <span>جدول ریز نمرات و وضعیت ۱۰ جلسه</span>
                                     </div>
                                     <div class="flex items-center gap-1.5">
-                                        <span class="text-emerald-600 font-bold">✔</span>
+                                        <span class="text-[#4B2E83] font-bold">✔</span>
                                         <span>کد رهگیری و تاریخ ثبت سیستمی</span>
                                     </div>
                                 </div>
@@ -3333,7 +3461,7 @@
                                     class="px-3 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer"
                                     title="پیش‌نمایش چاپ در مرورگر"
                                 >
-                                    <i data-lucide="printer" class="w-4 h-4"></i>
+                                    <i data-lucide="printer" class="w-4 h-4 text-[#7A5C9E]"></i>
                                     <span>چاپ / پرینت</span>
                                 </button>
 
@@ -3341,7 +3469,7 @@
                                     type="button" 
                                     id="btn-download-pdf"
                                     onclick="app.downloadPdfReport()" 
-                                    class="px-5 py-2.5 bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2 cursor-pointer ${state.isExportingPdf ? 'opacity-75 pointer-events-none' : ''}"
+                                    class="px-5 py-2.5 bg-gradient-to-r from-[#4B2E83] to-[#35224F] hover:from-[#3D256E] hover:to-[#27232A] text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2 cursor-pointer ${state.isExportingPdf ? 'opacity-75 pointer-events-none' : ''}"
                                 >
                                     ${state.isExportingPdf ? `
                                         <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
@@ -3403,17 +3531,17 @@
 
         function renderMobileHeader() {
             return `
-                <div class="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b z-30 flex items-center justify-between px-4 shadow-sm">
+                <div class="lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#FAF8F6]/90 backdrop-blur-md border-b border-[rgba(75,46,131,0.12)] z-30 flex items-center justify-between px-4 shadow-[0_4px_20px_rgba(48,32,61,0.04)]">
                     <div class="flex items-center gap-2">
-                        <button onclick="app.toggleSidebar()" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+                        <button onclick="app.toggleSidebar()" class="p-2 text-[#4B2E83] hover:bg-[#F3EDF6] rounded-xl transition-colors">
                             <i data-lucide="menu" class="w-6 h-6"></i>
                         </button>
-                        <span class="font-bold text-health-900 flex items-center gap-1.5 text-sm">
-                            <i data-lucide="graduation-cap" class="text-health-600 w-5 h-5"></i>
+                        <span class="font-bold text-[#35224F] flex items-center gap-1.5 text-sm">
+                            <i data-lucide="graduation-cap" class="text-[#4B2E83] w-5 h-5"></i>
                             سواد سلامت رسانه‌ای
                         </span>
                     </div>
-                    <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="دانشگاه تربیت مدرس" class="p-1">
+                    <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="دانشگاه تربیت مدرس" class="p-1 rounded-lg hover:bg-white/60 transition-colors">
                         <img src="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" alt="لوگوی دانشگاه تربیت مدرس" class="h-9 w-9 object-contain" />
                     </a>
                 </div>
@@ -3481,7 +3609,7 @@
 
         function renderSidebar() {
             const sidebarClasses = `
-                fixed lg:sticky top-0 right-0 h-screen w-80 bg-white border-l shadow-lg z-50 transform transition-transform duration-300 ease-in-out flex flex-col no-scrollbar
+                fixed lg:sticky top-0 right-0 h-screen w-80 bg-[#FAF8F6] border-l border-[rgba(75,46,131,0.12)] shadow-[0_8px_30px_rgba(48,32,61,0.06)] z-50 transform transition-transform duration-300 ease-in-out flex flex-col no-scrollbar
                 ${state.isSidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
             `;
 
@@ -3508,12 +3636,12 @@
             if (filteredSessions.length === 0) {
                 listHtml = `
                     <div class="p-6 text-center text-slate-500">
-                        <div class="w-12 h-12 mx-auto mb-3 bg-amber-50 rounded-full flex items-center justify-center text-amber-600">
+                        <div class="w-12 h-12 mx-auto mb-3 bg-[#F3ECF5] rounded-full flex items-center justify-center text-[#7A5C9E]">
                             <i data-lucide="search-x" class="w-6 h-6"></i>
                         </div>
-                        <p class="font-bold text-slate-700 text-sm mb-1">درسی با این کلیدواژه یافت نشد</p>
+                        <p class="font-bold text-[#27232A] text-sm mb-1">درسی با این کلیدواژه یافت نشد</p>
                         <p class="text-xs text-slate-400 mb-3">کلمه دیگری را جستجو کنید یا فیلتر را پاک نمایید.</p>
-                        <button onclick="app.clearSearch()" class="px-3 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-semibold rounded-lg transition-colors inline-flex items-center gap-1.5">
+                        <button onclick="app.clearSearch()" class="px-3 py-1.5 bg-[#F3EDF6] hover:bg-[#E7DCED] text-[#4B2E83] text-xs font-semibold rounded-lg transition-colors inline-flex items-center gap-1.5">
                             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                             نمایش همه ۱۰ درس
                         </button>
@@ -3528,15 +3656,15 @@
                     
                     let iconHtml = '';
                     if (isCompleted) {
-                        iconHtml = `<i data-lucide="check-circle" class="w-[18px] h-[18px] text-health-500"></i>`;
+                        iconHtml = `<i data-lucide="check-circle" class="w-[18px] h-[18px] text-[#4B2E83]"></i>`;
                     } else if (isActive) {
-                        iconHtml = `<i data-lucide="play-circle" class="w-[18px] h-[18px] text-health-600 animate-pulse"></i>`;
+                        iconHtml = `<i data-lucide="play-circle" class="w-[18px] h-[18px] text-[#7A5C9E] animate-pulse"></i>`;
                     } else {
                         iconHtml = `<i data-lucide="circle" class="w-[18px] h-[18px] text-slate-300"></i>`;
                     }
 
                     return `
-                        <div class="group relative w-full border-l-4 transition-all hover:bg-slate-50 flex items-start justify-between px-4 py-3 cursor-pointer ${isActive ? 'border-health-600 bg-health-50/50' : 'border-transparent text-slate-600'}"
+                        <div class="group relative w-full border-l-4 transition-all hover:bg-[#F3EDF6]/50 flex items-start justify-between px-4 py-3 cursor-pointer ${isActive ? 'border-[#4B2E83] bg-[#FAF6F8]' : 'border-transparent text-slate-600'}"
                              onclick="app.selectSession(${session.id})">
                             <div class="flex items-start gap-3 flex-1 min-w-0">
                                 <div class="mt-1 flex-shrink-0">${iconHtml}</div>
@@ -3544,9 +3672,9 @@
                                     <div class="flex items-center gap-1.5 mb-1">
                                         <span class="text-[11px] font-semibold text-slate-400">جلسه ${session.id}</span>
                                         ${isBookmarked ? `<span class="inline-flex items-center text-amber-500 text-[10px]" title="نشان‌شده"><i data-lucide="bookmark" class="w-3 h-3 fill-amber-500"></i></span>` : ''}
-                                        ${hasContentMatch ? `<span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.5 rounded font-medium">تطابق در متن</span>` : ''}
+                                        ${hasContentMatch ? `<span class="bg-[#F3ECF5] text-[#4B2E83] text-[9px] px-1.5 py-0.5 rounded font-medium">تطابق در متن</span>` : ''}
                                     </div>
-                                    <div class="text-sm font-medium leading-tight truncate ${isActive ? 'text-health-900 font-bold' : 'text-slate-700'}">
+                                    <div class="text-sm font-medium leading-tight truncate ${isActive ? 'text-[#35224F] font-bold' : 'text-[#27232A]'}">
                                         ${session.title}
                                     </div>
                                 </div>
@@ -3554,7 +3682,7 @@
                             <button 
                                 onclick="app.toggleBookmark(${session.id}, event)" 
                                 title="${isBookmarked ? 'حذف نشان' : 'نشان کردن درس'}"
-                                class="opacity-40 group-hover:opacity-100 p-1 hover:bg-emerald-100/60 rounded text-slate-400 hover:text-amber-600 transition-all ml-1 flex-shrink-0"
+                                class="opacity-40 group-hover:opacity-100 p-1 hover:bg-[#F3EDF6] rounded text-slate-400 hover:text-amber-600 transition-all ml-1 flex-shrink-0"
                             >
                                 <i data-lucide="bookmark" class="w-4 h-4 ${isBookmarked ? 'text-amber-500 fill-amber-500' : ''}"></i>
                             </button>
@@ -3566,31 +3694,31 @@
             return `
                 <div class="${sidebarClasses}">
                     <!-- Top Brand Header: Website Title and University Logo Directly Below -->
-                    <div class="border-b border-slate-100 flex-shrink-0 bg-white">
+                    <div class="border-b border-[rgba(75,46,131,0.10)] flex-shrink-0 bg-[#FAF8F6]">
                         <div class="flex items-center justify-between px-4 pt-3.5 pb-2">
-                            <h1 class="font-bold text-health-900 text-base flex items-center gap-2">
-                                <i data-lucide="graduation-cap" class="text-health-600 w-5 h-5"></i>
+                            <h1 class="font-bold text-[#35224F] text-base flex items-center gap-2">
+                                <i data-lucide="graduation-cap" class="text-[#4B2E83] w-5 h-5"></i>
                                 سواد سلامت رسانه‌ای
                             </h1>
-                            <button onclick="app.toggleSidebar()" class="lg:hidden p-1 text-slate-500 hover:text-slate-800">
+                            <button onclick="app.toggleSidebar()" class="lg:hidden p-1 text-slate-500 hover:text-[#35224F]">
                                 <i data-lucide="x" class="w-6 h-6"></i>
                             </button>
                         </div>
                         
                         <!-- University Logo Under The Website Title -->
-                        <div class="px-4 pb-3 flex items-center gap-3 bg-gradient-to-b from-transparent to-emerald-50/20">
-                            <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="لوگوی دانشگاه تربیت مدرس" class="group block p-1.5 rounded-xl bg-white shadow-2xs border border-emerald-100 hover:border-emerald-300 hover:shadow-xs transition-all flex-shrink-0">
+                        <div class="px-4 pb-3 flex items-center gap-3 bg-gradient-to-b from-transparent to-[#F3ECF5]/40">
+                            <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="لوگوی دانشگاه تربیت مدرس" class="group block p-1.5 rounded-xl bg-white shadow-2xs border border-[rgba(75,46,131,0.12)] hover:border-[#7A5C9E] hover:shadow-xs transition-all flex-shrink-0">
                                 <img src="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" alt="آرم دانشگاه تربیت مدرس" class="h-11 w-11 object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy" referrerpolicy="no-referrer" />
                             </a>
                             <div class="min-w-0">
-                                <span class="text-xs font-bold text-slate-800 block truncate">دانشگاه تربیت مدرس</span>
-                                <span class="text-[10px] text-emerald-700 font-medium block truncate">دانشکده علوم پزشکی</span>
+                                <span class="text-xs font-bold text-[#27232A] block truncate">دانشگاه تربیت مدرس</span>
+                                <span class="text-[10px] text-[#7A5C9E] font-medium block truncate">دانشکده علوم پزشکی</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Search Box -->
-                    <div class="p-3 border-b bg-slate-50/70 flex-shrink-0">
+                    <div class="p-3 border-b border-[rgba(75,46,131,0.10)] bg-[#F1EFEC]/80 flex-shrink-0">
                         <div class="relative">
                             <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
                             <input 
@@ -3599,14 +3727,14 @@
                                 value="${state.searchQuery || ''}"
                                 oninput="app.setSearchQuery(this.value)"
                                 placeholder="جستجوی درس، شایعه، اقناع... (/)"
-                                class="w-full pr-9 pl-8 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all placeholder:text-slate-400"
+                                class="w-full pr-9 pl-8 py-2 text-xs bg-white/85 border border-[rgba(75,46,131,0.14)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7A5C9E]/25 focus:border-[#7A5C9E] transition-all placeholder:text-slate-400"
                             />
                             ${state.searchQuery ? `
                                 <button onclick="app.clearSearch()" class="absolute left-2.5 top-1/2 -translate-y-1/2 p-0.5 text-slate-400 hover:text-slate-600">
                                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
                                 </button>
                             ` : `
-                                <kbd class="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 font-mono bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded shadow-2xs pointer-events-none">/</kbd>
+                                <kbd class="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 font-mono bg-white/90 border border-[rgba(75,46,131,0.14)] px-1.5 py-0.5 rounded shadow-2xs pointer-events-none">/</kbd>
                             `}
                         </div>
 
@@ -3617,7 +3745,7 @@
                                 return `
                                     <button 
                                         onclick="app.setSearchQuery('${isCurrent ? '' : tag.term}')"
-                                        class="px-2 py-0.5 text-[10px] rounded-full whitespace-nowrap transition-colors flex-shrink-0 ${isCurrent ? 'bg-emerald-600 text-white font-semibold shadow-xs' : 'bg-white text-slate-600 border border-slate-200 hover:border-emerald-300 hover:text-emerald-700'}"
+                                        class="px-2 py-0.5 text-[10px] rounded-full whitespace-nowrap transition-colors flex-shrink-0 ${isCurrent ? 'bg-[#4B2E83] text-white font-semibold shadow-xs' : 'bg-white text-slate-600 border border-[rgba(75,46,131,0.14)] hover:border-[#7A5C9E] hover:text-[#4B2E83]'}"
                                     >
                                         #${tag.label}
                                     </button>
@@ -3627,28 +3755,28 @@
 
                         ${state.searchQuery ? `
                             <div class="mt-2 flex items-center justify-between text-[11px] text-slate-500 px-1">
-                                <span>نتایج: <strong class="text-emerald-700">${filteredSessions.length}</strong> درس</span>
-                                <button onclick="app.clearSearch()" class="text-emerald-700 hover:underline">پاکسازی</button>
+                                <span>نتایج: <strong class="text-[#4B2E83]">${filteredSessions.length}</strong> درس</span>
+                                <button onclick="app.clearSearch()" class="text-[#4B2E83] hover:underline font-semibold">پاکسازی</button>
                             </div>
                         ` : ''}
                     </div>
                     
                     <!-- Navigation Toggle: Lessons vs Infographics -->
-                    <div class="p-2 border-b border-slate-100 bg-slate-50/50 flex items-center gap-1 flex-shrink-0">
+                    <div class="p-2 border-b border-[rgba(75,46,131,0.10)] bg-[#F8F6F4] flex items-center gap-1 flex-shrink-0">
                         <button 
                             onclick="app.showSessionView()" 
-                            class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${state.currentView === 'session' ? 'bg-emerald-600 text-white shadow-2xs' : 'text-slate-600 hover:bg-slate-100'}"
+                            class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${state.currentView === 'session' ? 'bg-[#4B2E83] text-white shadow-2xs' : 'text-slate-600 hover:bg-[#F1EFEC]'}"
                         >
                             <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
                             <span>۱۰ درس دوره</span>
                         </button>
                         <button 
                             onclick="app.showInfographicsView()" 
-                            class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${state.currentView === 'infographics' ? 'bg-emerald-600 text-white shadow-2xs' : 'text-slate-600 hover:bg-slate-100'}"
+                            class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${state.currentView === 'infographics' ? 'bg-[#4B2E83] text-white shadow-2xs' : 'text-slate-600 hover:bg-[#F1EFEC]'}"
                         >
-                            <i data-lucide="sparkles" class="w-3.5 h-3.5 ${state.currentView === 'infographics' ? 'text-amber-300' : 'text-emerald-600'}"></i>
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 ${state.currentView === 'infographics' ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
                             <span>اینفوگرافیک‌ها</span>
-                            <span class="text-[9px] px-1 py-0.2 rounded-full ${state.currentView === 'infographics' ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'}">۵</span>
+                            <span class="text-[9px] px-1 py-0.2 rounded-full ${state.currentView === 'infographics' ? 'bg-white/20 text-white' : 'bg-[#F3ECF5] text-[#4B2E83]'}">۵</span>
                         </button>
                     </div>
 
@@ -3657,13 +3785,13 @@
                         ${listHtml}
 
                         <!-- Course Syllabus Book / Document Download (Right Below Session 10) -->
-                        <div class="p-3 m-2 bg-gradient-to-br from-emerald-50 via-teal-50/70 to-white rounded-2xl border border-emerald-200/90 shadow-2xs">
+                        <div class="p-3 m-2 bg-gradient-to-br from-[#FAF8F6] via-[#F3ECF5]/70 to-[#FAF8F6] rounded-2xl border border-[rgba(75,46,131,0.16)] shadow-2xs">
                             <div class="flex items-start gap-2.5 mb-2">
-                                <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                                <div class="w-8 h-8 rounded-xl bg-[#4B2E83] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
                                     <i data-lucide="book-down" class="w-4 h-4"></i>
                                 </div>
                                 <div class="min-w-0 flex-1">
-                                    <h4 class="text-xs font-black text-slate-800 leading-tight">درسنامه جامع دوره</h4>
+                                    <h4 class="text-xs font-black text-[#27232A] leading-tight">درسنامه جامع دوره</h4>
                                     <p class="text-[10px] text-slate-500 leading-normal mt-0.5">دانلود جزوه و فایل آموزشی کامل از سامانه دانشگاه</p>
                                 </div>
                             </div>
@@ -3671,7 +3799,7 @@
                                 href="https://abrehamrahi.ir/o/public/1icymlae/" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                class="w-full flex items-center justify-center gap-2 py-2 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs hover:shadow cursor-pointer"
+                                class="w-full flex items-center justify-center gap-2 py-2 px-3 bg-[#4B2E83] hover:bg-[#3D256E] text-[#FAF8F6] rounded-xl text-xs font-bold transition-all shadow-xs hover:shadow cursor-pointer"
                                 title="دانلود مستقیم فایل درسنامه از سامانه ابری همراهی دانشگاه"
                             >
                                 <i data-lucide="download" class="w-3.5 h-3.5"></i>
@@ -3682,10 +3810,10 @@
                     </div>
 
                     <!-- PDF Report Export CTA in Sidebar -->
-                    <div class="p-2.5 border-t border-slate-200/80 bg-slate-50/70 flex-shrink-0">
+                    <div class="p-2.5 border-t border-[rgba(75,46,131,0.12)] bg-[#F8F6F4] flex-shrink-0">
                         <button 
                             onclick="app.openPdfExportModal()"
-                            class="w-full flex items-center justify-center gap-2 py-2 px-3 bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow cursor-pointer"
+                            class="w-full flex items-center justify-center gap-2 py-2 px-3 bg-gradient-to-r from-[#4B2E83] to-[#35224F] hover:from-[#3D256E] hover:to-[#27232A] text-white rounded-xl text-xs font-bold transition-all shadow-2xs hover:shadow cursor-pointer"
                         >
                             <i data-lucide="file-text" class="w-4 h-4"></i>
                             <span>دریافت کارنامه تحصیلی (PDF)</span>
@@ -3693,7 +3821,7 @@
                     </div>
 
                     <!-- Keyboard Shortcuts Helper Tip -->
-                    <div class="px-3 py-2 bg-slate-50 border-t border-slate-200/60 text-[10px] text-slate-400 flex justify-between items-center flex-shrink-0">
+                    <div class="px-3 py-2 bg-[#FAF8F6] border-t border-[rgba(75,46,131,0.10)] text-[10px] text-slate-400 flex justify-between items-center flex-shrink-0">
                         <span>میانبر کیبورد:</span>
                         <div class="flex items-center gap-1 font-mono text-[9px] text-slate-500">
                             <kbd class="bg-white border rounded px-1">/</kbd> جستجو
@@ -3713,17 +3841,17 @@
 
             return `
                 <!-- Reading Progress Bar at Top -->
-                <div class="fixed top-0 left-0 right-0 lg:right-80 h-1 bg-slate-100 z-40">
-                    <div id="reading-progress-bar" class="h-full bg-gradient-to-l from-emerald-500 to-teal-400 transition-all duration-150" style="width: 0%"></div>
+                <div class="fixed top-0 left-0 right-0 lg:right-80 h-1 bg-slate-100/80 z-40">
+                    <div id="reading-progress-bar" class="h-full bg-gradient-to-l from-[#7A5C9E] to-[#4B2E83] transition-all duration-150" style="width: 0%"></div>
                 </div>
 
                 <main id="main-content" class="flex-1 w-full lg:w-auto pt-16 lg:pt-0 overflow-y-auto h-screen scroll-smooth no-scrollbar relative">
                     <div class="max-w-4xl mx-auto p-4 md:p-8 pb-32">
                         
                         <!-- Header Stats & Quick Toolbar -->
-                        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/70 backdrop-blur-sm p-4 rounded-2xl border border-slate-200/60 shadow-xs">
+                        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF8F6] backdrop-blur-sm p-4 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-[0_4px_20px_rgba(48,32,61,0.03)]">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700">
+                                <div class="w-10 h-10 rounded-xl bg-[#F3ECF5] border border-[rgba(75,46,131,0.14)] flex items-center justify-center text-[#4B2E83]">
                                     <i data-lucide="book-open-check" class="w-5 h-5"></i>
                                 </div>
                                 <div>
@@ -3731,7 +3859,7 @@
                                     <div class="text-xs text-slate-600 font-semibold flex items-center gap-1.5">
                                         <span>مدرس: دکتر فاطمه زارعی</span>
                                         <span class="text-slate-300">•</span>
-                                        <span class="text-emerald-700">۱۰ درس تعاملی</span>
+                                        <span class="text-[#4B2E83] font-bold">۱۰ درس تعاملی</span>
                                     </div>
                                 </div>
                             </div>
@@ -3739,16 +3867,16 @@
                             <div class="flex items-center gap-2 self-end sm:self-auto flex-wrap sm:flex-nowrap">
                                 <button 
                                     onclick="app.showInfographicsView()"
-                                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
+                                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F3EDF6] hover:bg-[#E7DCED] text-[#4B2E83] border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
                                     title="مشاهده ۵ اینفوگرافیک علمی و تحلیلی دوره"
                                 >
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#7A5C9E]"></i>
                                     <span>اینفوگرافیک‌ها (۵)</span>
                                 </button>
 
                                 <button 
                                     onclick="app.openPdfExportModal()"
-                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white rounded-xl text-xs font-bold shadow-xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
+                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-[#4B2E83] to-[#35224F] hover:from-[#3D256E] hover:to-[#27232A] text-white rounded-xl text-xs font-bold shadow-xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
                                     title="دریافت کارنامه تحصیلی و گزارش پیشرفت به صورت فایل PDF"
                                 >
                                     <i data-lucide="file-down" class="w-4 h-4"></i>
@@ -3758,14 +3886,14 @@
 
                                 <div class="text-left sm:text-right">
                                     <div class="flex items-center gap-2">
-                                        <span class="text-xs font-semibold text-health-700">
+                                        <span class="text-xs font-bold text-[#35224F]">
                                             پیشرفت کل: ${progress}%
                                         </span>
                                         <span class="text-[10px] text-slate-400">(${state.completedSessions.length} از ۱۰)</span>
                                     </div>
-                                    <div class="w-28 sm:w-36 h-2 bg-slate-100 rounded-full overflow-hidden mt-1 border border-slate-200/60">
+                                    <div class="w-28 sm:w-36 h-2 bg-[#EFECE8] rounded-full overflow-hidden mt-1 border border-[rgba(75,46,131,0.10)]">
                                         <div 
-                                            class="h-full bg-gradient-to-l from-health-500 to-emerald-600 transition-all duration-500 ease-out"
+                                            class="h-full bg-gradient-to-l from-[#7A5C9E] to-[#4B2E83] transition-all duration-500 ease-out"
                                             style="width: ${progress}%"
                                         ></div>
                                     </div>
@@ -3774,33 +3902,33 @@
                         </div>
 
                         <!-- Session Card -->
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden animate-fade-in">
+                        <div class="bg-[#FAF8F6] rounded-2xl shadow-[0_8px_30px_rgba(48,32,61,0.05)] border border-[rgba(75,46,131,0.12)] overflow-hidden animate-fade-in">
                             ${renderSessionHeader(session)}
                             
                             <!-- Interactive Study Controls Bar -->
-                            <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-200/70 flex flex-wrap items-center justify-between gap-3 text-xs">
+                            <div class="px-4 py-2.5 bg-[#F8F6F4] border-b border-[rgba(75,46,131,0.10)] flex flex-wrap items-center justify-between gap-3 text-xs">
                                 <div class="flex items-center gap-2">
                                     <span class="text-slate-400 text-[11px]">اندازه قلم:</span>
-                                    <div class="inline-flex bg-white rounded-lg border border-slate-200 p-0.5 shadow-2xs">
+                                    <div class="inline-flex bg-white rounded-lg border border-[rgba(75,46,131,0.14)] p-0.5 shadow-2xs">
                                         <button 
                                             onclick="app.setFontSize('sm')" 
                                             title="قلم کوچک"
-                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'sm' ? 'bg-emerald-600 text-white' : 'text-slate-600 hover:text-emerald-700'}"
+                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'sm' ? 'bg-[#4B2E83] text-white' : 'text-slate-600 hover:text-[#4B2E83]'}"
                                         >A-</button>
                                         <button 
                                             onclick="app.setFontSize('normal')" 
                                             title="قلم استاندارد"
-                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'normal' ? 'bg-emerald-600 text-white' : 'text-slate-600 hover:text-emerald-700'}"
+                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'normal' ? 'bg-[#4B2E83] text-white' : 'text-slate-600 hover:text-[#4B2E83]'}"
                                         >A</button>
                                         <button 
                                             onclick="app.setFontSize('lg')" 
                                             title="قلم بزرگ"
-                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'lg' ? 'bg-emerald-600 text-white' : 'text-slate-600 hover:text-emerald-700'}"
+                                            class="px-2 py-0.5 rounded text-[11px] font-bold ${state.contentFontSize === 'lg' ? 'bg-[#4B2E83] text-white' : 'text-slate-600 hover:text-[#4B2E83]'}"
                                         >A+</button>
                                     </div>
                                     <span class="text-slate-300 mx-1">|</span>
                                     <span class="text-slate-500 inline-flex items-center gap-1 text-[11px]">
-                                        <i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-600"></i>
+                                        <i data-lucide="clock" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
                                         زمان تقریبی: ۵ الی ۷ دقیقه
                                     </span>
                                 </div>
@@ -3808,17 +3936,17 @@
                                 <div class="flex items-center gap-2">
                                     <button 
                                         onclick="app.toggleBookmark(${session.id})" 
-                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-colors ${isBookmarked ? 'bg-amber-50 border-amber-300 text-amber-800 font-semibold' : 'bg-white border-slate-200 text-slate-600 hover:border-amber-400'}"
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border transition-colors ${isBookmarked ? 'bg-[#FDF6E2] border-amber-300 text-amber-800 font-semibold' : 'bg-white border-[rgba(75,46,131,0.14)] text-slate-600 hover:border-amber-400'}"
                                     >
                                         <i data-lucide="bookmark" class="w-3.5 h-3.5 ${isBookmarked ? 'text-amber-500 fill-amber-500' : ''}"></i>
                                         <span>${isBookmarked ? 'نشان‌شده' : 'نشان کردن'}</span>
                                     </button>
                                     <button 
                                         onclick="app.copySessionLink(${session.id})" 
-                                        class="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-lg transition-colors"
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 bg-white hover:bg-[#F3EDF6] border border-[rgba(75,46,131,0.14)] text-slate-600 rounded-lg transition-colors"
                                         title="کپی پیوند و اشتراک‌گذاری"
                                     >
-                                        <i data-lucide="share-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+                                        <i data-lucide="share-2" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
                                         <span>اشتراک</span>
                                     </button>
                                 </div>
@@ -3831,19 +3959,19 @@
                             </div>
 
                             <!-- Interactive Navigation Cards (Previous / Next Session) -->
-                            <div class="p-6 bg-slate-50/70 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="p-6 bg-[#F8F6F4] border-t border-[rgba(75,46,131,0.12)] flex flex-col sm:flex-row items-center justify-between gap-4">
                                 ${prevSession ? `
                                     <button 
                                         onclick="app.selectSession(${prevSession.id})"
-                                        class="w-full sm:w-1/2 p-3.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-xs transition-all text-right group flex items-center justify-between"
+                                        class="w-full sm:w-1/2 p-3.5 rounded-xl bg-white border border-[rgba(75,46,131,0.14)] hover:border-[#7A5C9E] hover:shadow-xs transition-all text-right group flex items-center justify-between"
                                     >
                                         <div class="flex items-center gap-2.5">
-                                            <div class="w-8 h-8 rounded-lg bg-emerald-50 group-hover:bg-emerald-100 flex items-center justify-center text-emerald-700 transition-colors">
+                                            <div class="w-8 h-8 rounded-lg bg-[#F3ECF5] group-hover:bg-[#E7DCED] flex items-center justify-center text-[#4B2E83] transition-colors">
                                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                             </div>
                                             <div>
                                                 <span class="text-[10px] text-slate-400 font-bold block">جلسه قبلی (${prevSession.id})</span>
-                                                <span class="text-xs font-semibold text-slate-800 group-hover:text-emerald-800 line-clamp-1">${prevSession.title}</span>
+                                                <span class="text-xs font-semibold text-[#27232A] group-hover:text-[#4B2E83] line-clamp-1">${prevSession.title}</span>
                                             </div>
                                         </div>
                                     </button>
@@ -3854,10 +3982,10 @@
                                 ${nextSession ? `
                                     <button 
                                         onclick="app.selectSession(${nextSession.id})"
-                                        class="w-full sm:w-1/2 p-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs hover:shadow-md transition-all text-left group flex items-center justify-between"
+                                        class="w-full sm:w-1/2 p-3.5 rounded-xl bg-[#4B2E83] hover:bg-[#3D256E] text-[#FAF8F6] shadow-xs hover:shadow-md transition-all text-left group flex items-center justify-between"
                                     >
                                         <div class="text-right">
-                                            <span class="text-[10px] text-emerald-200 font-bold block">جلسه بعدی (${nextSession.id})</span>
+                                            <span class="text-[10px] text-[#DABFCC] font-bold block">جلسه بعدی (${nextSession.id})</span>
                                             <span class="text-xs font-bold text-white line-clamp-1">${nextSession.title}</span>
                                         </div>
                                         <div class="w-8 h-8 rounded-lg bg-white/20 group-hover:bg-white/30 flex items-center justify-center text-white transition-colors">
@@ -3867,7 +3995,7 @@
                                 ` : `
                                     <button 
                                         onclick="app.selectSession(1)"
-                                        class="w-full sm:w-1/2 p-3.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white shadow-xs transition-all text-center font-bold text-xs flex items-center justify-center gap-2"
+                                        class="w-full sm:w-1/2 p-3.5 rounded-xl bg-[#35224F] hover:bg-[#271738] text-[#FAF8F6] shadow-xs transition-all text-center font-bold text-xs flex items-center justify-center gap-2"
                                     >
                                         <i data-lucide="award" class="w-4 h-4"></i>
                                         <span>پایان دوره - بازگشت به جلسه نخست</span>
@@ -3885,7 +4013,7 @@
                     <button 
                         id="scroll-to-top"
                         onclick="document.getElementById('main-content').scrollTo({top: 0, behavior: 'smooth'})"
-                        class="fixed bottom-6 left-6 p-3 bg-health-600 text-white rounded-full shadow-lg hover:bg-health-700 transition-all duration-300 opacity-0 invisible translate-y-10 z-50 hover:scale-105"
+                        class="fixed bottom-6 left-6 p-3 bg-[#4B2E83] text-white rounded-full shadow-[0_6px_20px_rgba(75,46,131,0.25)] hover:bg-[#3D256E] transition-all duration-300 opacity-0 invisible translate-y-10 z-50 hover:scale-105"
                         title="بازگشت به ابتدای درس"
                     >
                         <i data-lucide="arrow-up" class="w-6 h-6"></i>
@@ -3935,11 +4063,11 @@
             return `
                 <div class="h-48 md:h-64 w-full bg-slate-200 relative overflow-hidden">
                     ${session.imageUrl ? `<img src="${session.imageUrl}" alt="${session.title}" class="w-full h-full object-cover" />` : ''}
-                    <div class="absolute inset-0 bg-gradient-to-t from-health-950/90 to-transparent flex items-end p-6 md:p-8">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#271738]/95 via-[#35224F]/70 to-transparent flex items-end p-6 md:p-8">
                         <div class="animate-fade-in-up">
-                            <span class="inline-block px-3 py-1 bg-health-500/20 backdrop-blur-md border border-health-400/30 text-white text-xs rounded-full mb-2 font-medium">جلسه ${session.id}</span>
-                            <h1 class="text-2xl md:text-3xl font-bold text-white shadow-sm">${session.title}</h1>
-                            <p class="text-health-50 mt-2 text-sm md:text-base max-w-2xl">${session.description}</p>
+                            <span class="inline-block px-3 py-1 bg-white/15 backdrop-blur-md border border-white/25 text-[#F4EFF5] text-xs rounded-full mb-2 font-semibold">جلسه ${session.id}</span>
+                            <h1 class="text-2xl md:text-3xl font-extrabold text-[#FAF8F6] shadow-sm">${session.title}</h1>
+                            <p class="text-[#E7DCED] mt-2 text-sm md:text-base max-w-2xl font-normal leading-relaxed">${session.description}</p>
                         </div>
                     </div>
                 </div>
@@ -3958,9 +4086,9 @@
             const buttonsHtml = tabs.map(tab => {
                 const isActive = state.activeTab === tab.id;
                 const activeClass = isActive 
-                    ? 'border-health-600 text-health-800 bg-health-50/50' 
-                    : 'border-transparent text-slate-500 hover:text-health-600 hover:bg-slate-50';
-                const iconClass = isActive ? "text-health-600" : "";
+                    ? 'border-[#4B2E83] text-[#35224F] font-bold bg-[#FAF6F8]' 
+                    : 'border-transparent text-slate-500 hover:text-[#4B2E83] hover:bg-[#F8F6F4]';
+                const iconClass = isActive ? "text-[#4B2E83]" : "text-slate-400";
 
                 return `
                     <button
@@ -3973,7 +4101,7 @@
                 `;
             }).join('');
 
-            return `<div class="flex border-b overflow-x-auto no-scrollbar">${buttonsHtml}</div>`;
+            return `<div class="flex border-b border-[rgba(75,46,131,0.10)] overflow-x-auto no-scrollbar">${buttonsHtml}</div>`;
         }
 
         function renderTabContent(session) {
@@ -3999,18 +4127,18 @@
                 <div class="my-8 p-5 bg-gradient-to-br from-slate-50 to-emerald-50/40 rounded-2xl border border-emerald-200/80 shadow-xs">
                     <div class="flex items-center justify-between gap-2 mb-3">
                         <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm shadow-2xs">
+                            <div class="w-8 h-8 rounded-lg bg-[#4B2E83] text-white flex items-center justify-center text-sm shadow-2xs">
                                 <i data-lucide="list-checks" class="w-4 h-4"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-800 text-sm">چک‌لیست خودارزیابی اهداف یادگیری جلسه ${session.id}</h4>
+                                <h4 class="font-bold text-[#27232A] text-sm">چک‌لیست خودارزیابی اهداف یادگیری جلسه ${session.id}</h4>
                                 <p class="text-[11px] text-slate-500">با کلیک روی هر مهارت، میزان تسلط خود را ارزیابی و ثبت کنید</p>
                             </div>
                         </div>
                         <div class="text-left">
-                            <span class="text-xs font-bold text-emerald-800">${checkedCount} از ${objectives.length}</span>
+                            <span class="text-xs font-bold text-[#4B2E83]">${checkedCount} از ${objectives.length}</span>
                             <div class="w-20 h-1.5 bg-slate-200 rounded-full overflow-hidden mt-1">
-                                <div class="h-full bg-emerald-600 transition-all duration-300" style="width: ${objectivesPct}%"></div>
+                                <div class="h-full bg-[#4B2E83] transition-all duration-300" style="width: ${objectivesPct}%"></div>
                             </div>
                         </div>
                     </div>
@@ -4022,12 +4150,12 @@
                             return `
                                 <div 
                                     onclick="app.toggleObjective('${objKey}')"
-                                    class="p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${isChecked ? 'bg-emerald-100/70 border-emerald-300 text-emerald-950' : 'bg-white border-slate-200 text-slate-700 hover:border-emerald-300'}"
+                                    class="p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${isChecked ? 'bg-[#F3ECF5] border-[#DABFCC] text-[#35224F]' : 'bg-white border-slate-200 text-slate-700 hover:border-[#7A5C9E]'}"
                                 >
-                                    <div class="mt-0.5 w-5 h-5 rounded-md flex items-center justify-center border transition-colors ${isChecked ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 bg-white'}">
+                                    <div class="mt-0.5 w-5 h-5 rounded-md flex items-center justify-center border transition-colors ${isChecked ? 'bg-[#4B2E83] border-[#4B2E83] text-white' : 'border-slate-300 bg-white'}">
                                         ${isChecked ? `<i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>` : ''}
                                     </div>
-                                    <div class="flex-1 text-xs sm:text-sm font-medium leading-relaxed ${isChecked ? 'line-through text-emerald-800/80' : ''}">
+                                    <div class="flex-1 text-xs sm:text-sm font-medium leading-relaxed ${isChecked ? 'line-through text-[#7A5C9E]' : ''}">
                                         ${obj}
                                     </div>
                                 </div>
@@ -4046,15 +4174,15 @@
                     <div class="mt-8 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
                         <button 
                             onclick="app.toggleCompleted(${session.id})"
-                            class="px-4 py-2 rounded-lg border text-xs font-semibold transition-colors flex items-center gap-2 ${isCompleted ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-white border-slate-200 text-slate-600 hover:border-emerald-300'}"
+                            class="px-4 py-2 rounded-xl border text-xs font-semibold transition-colors flex items-center gap-2 ${isCompleted ? 'bg-[#F3ECF5] border-[#DABFCC] text-[#4B2E83]' : 'bg-white border-slate-200 text-slate-600 hover:border-[#7A5C9E]'}"
                         >
-                            <i data-lucide="${isCompleted ? 'check-circle' : 'circle'}" class="w-4 h-4 ${isCompleted ? 'text-emerald-600' : 'text-slate-400'}"></i>
-                            <span>${isCompleted ? 'وضعیت: تکمیل شده' : 'نشانه‌گذاری به عنوان مطالعه‌شده'}</span>
+                            <i data-lucide="${isCompleted ? 'check-circle' : 'circle'}" class="w-4 h-4 ${isCompleted ? 'text-[#4B2E83]' : 'text-slate-400'}"></i>
+                            <span>${isCompleted ? 'وضعیت: مطالعه‌شده و تکمیل' : 'نشانه‌گذاری به عنوان مطالعه‌شده'}</span>
                         </button>
 
                         <button 
                             onclick="app.setTab('visual')"
-                            class="px-6 py-2 bg-health-600 hover:bg-health-700 text-white rounded-lg transition-all shadow-sm hover:shadow-md text-xs sm:text-sm font-semibold flex items-center gap-1.5"
+                            class="px-6 py-2 bg-[#4B2E83] hover:bg-[#3D256E] text-white rounded-xl transition-all shadow-sm hover:shadow-md text-xs sm:text-sm font-semibold flex items-center gap-1.5"
                         >
                             <span>مرحله بعد: تحلیل تصویری</span>
                             <i data-lucide="arrow-left" class="w-4 h-4"></i>
@@ -4067,18 +4195,18 @@
         function renderVisualTab(session) {
             return `
                 <div class="flex flex-col items-center justify-center space-y-6 animate-fade-in">
-                    <div class="bg-slate-100 p-2 rounded-xl w-full max-w-3xl shadow-inner relative group border border-slate-200/80">
+                    <div class="bg-slate-100 p-2 rounded-2xl w-full max-w-3xl shadow-inner relative group border border-[rgba(75,46,131,0.14)]">
                         <img 
                             src="${session.imageUrl || "https://picsum.photos/800/600"}" 
                             alt="Visual Analysis" 
                             onerror="if(this.src.indexOf('infodemic') !== -1 && this.src !== '/infodemic.jpg'){ this.src = '/infodemic.jpg'; } else if((this.src.indexOf('vr9klq') !== -1 || this.src.indexOf('stereotyping') !== -1) && this.src !== '/stereotyping.png'){ this.src = '/stereotyping.png'; } else if((this.src.indexOf('6n12rh') !== -1 || this.src.indexOf('media_diet') !== -1) && this.src !== '/media_diet.png'){ this.src = '/media_diet.png'; } else if(this.src.indexOf('cyber_fact_check') !== -1 && this.src !== '/cyber_fact_check.jpg'){ this.src = '/cyber_fact_check.jpg'; } else if((this.src.indexOf('t5mvqx') !== -1 || this.src.indexOf('spiral_of_silence') !== -1) && this.src !== '/spiral_of_silence.png'){ this.src = '/spiral_of_silence.png'; } else if((this.src.indexOf('aay975') !== -1 || this.src.indexOf('cyberchondria') !== -1) && this.src !== '/cyberchondria.png'){ this.src = '/cyberchondria.png'; } else if((this.src.indexOf('652fw7') !== -1 || this.src.indexOf('digital_footprint') !== -1) && this.src !== '/digital_footprint.png'){ this.src = '/digital_footprint.png'; } else if((this.src.indexOf('1sjfq7') !== -1 || this.src.indexOf('internet_addiction') !== -1) && this.src !== '/internet_addiction.png'){ this.src = '/internet_addiction.png'; }"
-                            class="w-full rounded-lg transition-all duration-1000 ease-in-out shadow-sm ${state.visualRevealed ? 'filter-none' : 'blur-md grayscale'}"
+                            class="w-full rounded-xl transition-all duration-1000 ease-in-out shadow-sm ${state.visualRevealed ? 'filter-none' : 'blur-md grayscale'}"
                         />
                         ${!state.visualRevealed ? `
-                            <div class="absolute inset-0 flex items-center justify-center z-10 bg-slate-900/10 rounded-lg">
+                            <div class="absolute inset-0 flex items-center justify-center z-10 bg-slate-900/10 rounded-xl">
                                 <button 
                                     onclick="app.revealVisual()"
-                                    class="px-6 py-3 bg-health-600 text-white rounded-full shadow-lg hover:bg-health-700 transform hover:scale-105 transition-all flex items-center gap-2 font-medium"
+                                    class="px-6 py-3 bg-[#4B2E83] text-[#FAF8F6] rounded-full shadow-lg hover:bg-[#3D256E] transform hover:scale-105 transition-all flex items-center gap-2 font-medium"
                                 >
                                     <i data-lucide="eye" class="w-5 h-5"></i>
                                     <span>کلیک برای نمایش و تحلیل تصویر</span>
@@ -4086,11 +4214,11 @@
                             </div>
                         ` : `
                             <div class="mt-2 pt-2 px-2 flex justify-between items-center text-xs text-slate-500">
-                                <span class="flex items-center gap-1.5 text-health-800 font-medium">
-                                    <i data-lucide="image" class="w-3.5 h-3.5 text-health-600"></i>
+                                <span class="flex items-center gap-1.5 text-[#35224F] font-semibold">
+                                    <i data-lucide="image" class="w-3.5 h-3.5 text-[#4B2E83]"></i>
                                     ${session.id === 1 ? 'تحلیل بصری زیست‌کره اطلاعات و اینفودمیک (Navigating the Infosphere)' : (session.id === 4 ? 'تحلیل بصری کلیشه‌سازی و بازنمایی در رسانه‌ها (Media Stereotyping)' : (session.id === 5 ? 'تحلیل بصری رژیم مصرف رسانه‌ای و بشقاب سلامت اطلاعات (Media Diet)' : (session.id === 6 ? 'تحلیل سایبری راستی‌آزمایی و مقابله با اخبار جعلی (Cyber Fact-Checking)' : (session.id === 8 ? 'تحلیل بصری مارپیچ سکوت در عملیات روانی (Spiral of Silence)' : (session.id === 9 ? 'تحلیل بصری سایبرکندریا و اضطراب سلامت دیجیتال (Cyberchondria)' : (session.id === 10 ? 'تحلیل بصری ردپای دیجیتال و اخلاق در شبکه (Digital Footprint)' : 'تصویر موضوعی تحلیل پیام'))))))}
                                 </span>
-                                <a href="${session.imageUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900 font-semibold hover:underline">
+                                <a href="${session.imageUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#4B2E83] hover:text-[#35224F] font-semibold hover:underline">
                                     <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
                                     مشاهده در اندازه کامل
                                 </a>
@@ -4099,17 +4227,17 @@
                     </div>
                     
                     ${state.visualRevealed ? `
-                        <div class="max-w-3xl bg-health-50 p-6 rounded-xl border border-health-100 animate-fade-in-up w-full">
-                            <h4 class="font-bold text-health-900 mb-2 flex items-center gap-2">
-                                <i data-lucide="brain-circuit" class="w-5 h-5 text-health-600"></i>
+                        <div class="max-w-3xl bg-[#FAF6F8] p-6 rounded-2xl border border-[rgba(75,46,131,0.16)] animate-fade-in-up w-full">
+                            <h4 class="font-bold text-[#35224F] mb-2 flex items-center gap-2">
+                                <i data-lucide="brain-circuit" class="w-5 h-5 text-[#4B2E83]"></i>
                                 پرسش تحلیلی:
                             </h4>
-                            <p class="text-health-800 leading-7">
+                            <p class="text-[#27232A] leading-7 font-serif">
                                 ${session.visualAnalysisPrompt || "به عناصر موجود در تصویر دقت کنید. چه پیامی به صورت پنهان منتقل می‌شود؟"}
                             </p>
                             <div class="mt-4">
                                 <textarea 
-                                    class="w-full p-3 border border-health-200 rounded-lg text-sm focus:ring-2 focus:ring-health-500 outline-none bg-white" 
+                                    class="w-full p-3 border border-[rgba(75,46,131,0.14)] rounded-xl text-sm focus:ring-2 focus:ring-[#7A5C9E]/25 focus:border-[#7A5C9E] outline-none bg-white" 
                                     placeholder="تحلیل خود را اینجا بنویسید..."
                                     rows="3"
                                 ></textarea>
@@ -4119,7 +4247,7 @@
                     <div class="w-full flex justify-end mt-4">
                         <button 
                             onclick="app.setTab('video')"
-                            class="px-6 py-2 bg-health-600 text-white rounded-lg hover:bg-health-700 transition-colors shadow-sm hover:shadow-md"
+                            class="px-6 py-2 bg-[#4B2E83] text-white rounded-xl hover:bg-[#3D256E] transition-colors shadow-sm hover:shadow-md font-semibold text-xs sm:text-sm"
                         >
                             مرحله بعد: ویدیو
                         </button>
@@ -4131,7 +4259,7 @@
         function renderVideoTab(session) {
             return `
                 <div class="flex flex-col items-center animate-fade-in">
-                    <div class="w-full max-w-3xl bg-slate-900 rounded-xl overflow-hidden shadow-lg mb-6">
+                    <div class="w-full max-w-3xl bg-slate-900 rounded-2xl overflow-hidden shadow-lg mb-6 border border-[rgba(75,46,131,0.14)]">
                         ${session.videoUrl ? `
                             <div class="aparat-container">
                                 <iframe 
@@ -4151,15 +4279,15 @@
                             </div>
                         `}
                     </div>
-                    <p class="text-slate-600 text-center max-w-2xl mb-8">
+                    <p class="text-slate-600 text-center max-w-2xl mb-8 font-serif leading-relaxed">
                         ویدیو را با دقت تماشا کنید. نکات کلیدی در آزمون پایانی مورد پرسش قرار می‌گیرند.
                     </p>
                     <div class="w-full flex justify-end">
                         <button 
                             onclick="app.setTab('interactive')"
-                            class="px-6 py-2 bg-health-600 text-white rounded-lg hover:bg-health-700 transition-colors shadow-sm hover:shadow-md"
+                            class="px-6 py-2.5 bg-[#4B2E83] text-white rounded-xl hover:bg-[#3D256E] transition-colors shadow-sm hover:shadow-md font-semibold text-xs sm:text-sm"
                         >
-                            مرحله بعد: بازی
+                            مرحله بعد: بازی و تعامل
                         </button>
                     </div>
                 </div>
@@ -4195,12 +4323,12 @@
             if (!session.factOrMyth || session.factOrMyth.length === 0) {
                 return `
                     <div class="animate-fade-in">
-                        <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl p-12 text-center text-slate-400">
-                            <i data-lucide="brain-circuit" class="w-12 h-12 mx-auto mb-4 opacity-50"></i>
+                        <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center text-slate-400">
+                            <i data-lucide="brain-circuit" class="w-12 h-12 mx-auto mb-4 opacity-50 text-[#7A5C9E]"></i>
                             <p>بازی تعاملی برای این جلسه در دسترس نیست.</p>
                         </div>
                         <div class="w-full flex justify-end mt-8">
-                            <button onclick="app.setTab('quiz')" class="px-6 py-2 bg-health-600 text-white rounded-lg hover:bg-health-700 transition-colors shadow-sm hover:shadow-md">
+                            <button onclick="app.setTab('quiz')" class="px-6 py-2.5 bg-[#4B2E83] text-white rounded-xl hover:bg-[#3D256E] transition-colors shadow-sm hover:shadow-md font-semibold text-xs sm:text-sm">
                                 مرحله بعد: آزمون
                             </button>
                         </div>
@@ -4213,19 +4341,19 @@
 
             if (finished) {
                 return `
-                    <div class="bg-gradient-to-br from-health-50 to-emerald-50 p-8 rounded-xl text-center border border-health-100 animate-fade-in">
-                        <h3 class="text-2xl font-bold text-health-900 mb-4">پایان بازی!</h3>
-                        <p class="text-lg text-health-700 mb-6">
-                            امتیاز شما: <span class="font-bold text-2xl">${score}</span> از ${items.length}
+                    <div class="bg-gradient-to-br from-[#FAF6F8] to-[#F3ECF5] p-8 rounded-2xl text-center border border-[rgba(75,46,131,0.16)] animate-fade-in">
+                        <h3 class="text-2xl font-bold text-[#35224F] mb-4">پایان بازی!</h3>
+                        <p class="text-lg text-slate-700 mb-6">
+                            امتیاز شما: <span class="font-bold text-2xl text-[#4B2E83]">${score}</span> از ${items.length}
                         </p>
                         <button 
                             onclick="app.resetGame()"
-                            class="px-6 py-2 bg-health-600 text-white rounded-lg hover:bg-health-700 transition shadow-lg shadow-health-200"
+                            class="px-6 py-2.5 bg-[#4B2E83] text-white rounded-xl hover:bg-[#3D256E] transition shadow-md font-semibold text-sm"
                         >
                             شروع مجدد
                         </button>
                         <div class="w-full flex justify-center mt-8">
-                            <button onclick="app.setTab('quiz')" class="px-6 py-2 bg-health-600 text-white rounded-lg hover:bg-health-700 transition-colors shadow-sm hover:shadow-md">
+                            <button onclick="app.setTab('quiz')" class="px-6 py-2.5 bg-[#35224F] text-white rounded-xl hover:bg-[#271738] transition-colors shadow-sm hover:shadow-md font-semibold text-xs sm:text-sm">
                                 مرحله بعد: آزمون
                             </button>
                         </div>
@@ -4239,24 +4367,24 @@
             return `
                 <div class="max-w-2xl mx-auto animate-fade-in">
                     <div class="mb-6 text-center">
-                        <h3 class="text-xl font-bold text-health-800 mb-2">چالش واقعیت یا شایعه</h3>
-                        <p class="text-slate-600">کارتهای زیر را بر اساس واقعیت یا شایعه بودن دسته‌بندی کنید.</p>
+                        <h3 class="text-xl font-bold text-[#35224F] mb-2 font-display">چالش واقعیت یا شایعه</h3>
+                        <p class="text-slate-600 text-sm">کارتهای زیر را بر اساس واقعیت یا شایعه بودن دسته‌بندی کنید.</p>
                     </div>
 
-                    <div class="relative bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden min-h-[300px] flex flex-col">
+                    <div class="relative bg-white rounded-2xl shadow-[0_4px_20px_rgba(48,32,61,0.04)] border border-[rgba(75,46,131,0.12)] overflow-hidden min-h-[300px] flex flex-col">
                         <!-- Progress Bar -->
                         <div class="h-2 bg-slate-100 w-full">
-                            <div class="h-full bg-health-500 transition-all duration-300" style="width: ${progress}%"></div>
+                            <div class="h-full bg-gradient-to-l from-[#7A5C9E] to-[#4B2E83] transition-all duration-300" style="width: ${progress}%"></div>
                         </div>
 
                         <div class="flex-1 p-8 flex flex-col items-center justify-center text-center animate-fade-in">
                             <div class="mb-6">
-                                <span class="bg-health-100 text-health-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <span class="bg-[#F3ECF5] text-[#4B2E83] border border-[rgba(75,46,131,0.12)] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                     سوال ${currentIndex + 1} از ${items.length}
                                 </span>
                             </div>
                             
-                            <h4 class="text-xl md:text-2xl font-bold text-slate-800 leading-normal mb-8">
+                            <h4 class="text-xl md:text-2xl font-bold text-[#27232A] leading-relaxed mb-8 font-display">
                                 ${currentItem.statement}
                             </h4>
 
@@ -4264,29 +4392,29 @@
                                 <div class="flex gap-4 w-full max-w-md justify-center">
                                     <button
                                         onclick="app.handleGameGuess(true)"
-                                        class="flex-1 py-4 px-6 bg-emerald-50 border-2 border-emerald-200 text-emerald-700 rounded-xl hover:bg-emerald-100 hover:border-emerald-300 transition flex flex-col items-center gap-2"
+                                        class="flex-1 py-4 px-6 bg-[#FAF6F8] border border-[rgba(75,46,131,0.16)] text-[#35224F] rounded-xl hover:bg-[#F3ECF5] hover:border-[#7A5C9E] transition flex flex-col items-center gap-2 font-bold"
                                     >
-                                        <i data-lucide="thumbs-up" class="w-6 h-6"></i>
-                                        <span class="font-bold">واقعیت است</span>
+                                        <i data-lucide="thumbs-up" class="w-6 h-6 text-[#4B2E83]"></i>
+                                        <span>واقعیت است</span>
                                     </button>
                                     <button
                                         onclick="app.handleGameGuess(false)"
-                                        class="flex-1 py-4 px-6 bg-rose-50 border-2 border-rose-200 text-rose-700 rounded-xl hover:bg-rose-100 hover:border-rose-300 transition flex flex-col items-center gap-2"
+                                        class="flex-1 py-4 px-6 bg-[#FAF8F6] border border-[#B88E9E]/30 text-[#8C4351] rounded-xl hover:bg-[#FBECEF] hover:border-[#B88E9E] transition flex flex-col items-center gap-2 font-bold"
                                     >
-                                        <i data-lucide="thumbs-down" class="w-6 h-6"></i>
-                                        <span class="font-bold">شایعه است</span>
+                                        <i data-lucide="thumbs-down" class="w-6 h-6 text-[#B88E9E]"></i>
+                                        <span>شایعه است</span>
                                     </button>
                                 </div>
                             ` : `
-                                <div class="w-full p-4 rounded-xl border ${feedback === 'correct' ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'} animate-fade-in-up">
+                                <div class="w-full p-4 rounded-xl border ${feedback === 'correct' ? 'bg-[#F4F8F5] border-emerald-300' : 'bg-[#FDF2F4] border-rose-300'} animate-fade-in-up">
                                     <div class="flex items-center justify-center gap-2 mb-2 font-bold text-lg">
                                         ${feedback === 'correct' ? `
-                                            <span class="text-green-600 flex items-center gap-2"><i data-lucide="check"></i> صحیح!</span>
+                                            <span class="text-emerald-700 flex items-center gap-2"><i data-lucide="check"></i> صحیح!</span>
                                         ` : `
-                                            <span class="text-red-600 flex items-center gap-2"><i data-lucide="x"></i> اشتباه!</span>
+                                            <span class="text-rose-700 flex items-center gap-2"><i data-lucide="x"></i> اشتباه!</span>
                                         `}
                                     </div>
-                                    <p class="text-slate-700 text-sm">${currentItem.explanation}</p>
+                                    <p class="text-slate-700 text-sm font-serif leading-relaxed">${currentItem.explanation}</p>
                                     <div class="mt-4 text-xs text-slate-400">سوال بعدی در حال بارگذاری...</div>
                                 </div>
                             `}
@@ -4303,7 +4431,7 @@
 
             if (!questions || questions.length === 0) {
                 return `
-                    <div class="text-center p-8 text-slate-500 bg-slate-50 rounded-lg animate-fade-in">
+                    <div class="text-center p-8 text-slate-500 bg-slate-50 rounded-2xl animate-fade-in border border-slate-200">
                         آزمونی برای این جلسه تعریف نشده است.
                     </div>
                 `;
@@ -4311,24 +4439,24 @@
 
             const questionsHtml = questions.map((q, qIdx) => {
                 const optionsHtml = q.options.map((opt, oIdx) => {
-                    let btnClass = "w-full text-right p-4 rounded-lg border-2 transition-all flex items-center justify-between ";
+                    let btnClass = "w-full text-right p-4 rounded-xl border-2 transition-all flex items-center justify-between ";
                     let iconHtml = '';
 
                     if (submitted) {
                         if (oIdx === q.correctIndex) {
-                            btnClass += "bg-green-100 border-green-500 text-green-900";
-                            iconHtml = `<i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>`;
+                            btnClass += "bg-[#F4F8F5] border-emerald-500 text-emerald-950 font-semibold";
+                            iconHtml = `<i data-lucide="check-circle" class="w-5 h-5 text-emerald-600"></i>`;
                         } else if (userAnswers[qIdx] === oIdx && oIdx !== q.correctIndex) {
-                            btnClass += "bg-red-50 border-red-300 text-red-900";
-                            iconHtml = `<i data-lucide="alert-circle" class="w-5 h-5 text-red-600"></i>`;
+                            btnClass += "bg-[#FDF2F4] border-rose-300 text-rose-950 font-semibold";
+                            iconHtml = `<i data-lucide="alert-circle" class="w-5 h-5 text-rose-600"></i>`;
                         } else {
                             btnClass += "bg-slate-50 border-transparent text-slate-400 opacity-50";
                         }
                     } else {
                         if (userAnswers[qIdx] === oIdx) {
-                            btnClass += "bg-health-50 border-health-500 text-health-900";
+                            btnClass += "bg-[#FAF6F8] border-[#4B2E83] text-[#35224F] font-semibold";
                         } else {
-                            btnClass += "bg-white border-slate-200 hover:bg-slate-50 text-slate-700";
+                            btnClass += "bg-white border-slate-200 hover:bg-[#FAF8F6] hover:border-[#7A5C9E] text-slate-700";
                         }
                     }
 
@@ -4345,15 +4473,15 @@
                 }).join('');
 
                 return `
-                    <div class="bg-white border rounded-xl p-6 shadow-sm">
-                        <h4 class="font-bold text-lg mb-4 flex gap-2">
-                            <span class="text-health-500">${qIdx + 1}.</span> ${q.text}
+                    <div class="bg-white border border-[rgba(75,46,131,0.12)] rounded-2xl p-6 shadow-xs">
+                        <h4 class="font-bold text-base md:text-lg mb-4 flex gap-2 font-display text-[#27232A]">
+                            <span class="text-[#4B2E83] font-bold">${qIdx + 1}.</span> ${q.text}
                         </h4>
                         <div class="space-y-3">
                             ${optionsHtml}
                         </div>
                         ${submitted ? `
-                            <div class="mt-4 p-4 bg-blue-50 text-blue-800 rounded-lg text-sm leading-6">
+                            <div class="mt-4 p-4 bg-[#F3EDF6] text-[#35224F] border border-[rgba(75,46,131,0.14)] rounded-xl text-sm leading-6 font-serif">
                                 <strong>توضیح:</strong> ${q.explanation}
                             </div>
                         ` : ''}
@@ -4364,7 +4492,7 @@
             return `
                 <div class="space-y-8 max-w-3xl mx-auto animate-fade-in">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-health-900">آزمون ارزشیابی</h3>
+                        <h3 class="text-xl font-bold text-[#35224F] font-display">آزمون ارزشیابی و سنجش درک</h3>
                         ${!submitted ? `
                             <span class="text-sm text-slate-500">${userAnswers.filter(a => a !== -1).length} از ${questions.length} پاسخ داده شده</span>
                         ` : ''}
@@ -4376,14 +4504,14 @@
                         ${!submitted ? `
                             <button 
                                 onclick="app.submitQuiz()"
-                                class="px-8 py-3 bg-health-700 text-white font-bold rounded-lg shadow hover:bg-health-800 transition-colors flex items-center gap-2"
+                                class="px-8 py-3 bg-[#4B2E83] text-white font-bold rounded-xl shadow-xs hover:bg-[#3D256E] transition-colors flex items-center gap-2"
                             >
                                 ثبت پاسخ‌ها
                             </button>
                         ` : `
                             <button 
                                 onclick="app.resetQuiz()"
-                                class="px-8 py-3 bg-slate-600 text-white font-bold rounded-lg shadow hover:bg-slate-700 transition-colors flex items-center gap-2"
+                                class="px-8 py-3 bg-slate-700 text-white font-bold rounded-xl shadow hover:bg-slate-800 transition-colors flex items-center gap-2"
                             >
                                 <i data-lucide="arrow-left" class="w-[18px] h-[18px]"></i>
                                 آزمون مجدد
@@ -4392,12 +4520,12 @@
                     </div>
 
                     ${isCompleted ? `
-                        <div class="mt-8 bg-green-50 border border-green-200 rounded-xl p-6 text-center animate-fade-in-up">
-                            <div class="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full text-green-600 mb-3">
+                        <div class="mt-8 bg-[#F4F8F5] border border-emerald-200 rounded-2xl p-6 text-center animate-fade-in-up">
+                            <div class="inline-flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-full text-emerald-700 mb-3">
                                 <i data-lucide="check-square" class="w-6 h-6"></i>
                             </div>
-                            <h4 class="text-green-800 font-bold text-lg mb-1">جلسه تکمیل شد!</h4>
-                            <p class="text-green-700 text-sm">شما این جلسه را با موفقیت گذراندید.</p>
+                            <h4 class="text-emerald-900 font-bold text-lg mb-1 font-display">جلسه تکمیل شد!</h4>
+                            <p class="text-emerald-800 text-sm">شما این جلسه را با موفقیت گذراندید و امتیاز آن ثبت گردید.</p>
                         </div>
                     ` : ''}
                 </div>
@@ -4406,24 +4534,23 @@
 
         function renderSessionSummaryCard(session) {
             // Extract key takeaways from content (simplified for this example)
-            // In a real app, this might be a separate field in the session object
             const summaryMatch = session.content.match(/<strong class="text-health-900 block mb-2 text-lg">خلاصه (جلسه|مدیریتی)<\/strong>\s*<p.*?>(.*?)<\/p>/s);
             const summaryText = summaryMatch ? summaryMatch[1] : session.description;
 
             return `
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                <div class="bg-white p-6 rounded-2xl shadow-xs border border-[rgba(75,46,131,0.12)] hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-health-50 flex items-center justify-center text-health-600 font-bold text-sm">
+                        <div class="w-10 h-10 rounded-full bg-[#F3ECF5] text-[#4B2E83] border border-[rgba(75,46,131,0.10)] flex items-center justify-center font-bold text-sm">
                             ${session.id}
                         </div>
-                        <h3 class="font-bold text-slate-800 text-lg line-clamp-1" title="${session.title}">${session.title}</h3>
+                        <h3 class="font-bold text-[#27232A] text-lg line-clamp-1 font-display" title="${session.title}">${session.title}</h3>
                     </div>
-                    <p class="text-slate-600 text-sm leading-relaxed flex-grow mb-4 line-clamp-4">
+                    <p class="text-slate-600 text-sm leading-relaxed flex-grow mb-4 line-clamp-4 font-serif">
                         ${summaryText.replace(/<[^>]*>/g, '')}
                     </p>
                     <button 
                         onclick="app.selectSession(${session.id})"
-                        class="text-health-600 text-sm font-medium hover:text-health-700 flex items-center gap-1 mt-auto self-end"
+                        class="text-[#4B2E83] text-sm font-semibold hover:text-[#35224F] flex items-center gap-1 mt-auto self-end"
                     >
                         مشاهده کامل
                         <i data-lucide="arrow-left" class="w-4 h-4"></i>
@@ -4434,7 +4561,7 @@
 
         function renderSiteFooter() {
             return `
-                <footer class="mt-12 rounded-3xl bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white p-8 md:p-10 shadow-xl border border-emerald-800/40 relative overflow-hidden animate-fade-in">
+                <footer class="mt-12 rounded-3xl bg-gradient-to-br from-[#271738] via-[#35224F] to-[#1F1826] text-white p-8 md:p-10 shadow-2xl border border-[rgba(216,198,190,0.15)] relative overflow-hidden animate-fade-in">
                     <!-- Subtle Background University Watermark -->
                     <div class="absolute -left-12 -bottom-12 opacity-5 pointer-events-none">
                         <img src="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" alt="Tarbiat Modares Watermark" class="w-80 h-80 object-contain grayscale" />
@@ -4444,55 +4571,55 @@
                         <!-- Column 1: Academic & University Branding (5 cols) -->
                         <div class="lg:col-span-5 space-y-4 text-right">
                             <div class="flex items-center gap-3.5">
-                                <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="مشاهده آرم دانشگاه تربیت مدرس" class="group block p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 hover:border-emerald-400/60 hover:bg-white/15 transition-all shadow-md flex-shrink-0">
+                                <a href="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" target="_blank" rel="noopener noreferrer" title="مشاهده آرم دانشگاه تربیت مدرس" class="group block p-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 hover:border-[#DABFCC] hover:bg-white/15 transition-all shadow-md flex-shrink-0">
                                     <img src="https://uploadkon.ir/uploads/fd5002_26Tarbiat-Modares-University-Logo-450x450.png" alt="آرم رسمی دانشگاه تربیت مدرس" class="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy" referrerpolicy="no-referrer" />
                                 </a>
                                 <div>
-                                    <h4 class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2">
+                                    <h4 class="text-lg font-extrabold text-white tracking-tight flex items-center gap-2 font-display">
                                         <span>سواد سلامت رسانه‌ای</span>
-                                        <span class="text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-400/30">MHL</span>
+                                        <span class="text-[10px] font-semibold bg-white/15 text-[#E7DCED] px-2 py-0.5 rounded-full border border-white/20">MHL</span>
                                     </h4>
-                                    <p class="text-xs text-emerald-200/90 font-medium mt-0.5">دانشگاه تربیت مدرس • دانشکده علوم پزشکی</p>
+                                    <p class="text-xs text-[#DABFCC] font-medium mt-0.5">دانشگاه تربیت مدرس • دانشکده علوم پزشکی</p>
                                 </div>
                             </div>
-                            <p class="text-xs text-slate-300/90 leading-relaxed max-w-md">
+                            <p class="text-xs text-[#FAF8F6]/80 leading-relaxed max-w-md font-serif">
                                 سامانه تعاملی و پیشرفت تحصیلی سواد سلامت رسانه‌ای؛ گامی در جهت توانمندسازی دانشجویان و جامعه در تحلیل نقادانه پیام‌ها، مهار اینفودمیک و تدوین رژیم مصرف دیجیتال.
                             </p>
                         </div>
 
                         <!-- Column 2: Teacher Profile & Info (4 cols) -->
                         <div class="lg:col-span-4 bg-white/5 backdrop-blur-md p-5 rounded-2xl border border-white/10 space-y-3">
-                            <div class="flex items-center gap-2.5 text-emerald-300 text-xs font-bold">
-                                <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i>
+                            <div class="flex items-center gap-2.5 text-[#E7DCED] text-xs font-bold">
+                                <i data-lucide="award" class="w-4 h-4 text-[#DABFCC]"></i>
                                 <span>مدرس دوره و صاحب اثر:</span>
                             </div>
                             <div>
-                                <h5 class="text-base font-extrabold text-white">دکتر فاطمه زارعی</h5>
-                                <p class="text-xs text-emerald-100/80 mt-0.5">دانشیار دانشگاه تربیت مدرس</p>
-                                <p class="text-[11px] text-slate-300 mt-1">گروه آموزش بهداشت و ارتقای سلامت، دانشکده علوم پزشکی</p>
+                                <h5 class="text-base font-extrabold text-white font-display">دکتر فاطمه زارعی</h5>
+                                <p class="text-xs text-[#FAF8F6]/80 mt-0.5">دانشیار دانشگاه تربیت مدرس</p>
+                                <p class="text-[11px] text-[#FAF8F6]/60 mt-1">گروه آموزش بهداشت و ارتقای سلامت، دانشکده علوم پزشکی</p>
                             </div>
                         </div>
 
                         <!-- Column 3: Direct Contact Links & Social (3 cols) -->
                         <div class="lg:col-span-3 space-y-2.5">
-                            <div class="text-xs font-bold text-emerald-300 mb-2 flex items-center gap-1.5">
+                            <div class="text-xs font-bold text-[#E7DCED] mb-2 flex items-center gap-1.5">
                                 <i data-lucide="send" class="w-3.5 h-3.5"></i>
                                 <span>پل‌های ارتباطی مستقیم:</span>
                             </div>
-                            <a href="mailto:f.zarei@modares.ac.ir" class="flex items-center gap-2.5 text-xs text-slate-200 hover:text-white bg-white/10 hover:bg-emerald-600/40 p-2.5 rounded-xl border border-white/10 transition-all group" dir="ltr">
-                                <div class="w-6 h-6 rounded-lg bg-emerald-500/20 group-hover:bg-emerald-500/40 flex items-center justify-center text-emerald-300 flex-shrink-0 transition-colors">
+                            <a href="mailto:f.zarei@modares.ac.ir" class="flex items-center gap-2.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-[#4B2E83]/60 p-2.5 rounded-xl border border-white/10 transition-all group" dir="ltr">
+                                <div class="w-6 h-6 rounded-lg bg-white/15 group-hover:bg-white/25 flex items-center justify-center text-[#E7DCED] flex-shrink-0 transition-colors">
                                     <i data-lucide="mail" class="w-3.5 h-3.5"></i>
                                 </div>
                                 <span class="font-mono text-[11px] truncate">f.zarei@modares.ac.ir</span>
                             </a>
-                            <a href="mailto:healcono@gmail.com" class="flex items-center gap-2.5 text-xs text-slate-200 hover:text-white bg-white/10 hover:bg-emerald-600/40 p-2.5 rounded-xl border border-white/10 transition-all group" dir="ltr">
-                                <div class="w-6 h-6 rounded-lg bg-emerald-500/20 group-hover:bg-emerald-500/40 flex items-center justify-center text-emerald-300 flex-shrink-0 transition-colors">
+                            <a href="mailto:healcono@gmail.com" class="flex items-center gap-2.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-[#4B2E83]/60 p-2.5 rounded-xl border border-white/10 transition-all group" dir="ltr">
+                                <div class="w-6 h-6 rounded-lg bg-white/15 group-hover:bg-white/25 flex items-center justify-center text-[#E7DCED] flex-shrink-0 transition-colors">
                                     <i data-lucide="at-sign" class="w-3.5 h-3.5"></i>
                                 </div>
                                 <span class="font-mono text-[11px] truncate">healcono@gmail.com</span>
                             </a>
-                            <a href="https://instagram.com/healthcono" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-xs text-slate-200 hover:text-white bg-white/10 hover:bg-emerald-600/40 p-2.5 rounded-xl border border-white/10 transition-all group" dir="ltr">
-                                <div class="w-6 h-6 rounded-lg bg-emerald-500/20 group-hover:bg-emerald-500/40 flex items-center justify-center text-emerald-300 flex-shrink-0 transition-colors">
+                            <a href="https://instagram.com/healthcono" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-xs text-white/90 hover:text-white bg-white/10 hover:bg-[#4B2E83]/60 p-2.5 rounded-xl border border-white/10 transition-all group" dir="ltr">
+                                <div class="w-6 h-6 rounded-lg bg-white/15 group-hover:bg-white/25 flex items-center justify-center text-[#E7DCED] flex-shrink-0 transition-colors">
                                     <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
                                 </div>
                                 <span class="font-mono text-[11px] font-semibold truncate">@healthcono</span>
@@ -4501,14 +4628,14 @@
                     </div>
 
                     <!-- Bottom Copyright Bar -->
-                    <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+                    <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#FAF8F6]/60">
                         <div class="flex items-center gap-2">
-                            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                            <i data-lucide="shield-check" class="w-4 h-4 text-[#DABFCC]"></i>
                             <span>ارائه‌شده توسط دکتر فاطمه زارعی • تمام حقوق علمی و محتوایی محفوظ است.</span>
                         </div>
                         <button 
                             onclick="document.getElementById('main-content').scrollTo({top: 0, behavior: 'smooth'})"
-                            class="inline-flex items-center gap-1.5 text-emerald-300 hover:text-emerald-100 hover:underline cursor-pointer"
+                            class="inline-flex items-center gap-1.5 text-[#DABFCC] hover:text-white hover:underline cursor-pointer"
                         >
                             <span>بازگشت به ابتدای صفحه</span>
                             <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
@@ -4523,22 +4650,22 @@
             const selectedInfo = state.selectedInfographicIndex !== null ? infographics[state.selectedInfographicIndex] : null;
 
             return `
-                <main id="main-content" class="flex-1 w-full lg:w-auto pt-16 lg:pt-0 overflow-y-auto h-screen scroll-smooth no-scrollbar relative bg-slate-50/50">
+                <main id="main-content" class="flex-1 w-full lg:w-auto pt-16 lg:pt-0 overflow-y-auto h-screen scroll-smooth no-scrollbar relative bg-[#F1EFEC]/60">
                     <div class="max-w-6xl mx-auto p-4 md:p-8 pb-32">
                         
                         <!-- Top Banner -->
-                        <div class="mb-8 bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white p-6 md:p-8 rounded-3xl shadow-xl border border-emerald-800/40 relative overflow-hidden animate-fade-in">
+                        <div class="mb-8 bg-gradient-to-r from-[#271738] via-[#35224F] to-[#1F1826] text-white p-6 md:p-8 rounded-3xl shadow-xl border border-[rgba(216,198,190,0.15)] relative overflow-hidden animate-fade-in">
                             <div class="absolute -left-10 -bottom-10 opacity-10 pointer-events-none">
-                                <i data-lucide="gallery-vertical-end" class="w-64 h-64 text-emerald-400"></i>
+                                <i data-lucide="gallery-vertical-end" class="w-64 h-64 text-[#DABFCC]"></i>
                             </div>
                             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                                 <div class="space-y-2">
-                                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-400/30">
-                                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#E7DCED] text-xs font-bold border border-white/15">
+                                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#DABFCC]"></i>
                                         <span>مجموعه بصری و اینفوگرافیک‌های تحلیلی</span>
                                     </div>
-                                    <h2 class="text-2xl md:text-3xl font-black text-white">تالار نگاره‌ها و اینفوگرافیک‌های سواد سلامت</h2>
-                                    <p class="text-xs md:text-sm text-emerald-100/90 max-w-2xl leading-relaxed">
+                                    <h2 class="text-2xl md:text-3xl font-black text-white font-display">تالار نگاره‌ها و اینفوگرافیک‌های سواد سلامت</h2>
+                                    <p class="text-xs md:text-sm text-[#FAF8F6]/85 max-w-2xl leading-relaxed font-serif">
                                         ۵ اثر تصویری با کیفیت بالا و تحلیلی برای تثبیت مفاهیم راهبردی سواد سلامت، مهار اینفودمیک و تکنیک‌های راستی‌آزمایی علمی، تدوین‌شده توسط دکتر فاطمه زارعی.
                                     </p>
                                 </div>
@@ -4558,7 +4685,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
                             ${infographics.map((item, idx) => {
                                 return `
-                                    <div class="group bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1">
+                                    <div class="group bg-[#FAF8F6] rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1">
                                         <!-- Card Image Preview -->
                                         <div class="relative aspect-4/3 bg-slate-100 overflow-hidden cursor-pointer" onclick="app.openInfographicModal(${idx})">
                                             <img 
@@ -4569,7 +4696,7 @@
                                                 class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                             />
                                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600/90 text-white text-xs font-bold rounded-lg backdrop-blur-xs">
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4B2E83]/90 text-white text-xs font-bold rounded-lg backdrop-blur-xs">
                                                     <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
                                                     مشاهده تمام‌صفحه و زوم
                                                 </span>
@@ -4577,7 +4704,7 @@
                                             <span class="absolute top-3 right-3 px-2.5 py-1 bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-extrabold rounded-lg shadow-xs">
                                                 شماره ${item.number}
                                             </span>
-                                            <span class="absolute top-3 left-3 px-2 py-0.5 bg-emerald-600 text-white text-[10px] font-bold rounded-md shadow-xs">
+                                            <span class="absolute top-3 left-3 px-2 py-0.5 bg-[#4B2E83] text-white text-[10px] font-bold rounded-md shadow-xs">
                                                 ${item.badge}
                                             </span>
                                         </div>
@@ -4585,34 +4712,34 @@
                                         <!-- Card Body -->
                                         <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
                                             <div>
-                                                <div class="text-[11px] font-bold text-emerald-700 mb-1 flex items-center gap-1.5">
-                                                    <i data-lucide="tag" class="w-3 h-3"></i>
+                                                <div class="text-[11px] font-bold text-[#4B2E83] mb-1 flex items-center gap-1.5">
+                                                    <i data-lucide="tag" class="w-3 h-3 text-[#7A5C9E]"></i>
                                                     <span>${item.topic}</span>
                                                 </div>
-                                                <h3 class="font-extrabold text-slate-800 text-base leading-snug group-hover:text-emerald-700 transition-colors">
+                                                <h3 class="font-extrabold text-[#27232A] text-base leading-snug group-hover:text-[#4B2E83] transition-colors font-display">
                                                     ${item.title}
                                                 </h3>
-                                                <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                                                <p class="text-xs text-slate-500 mt-1.5 leading-relaxed font-serif">
                                                     ${item.subtitle}
                                                 </p>
                                             </div>
 
                                             <!-- Key Bullet Points Preview -->
-                                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1.5">
-                                                <span class="text-[10px] font-bold text-slate-400 block mb-1">محورهای کلیدی این اینفوگرافیک:</span>
+                                            <div class="bg-white/70 p-3 rounded-xl border border-[rgba(75,46,131,0.08)] space-y-1.5 font-serif">
+                                                <span class="text-[10px] font-bold text-slate-400 block mb-1 font-sans">محورهای کلیدی این اینفوگرافیک:</span>
                                                 ${item.points.slice(0, 3).map(pt => `
                                                     <div class="flex items-start gap-1.5 text-[11px] text-slate-600 leading-snug">
-                                                        <i data-lucide="check" class="w-3 h-3 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                                                        <i data-lucide="check" class="w-3 h-3 text-[#4B2E83] mt-0.5 flex-shrink-0"></i>
                                                         <span class="truncate">${pt}</span>
                                                     </div>
                                                 `).join('')}
                                             </div>
 
                                             <!-- Card Actions -->
-                                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                                            <div class="pt-2 border-t border-[rgba(75,46,131,0.10)] flex items-center justify-between gap-2">
                                                 <button 
                                                     onclick="app.openInfographicModal(${idx})" 
-                                                    class="flex-1 py-2 px-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center justify-center gap-1.5 shadow-2xs"
+                                                    class="flex-1 py-2 px-3 bg-[#4B2E83] hover:bg-[#3D256E] text-white text-xs font-bold rounded-xl transition-colors inline-flex items-center justify-center gap-1.5 shadow-2xs"
                                                 >
                                                     <i data-lucide="eye" class="w-3.5 h-3.5"></i>
                                                     <span>نمایش جزئیات و تحلیل</span>
@@ -4623,7 +4750,7 @@
                                                     rel="noopener noreferrer" 
                                                     download 
                                                     title="دانلود مستقیم تصویر اصلی"
-                                                    class="p-2 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 rounded-xl transition-all"
+                                                    class="p-2 border border-slate-200 hover:border-[#7A5C9E] hover:bg-[#FAF6F8] text-slate-600 hover:text-[#4B2E83] rounded-xl transition-all"
                                                 >
                                                     <i data-lucide="download" class="w-4 h-4"></i>
                                                 </a>
@@ -4654,12 +4781,12 @@
                     <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-5xl max-h-[95vh] flex flex-col overflow-hidden relative" onclick="event.stopPropagation()">
                         
                         <!-- Modal Header Toolbar -->
-                        <div class="px-5 py-3.5 bg-slate-900 text-white flex items-center justify-between gap-3 border-b border-slate-800 flex-shrink-0">
+                        <div class="px-5 py-3.5 bg-[#271738] text-white flex items-center justify-between gap-3 border-b border-white/10 flex-shrink-0">
                             <div class="flex items-center gap-3 min-w-0">
-                                <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-xs font-bold">
+                                <span class="px-2 py-0.5 rounded-md bg-[#4B2E83] text-white text-xs font-bold border border-white/10">
                                     نگاره ${item.number} از ${total}
                                 </span>
-                                <h3 class="text-sm font-bold text-slate-100 truncate">${item.title}</h3>
+                                <h3 class="text-sm font-bold text-slate-100 truncate font-display">${item.title}</h3>
                             </div>
 
                             <div class="flex items-center gap-1.5 flex-shrink-0">
@@ -4668,7 +4795,7 @@
                                     <button onclick="app.zoomInfographic(-0.25)" title="کوچک‌نمایی (-)" class="p-1.5 text-slate-300 hover:text-white rounded transition-colors">
                                         <i data-lucide="zoom-out" class="w-4 h-4"></i>
                                     </button>
-                                    <button onclick="app.resetInfographicZoom()" title="اندازه واقعی (0)" class="px-2 py-0.5 text-xs font-mono text-emerald-400 hover:text-emerald-300">
+                                    <button onclick="app.resetInfographicZoom()" title="اندازه واقعی (0)" class="px-2 py-0.5 text-xs font-mono text-[#DABFCC] hover:text-white">
                                         ${Math.round(zoom * 100)}%
                                     </button>
                                     <button onclick="app.zoomInfographic(0.25)" title="بزرگ‌نمایی (+)" class="p-1.5 text-slate-300 hover:text-white rounded transition-colors">
@@ -4723,17 +4850,17 @@
                         <div class="p-4 md:p-5 bg-white border-t border-slate-200 flex-shrink-0">
                             <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
                                 <div>
-                                    <h4 class="font-extrabold text-slate-900 text-sm md:text-base">${item.title}</h4>
-                                    <p class="text-xs text-slate-500 mt-0.5">${item.subtitle}</p>
+                                    <h4 class="font-extrabold text-[#27232A] text-sm md:text-base font-display">${item.title}</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5 font-serif">${item.subtitle}</p>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-[11px] text-slate-400 hidden sm:inline">کلیدهای میانبر: Esc برای خروج • ← → برای پیمایش</span>
+                                    <span class="text-[11px] text-slate-400 hidden sm:inline font-sans">کلیدهای میانبر: Esc برای خروج • ← → برای پیمایش</span>
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                                 ${item.points.map(pt => `
-                                    <div class="flex items-start gap-1.5 text-xs text-slate-700 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                                    <div class="flex items-start gap-1.5 text-xs text-slate-700 bg-[#FAF8F6] p-2 rounded-lg border border-[rgba(75,46,131,0.08)] font-serif">
+                                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#4B2E83] mt-0.5 flex-shrink-0"></i>
                                         <span class="leading-snug">${pt}</span>
                                     </div>
                                 `).join('')}
@@ -4749,14 +4876,14 @@
             return `
                 <div class="mt-8">
                     <!-- Session 10 Specific Completion Banner -->
-                    <div class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white p-8 text-center rounded-2xl shadow-lg border border-emerald-700/50 relative overflow-hidden">
+                    <div class="bg-gradient-to-r from-[#271738] via-[#35224F] to-[#4B2E83] text-white p-8 text-center rounded-2xl shadow-lg border border-[rgba(216,198,190,0.20)] relative overflow-hidden">
                         <div class="relative z-10 max-w-xl mx-auto">
                             <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-3 border border-white/20">
-                                <i data-lucide="graduation-cap" class="w-7 h-7 text-emerald-300"></i>
+                                <i data-lucide="graduation-cap" class="w-7 h-7 text-[#DABFCC]"></i>
                             </div>
-                            <h3 class="text-2xl font-black mb-2">تبریک! دوره سواد سلامت رسانه‌ای تکمیل شد</h3>
-                            <p class="text-xs text-emerald-100 leading-relaxed mb-4">شما ۱۰ جلسه جامع آموزش سواد سلامت رسانه‌ای را پشت سر گذاشتید و اکنون به عنوان سفیر سلامت و ناوبَر آگاه زیست‌کره دیجیتال شناخته می‌شوید.</p>
-                            <button onclick="app.selectSession(1)" class="px-5 py-2 bg-white text-emerald-950 font-bold rounded-xl text-xs hover:bg-emerald-50 transition-colors shadow-sm">مرور دوره از جلسه اول</button>
+                            <h3 class="text-2xl font-black mb-2 font-display">تبریک! دوره سواد سلامت رسانه‌ای تکمیل شد</h3>
+                            <p class="text-xs text-[#FAF8F6]/85 leading-relaxed mb-4 font-serif">شما ۱۰ جلسه جامع آموزش سواد سلامت رسانه‌ای را پشت سر گذاشتید و اکنون به عنوان سفیر سلامت و ناوبَر آگاه زیست‌کره دیجیتال شناخته می‌شوید.</p>
+                            <button onclick="app.selectSession(1)" class="px-5 py-2 bg-white text-[#27232A] font-bold rounded-xl text-xs hover:bg-[#FAF8F6] transition-colors shadow-sm">مرور دوره از جلسه اول</button>
                         </div>
                     </div>
                 </div>
