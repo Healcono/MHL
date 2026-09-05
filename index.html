@@ -402,6 +402,21 @@
             transition: all 200ms ease;
         }
 
+        /* 3D Flip Card Styles for Health Literacy Flashcards */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
         /* Print and PDF Export Styles */
         @media print {
             body {
@@ -1947,11 +1962,306 @@
             }
         ];
 
+        // --- HEALTH LITERACY FLASHCARDS DATA ---
+        const flashcardsData = [
+            {
+                id: 1,
+                term: "اینفودمیک",
+                enTerm: "Infodemic",
+                category: "مفاهیم پایه",
+                definition: "طغیان و همه‌گیری حجم عظیمی از اطلاعات درست و نادرست هم‌زمان با یک بحران بهداشتی که یافتن راهنمای معتبر و تصمیم‌گیری درست را برای جامعه دشوار می‌سازد.",
+                example: "انتشار هزاران شایعه و نسخه دارویی جعلی در پیام‌رسان‌ها در روزهای اول شیوع کرونا.",
+                tip: "در بحران‌ها تنها به اطلاعیه‌های رسمی وزارت بهداشت و سازمان جهانی بهداشت (WHO) استناد کنید."
+            },
+            {
+                id: 2,
+                term: "کج‌خبری",
+                enTerm: "Malinformation",
+                category: "آسیب‌شناسی اطلاعات",
+                definition: "اطلاعاتی که بر پایه واقعیت هستند اما برای تخریب، آسیب‌زدن یا منفعت‌طلبی شخصی و سیاسی، خارج از بافت اصلی تقطیع و منتشر می‌شوند.",
+                example: "انتشار پرونده پزشکی محرمانه یک بیمار یا تقطیع صحبت‌های یک پزشک برای ضربه زدن به اعتماد عمومی.",
+                tip: "همیشه بستر، تاریخ و نیت گوینده پیام را بسنجید و به محتوای بریده‌شده اعتماد نکنید."
+            },
+            {
+                id: 3,
+                term: "بدخبری",
+                enTerm: "Disinformation",
+                category: "آسیب‌شناسی اطلاعات",
+                definition: "اطلاعات کاملاً ساختگی، دروغین و تعمداً تحریف‌شده که با قصد قبلی برای فریب جامعه، کسب ثروت یا ایجاد هرج‌ومرج تولید می‌شود.",
+                example: "ساخت سایت جعلی با لوگوی وزارت بهداشت برای فروش داروی غیرمجاز دیابت.",
+                tip: "به دامنه وب‌سایت‌ها، نشان‌های رسمی و اخبار بدون پیوند مستقیم منبع شک کنید."
+            },
+            {
+                id: 4,
+                term: "غلط‌خبری",
+                enTerm: "Misinformation",
+                category: "آسیب‌شناسی اطلاعات",
+                definition: "اطلاعات نادرستی که بدون قصد آسیب و معمولاً با نیت خیرخواهانه، دلسوزی یا ناآگاهی توسط مردم در شبکه‌ها بازنشر می‌شود.",
+                example: "ارسال پیام 'خوردن آب نمک گرم ویروس را نابود می‌کند' توسط اعضای خانواده در گروه‌های واتساپی.",
+                tip: "پیش از فوروارد کردن هر پیام سلامت، از صحت آن مطمئن شوید؛ دلسوزی بدون راستی‌آزمایی آسیب‌زاست."
+            },
+            {
+                id: 5,
+                term: "دووم‌اسکرولینگ",
+                enTerm: "Doomscrolling",
+                category: "سلامت روان دیجیتال",
+                definition: "پیمایش بی‌پایان و وسواس‌گونه صفحات وب و شبکه‌های اجتماعی برای خواندن اخبار منفی، ترسناک و فجایع سلامت.",
+                example: "خواندن مداوم آمار مرگ‌ومیر و بیماری‌ها تا ساعات پایانی شب که به بی‌خوابی و اضطراب حاد می‌انجامد.",
+                tip: "برای مصرف اخبار سقف زمانی (مثلاً ۱۵ دقیقه در روز) بگذارید و پیش از خواب گوشی را کنار بگذارید."
+            },
+            {
+                id: 6,
+                term: "اقتصاد توجه",
+                enTerm: "Attention Economy",
+                category: "رسانه‌شناسی",
+                definition: "سازوکاری تجاری در پلتفرم‌های دیجیتال که در آن توجه و زمان انسان‌ها به عنوان کالای اصلی با استفاده از تیترهای زرد و شوکه‌کننده به حراج گذاشته می‌شود.",
+                example: "تیتر زرد: 'کشف راز مرگباری که پزشکان از شما پنهان می‌کنند!' صرفاً برای افزایش کلیک و بازدید تبلیغات.",
+                tip: "هر تیتری که حس کنجکاوی کاذب یا وحشت آنی ایجاد می‌کند، طعمه کلیک (Clickbait) است."
+            },
+            {
+                id: 7,
+                term: "سوگیری تأیید",
+                enTerm: "Confirmation Bias",
+                category: "خطاهای شناختی",
+                definition: "تمایل ناخودآگاه ذهن به جستجو، باور و پذیرش اطلاعاتی که عقاید قبلی ما را تایید می‌کنند و نادیده گرفتن شواهد متضاد معتبر.",
+                example: "فردی که به طب سنتی باور دارد، یک ادعای غیرعلمی درباره اثربخشی دمنوش را فوراً می‌پذیرد ولی ده‌ها مقاله بالینی را رد می‌کند.",
+                tip: "هنگام تحقیق سلامت، عمداً به دنبال مقالاتی بگردید که دیدگاه اولیه شما را نقد کرده‌اند."
+            },
+            {
+                id: 8,
+                term: "دیپ‌فیک پزشکی",
+                enTerm: "Medical Deepfake",
+                category: "فناوری و جعل",
+                definition: "ویدیوها، تصاویر یا فایل‌های صوتی شبیه‌سازی‌شده توسط هوش مصنوعی که ادعاهای دارویی کاذب را به چهره پزشکان و مراجع سرشناس نسبت می‌دهند.",
+                example: "ویدیوی جعلی شبیه‌سازی چهره یک جراح مشهور ایرانی در حال تایید یک قطره دارویی ناشناخته در اینستاگرام.",
+                tip: "به لب‌زنی غیرطبیعی، حرکات چشم و وجود ادعا در صفحه رسمی و تأییدشده پزشک دقت کنید."
+            },
+            {
+                id: 9,
+                term: "اثر دانینگ-کروگر",
+                enTerm: "Dunning-Kruger Effect",
+                category: "خطاهای شناختی",
+                definition: "سوگیری شناختی که طی آن افراد با دانش اندک در یک حوزه تخصصی (مانند داروشناسی)، به اشتباه خود را دارای صلاحیت و دانشی فراتر از واقعیت می‌دانند.",
+                example: "فردی با خواندن چند پست کوتاه تلگرامی، خود را در تجویز داروهای گیاهی از پزشکان حاذق‌تر می‌داند.",
+                tip: "دانش سلامت نیازمند سال‌ها آموزش بالینی و شواهد اپیدمیولوژیک است؛ تواضع علمی را حفظ کنیم."
+            },
+            {
+                id: 10,
+                term: "سواد سلامت دیجیتال",
+                enTerm: "e-Health Literacy",
+                category: "مفاهیم پایه",
+                definition: "توانایی جستجو، بازیابی، ارزیابی نقادانه، درک و کاربست اطلاعات الکترونیکی سلامت از منابع دیجیتال برای ارتقای سلامت فرد و جامعه.",
+                example: "استفاده از پایگاه‌های معتبر نظیر PubMed یا سامانه‌های پرونده الکترونیک سلامت و تشخیص ادعاهای نامعتبر.",
+                tip: "مهارت سنجش اعتبار منبع مهم‌ترین ستون سواد سلامت دیجیتال در جهان امروز است."
+            },
+            {
+                id: 11,
+                term: "سوگیری انتشار",
+                enTerm: "Publication Bias",
+                category: "پژوهش و علم",
+                definition: "تمایل نشریات علمی یا رسانه‌ها به انتشار نتایج مثبت و چشمگیر یک درمان و عدم انتشار نتایجی که نشان‌دهنده بی‌اثری دارو بوده‌اند.",
+                example: "رسانه‌ای شدن یک کارآزمایی کوچک که اثر مثبت دارویی را نشان داده و نادیده گرفتن پنج مطالعه بزرگتر با نتیجه منفی.",
+                tip: "به یک مقاله منفرد اتکا نکنید؛ مقالات مرور سیستماتیک (Systematic Reviews) و متاآنالیزها را بررسی کنید."
+            },
+            {
+                id: 12,
+                term: "سلبریتی‌زدگی در سلامت",
+                enTerm: "Celebrity Health Endorsement",
+                category: "شگردهای اقناع",
+                definition: "اعتماد ناموجه و کورکورانه مردم به رژیم‌ها، مکمل‌ها یا روش‌های درمانی به صرف تبلیغ یا تایید آن‌ها توسط افراد مشهور و بازیگران غیرمتخصص.",
+                example: "خرید میلیونی یک مکمل کلاژن به دلیل توصیه فلان بازیگر سینما در استوری اینستاگرام.",
+                tip: "شهرت به معنای تخصص نیست؛ توصیه‌های درمانی را تنها از متخصصان صاحب صلاحیت دریافت کنید."
+            }
+        ];
+
+        // --- INTERACTIVE DILEMMAS & CASE SIMULATOR DATA ---
+        const dilemmasData = [
+            {
+                id: 1,
+                title: "ادعای معجزه در گروه خانوادگی",
+                context: "در گروه واتساپ خانوادگی، یکی از بستگان سالمند پیامی صوتی با عنوان 'درمان قطعی و ریشه‌ای دیابت با دم‌کرده برگ گزنه بدون نیاز به انسولین' ارسال کرده و از همه خواسته داروها را کنار بگذارند.",
+                question: "بهترین واکنش شما بر اساس اصول سواد سلامت رسانه‌ای چیست؟",
+                options: [
+                    {
+                        text: "سکوت کنم تا بحثی پیش نیاید و احترام بزرگتر حفظ شود.",
+                        isCorrect: false,
+                        feedback: "سکوت در برابر اطلاعات خطرناک ممکن است به قطع داروی بیماران دیابتی و کما یا آسیب جدی منجر شود."
+                    },
+                    {
+                        text: "در همان گروه پیام تندی بنویسم و آن فامیل را به بیسوادی متهم کنم.",
+                        isCorrect: false,
+                        feedback: "حمله شخصی باعث مقاومت روانی و تعصب بیشتر می‌شود و فرصت اصلاح باور را از بین می‌برد."
+                    },
+                    {
+                        text: "با لحنی محترمانه و صمیمانه پیام صوتی کوتاهی بگذارم، توضیح دهم که دیابت کنترل‌پذیر است نه درمان قطعی، خطرات قطع انسولین را با استناد به انجمن دیابت بیان کنم و پیشنهاد کنم با پزشک معالج مشورت شود.",
+                        isCorrect: true,
+                        feedback: "بسیار عالی! رویکرد علمی، همدلانه و بدون ایجاد تنش، مؤثرترین شیوه مهار غلط‌خبری در روابط اجتماعی است."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "دیپ‌فیک ویدیویی پزشک سرشناس",
+                context: "در اینستاگرام ویدیویی از یک پزشک مشهور ایرانی می‌بینید که ادعا می‌کند 'با این قطره گیاهی ۱۰۰٪ آب‌مروارید و ضعف چشم بدون جراحی درمان می‌شود'. حرکت لب‌های پزشک کمی نامتقارن است و در بیو پیج شماره کارتی برای واریز قرار دارد.",
+                question: "اقدام سنجیده و هوشمندانه شما چیست؟",
+                options: [
+                    {
+                        text: "چون پزشک معروفی است، قطره را برای والدینم سفارش دهم.",
+                        isCorrect: false,
+                        feedback: "این یک تله دیپ‌فیک تجاری است! فریب جعل هویت دیجیتال چهره‌های شناخته‌شده را نخورید."
+                    },
+                    {
+                        text: "صفحه رسمی و تأییدشده آن پزشک را بررسی کنم، جستجوی معکوس ویدیو انجام دهم و در صورت جعلی بودن، پست را به عنوان کلاهبرداری (Scam) گزارش و دیگران را مطلع کنم.",
+                        isCorrect: true,
+                        feedback: "آفرین! بررسی نشانه‌های بصری دیپ‌فیک (ناهماهنگی لب، پلک زدن غیرعادی) و تطبیق با مراجع رسمی، سپر دفاعی سواد سلامت دیجیتال است."
+                    },
+                    {
+                        text: "ویدیو را در تمام گروه‌ها بفرستم و بنویسم 'آیا کسی این را تست کرده؟'",
+                        isCorrect: false,
+                        feedback: "بازنشر محتوای مشکوک با سؤال، ناخواسته به افزایش بازدید و الگوریتم‌های انتشار کلاهبرداران کمک می‌کند."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "تیتر وحشت‌آفرین آب شرب",
+                context: "خبری با تیتر 'هشدار فوری: کشف ماده سرطان‌زا در آب آشامیدنی شهر توسط کارشناسان مستقل' در کانال‌های تلگرامی بازنشر شده است. متن خبر پیوند و اسامی رسمی ندارد و در انتها تبلیغ دستگاه تصفیه آب گنجانده شده است.",
+                question: "کدام لایه از سواد رسانه‌ای سلامت در اینجا فاش‌کننده حقیقت است؟",
+                options: [
+                    {
+                        text: "بررسی اقتصاد توجه و انگیزه تجاری: خبر یک طعمه وحشت‌آفرین برای فروش دستگاه‌های تصفیه آب است و فاقد استناد آزمایشگاهی وزارت بهداشت می‌باشد.",
+                        isCorrect: true,
+                        feedback: "دقیقاً! ایجاد اضطراب جمعی یکی از متداول‌ترین ترفندهای بازاریابی سیاه برای فروش کالاهای بهداشتی است."
+                    },
+                    {
+                        text: "فوری آب معدنی بخرم و به همه اطلاع دهم آب مصرف نکنند.",
+                        isCorrect: false,
+                        feedback: "شما تسلیم تاکتیک ایجاد وحشت شدید و به هدف سازندگان شایعه کمک کردید."
+                    },
+                    {
+                        text: "صبر کنم تا چند روز بگذرد اگر شایعه بود فراموش می‌شود.",
+                        isCorrect: false,
+                        feedback: "بررسی سریع پورتال رسمی شرکت آب و فاضلاب و وزارت بهداشت در عرض ۲ دقیقه حقیقت را آشکار می‌کند."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "تجویز مکمل توسط اینفلوئنسر غیرپزشک",
+                context: "یک فیتنس‌بلاگر پرطرفدار با انتشار تصاویری از بدن ورزیده خود، مصرف روزانه ۳ نوع قرص چربی‌سوز ناشناخته را به مخاطبان توصیه می‌کند و کد تخفیف اختصاصی ارائه می‌دهد.",
+                question: "رویکرد انتقادی دانشجو به این پیام تبلیغاتی چیست؟",
+                options: [
+                    {
+                        text: "خرید فوری محصول زیرا اندام اینفلوئنسر نشان‌دهنده اثربخشی قطعی قرص‌هاست.",
+                        isCorrect: false,
+                        feedback: "اینفلوئنسرها به واسطه ورزش مداوم، ژنتیک یا جراحی این اندام را دارند، نه لزوماً قرص‌های اسپانسری!"
+                    },
+                    {
+                        text: "تشخیص تضاد منافع (Conflict of Interest)، آگاهی از خطرات کبدی و قلبی مکمل‌های غیرمجاز و تکیه بر مشاوره با متخصص تغذیه یا پزشک ورزشی.",
+                        isCorrect: true,
+                        feedback: "بسیار عالی! تمایز میان 'شواهد علمی' و 'شگردهای تجاری سلبریتی‌ها' از مهارت‌های بنیادین سواد سلامت است."
+                    },
+                    {
+                        text: "کامنت بگذارم و قیمت را بپرسم.",
+                        isCorrect: false,
+                        feedback: "درگیر شدن در قیف فروش تجاری بدون راستی‌آزمایی علمی ریسک بالایی دارد."
+                    }
+                ]
+            }
+        ];
+
+        // --- FACT-CHECK DIAGNOSTIC CRITERIA & PRESETS ---
+        const factCheckPresets = [
+            {
+                title: "دمنوش معجزه‌آسای کبد چرب در اینستاگرام",
+                claimText: "درمان قطعی و ۱۰۰٪ کبد چرب گرید ۳ در ۷ روز با معجون گیاهی حکیم ابوعلی بدون نیاز به ورزش و رژیم! شماره تماس جهت ارسال رایگان...",
+                scores: { source: 0, author: 0, tone: 0, date: 10, evidence: 0, bias: 0 }
+            },
+            {
+                title: "شایعه ارتباط واکسن با اوتیسم در پیام‌رسان",
+                claimText: "هشدار فوری متخصصان: تزریق واکسن به کودکان علت اصلی افزایش اوتیسم است و دولت‌ها آن را پنهان می‌کنند (پیام ارسالی در واتساپ)",
+                scores: { source: 0, author: 0, tone: 0, date: 0, evidence: 0, bias: 10 }
+            },
+            {
+                title: "کارآزمایی بالینی اثر فعالیت بدنی بر قند خون",
+                claimText: "بر اساس نتایج کارآزمایی بالینی تصادفی (RCT) منتشرشده در نشریه لَنسِت (Lancet) با همکاری دانشگاه آکسفورد، ۳۰ دقیقه پیاده‌روی سریع روزانه قند خون ناشتا را تا ۱۸ درصد بهبود می‌دهد.",
+                scores: { source: 20, author: 20, tone: 20, date: 20, evidence: 20, bias: 20 }
+            },
+            {
+                title: "کپسول لاغری تضمینی سلبریتی بدون عوارض",
+                claimText: "راز لاغری ۱۰ کیلو در یک ماه بازیگران کشف شد! کپسول گیاهی بدون بازگشت با تاییدیه پزشک خارجی. برای دریافت کد تخفیف کلیک کنید.",
+                scores: { source: 0, author: 0, tone: 0, date: 10, evidence: 0, bias: 0 }
+            }
+        ];
+
+        const factCheckCriteria = [
+            {
+                key: "source",
+                label: "۱. اعتبار منبع و ارجاع اولیه",
+                desc: "آیا خبر به ژورنال علمی معتبر داوری‌شده یا درگاه وزارت بهداشت/دانشگاه علوم پزشکی پیوند دارد؟",
+                options: [
+                    { val: 0, label: "فاقد منبع / کانال تلگرام یا پیج ناشناس (۰ امتیاز)" },
+                    { val: 10, label: "وبلاگ‌ها یا سایت‌های خبری عمومی (۱۰ امتیاز)" },
+                    { val: 20, label: "ژورنال علمی معتبر (PubMed/Lancet) یا وزارت بهداشت (۲۰ امتیاز)" }
+                ]
+            },
+            {
+                key: "author",
+                label: "۲. صلاحیت و هویت نویسنده/گوینده",
+                desc: "آیا نام، تخصص و وابستگی دانشگاهی ارائه‌دهنده مشخص و قابل رهگیری است؟",
+                options: [
+                    { val: 0, label: "ناشناس یا عناوین مبهم مثل 'دانشمندان ژاپنی' (۰ امتیاز)" },
+                    { val: 10, label: "فرد بدون تخصص رسمی در علوم پزشکی (۱۰ امتیاز)" },
+                    { val: 20, label: "پزشک یا متخصص سلامت با صلاحیت و وابستگی دانشگاهی (۲۰ امتیاز)" }
+                ]
+            },
+            {
+                key: "tone",
+                label: "۳. لحن و ساختار پیام",
+                desc: "آیا زبان متن علمی و متین است یا از واژه‌های رعب‌آور، 'معجزه' و 'راز پنهان' استفاده کرده است؟",
+                options: [
+                    { val: 0, label: "بسیار هیجانی، شوکه‌کننده و ادعای معجزه/راز پنهان (۰ امتیاز)" },
+                    { val: 10, label: "تا حدی اغراق‌آمیز و قطعی‌نگر (۱۰ امتیاز)" },
+                    { val: 20, label: "علمی، محتاطانه، سنجیده و مستدل (۲۰ امتیاز)" }
+                ]
+            },
+            {
+                key: "evidence",
+                label: "۴. کیفیت شواهد علمی",
+                desc: "مبنای علمی ادعا چیست؟ تجربه فردی یا مطالعات بالینی انسانی چندمرکزی؟",
+                options: [
+                    { val: 0, label: "صرفاً تجربه شخصی، شایعه شفاهی یا ادعای تک‌نفره (۰ امتیاز)" },
+                    { val: 10, label: "مطالعه آزمایشگاهی اولیه یا آزمایش روی حیوانات (۱۰ امتیاز)" },
+                    { val: 20, label: "کارآزمایی بالینی تصادفی (RCT) یا متاآنالیز انسانی معتبر (۲۰ امتیاز)" }
+                ]
+            },
+            {
+                key: "date",
+                label: "۵. شفافیت تاریخ و بافتار",
+                desc: "آیا زمان رویداد و زمینه انتشار شفاف است یا ویدیوی بریده‌شده و قدیمی است؟",
+                options: [
+                    { val: 0, label: "بدون تاریخ یا ویدیوی تقطیع‌شده و مبهم (۰ امتیاز)" },
+                    { val: 10, label: "تاریخ دارد اما زمینه انتشار شفاف نیست (۱۰ امتیاز)" },
+                    { val: 20, label: "زمان، بستر و شرایط انتشار کاملاً مشخص و به‌روز است (۲۰ امتیاز)" }
+                ]
+            },
+            {
+                key: "bias",
+                label: "۶. انگیزه مالی و تضاد منافع",
+                desc: "آیا محتوا برای آموزش عمومی است یا در پی آن تبلیغ، شماره کارت و لینک خرید قرار دارد؟",
+                options: [
+                    { val: 0, label: "همراه با تبلیغ فروش کالا، شماره کارت و شماره تماس (۰ امتیاز)" },
+                    { val: 10, label: "حاوی لینک‌های بازاریابی و اسپانسری پنهان (۱۰ امتیاز)" },
+                    { val: 20, label: "بدون هرگونه منفعت تجاری و صرفاً با هدف آموزش سلامت (۲۰ امتیاز)" }
+                ]
+            }
+        ];
+
         // --- STATE MANAGEMENT ---
         const state = {
             currentSessionId: 1,
             currentView: 'session', // 'session' | 'infographics'
-            selectedInfographicIndex: null, // 0..5 for lightbox modal
+            selectedInfographicIndex: null, // 0..6 for lightbox modal
             infographicZoom: 1,
             completedSessions: [],
             bookmarkedSessions: [],
@@ -1967,6 +2277,27 @@
             isExportingPdf: false,
             toastMessage: null,
             toastTimeout: null,
+            
+            // Learning Tools States
+            isFactCheckModalOpen: false,
+            factCheckClaim: '',
+            factCheckAnswers: { source: 0, author: 0, tone: 0, evidence: 0, date: 0, bias: 0 },
+            
+            isFlashcardsModalOpen: false,
+            currentFlashcardIndex: 0,
+            isCardFlipped: false,
+            masteredCards: [],
+            flashcardFilter: 'all',
+
+            isNotesModalOpen: false,
+            sessionNotes: {},
+
+            isDilemmasModalOpen: false,
+            currentDilemmaIndex: 0,
+            dilemmaChoices: {},
+
+            isBackupModalOpen: false,
+
             game: {
                 currentIndex: 0,
                 score: 0,
@@ -2020,6 +2351,17 @@
                 if (savedDarkMode !== null) {
                     state.isDarkMode = savedDarkMode === 'true';
                 }
+
+                // Load Learning Tools Data
+                const savedMastered = localStorage.getItem('masteredFlashcards');
+                if (savedMastered) state.masteredCards = JSON.parse(savedMastered);
+
+                const savedNotes = localStorage.getItem('studentSessionNotes');
+                if (savedNotes) state.sessionNotes = JSON.parse(savedNotes);
+
+                const savedDilemmas = localStorage.getItem('dilemmaChoices');
+                if (savedDilemmas) state.dilemmaChoices = JSON.parse(savedDilemmas);
+
             } catch (e) {
                 console.error("Failed to load local storage state", e);
             }
@@ -2048,6 +2390,26 @@
                     }
                     if (state.isPdfModalOpen) {
                         app.closePdfExportModal();
+                        return;
+                    }
+                    if (state.isFactCheckModalOpen) {
+                        app.closeFactCheckModal();
+                        return;
+                    }
+                    if (state.isFlashcardsModalOpen) {
+                        app.closeFlashcardsModal();
+                        return;
+                    }
+                    if (state.isNotesModalOpen) {
+                        app.closeNotesModal();
+                        return;
+                    }
+                    if (state.isDilemmasModalOpen) {
+                        app.closeDilemmasModal();
+                        return;
+                    }
+                    if (state.isBackupModalOpen) {
+                        app.closeBackupModal();
                         return;
                     }
                 }
@@ -2466,6 +2828,301 @@
             resetInfographicZoom: () => {
                 state.infographicZoom = 1;
                 renderApp();
+            },
+
+            // --- 1. FACT-CHECK DIAGNOSTIC TOOL METHODS ---
+            openFactCheckModal: () => {
+                state.isFactCheckModalOpen = true;
+                if (window.innerWidth < 1024 && state.isSidebarOpen) state.isSidebarOpen = false;
+                renderApp();
+            },
+            closeFactCheckModal: () => {
+                state.isFactCheckModalOpen = false;
+                renderApp();
+            },
+            setFactCheckClaim: (text) => {
+                state.factCheckClaim = text;
+            },
+            setFactCheckPreset: (index) => {
+                const preset = factCheckPresets[index];
+                if (preset) {
+                    state.factCheckClaim = preset.claimText;
+                    state.factCheckAnswers = { ...preset.scores };
+                    renderApp();
+                    app.showToast('ادعای نمونه با مقادیر تشخیصی بارگذاری شد');
+                }
+            },
+            setFactCheckScore: (key, val) => {
+                state.factCheckAnswers[key] = parseInt(val, 10);
+                renderApp();
+            },
+            resetFactCheck: () => {
+                state.factCheckClaim = '';
+                state.factCheckAnswers = { source: 0, author: 0, tone: 0, evidence: 0, date: 0, bias: 0 };
+                renderApp();
+                app.showToast('چک‌لیست حقیقت‌سنجی بازنشانی شد');
+            },
+
+            // --- 2. HEALTH LITERACY FLASHCARDS METHODS ---
+            openFlashcardsModal: () => {
+                state.isFlashcardsModalOpen = true;
+                state.isCardFlipped = false;
+                if (window.innerWidth < 1024 && state.isSidebarOpen) state.isSidebarOpen = false;
+                renderApp();
+            },
+            closeFlashcardsModal: () => {
+                state.isFlashcardsModalOpen = false;
+                state.isCardFlipped = false;
+                renderApp();
+            },
+            toggleCardFlip: () => {
+                state.isCardFlipped = !state.isCardFlipped;
+                renderApp();
+            },
+            nextFlashcard: () => {
+                const list = app.getFilteredFlashcards();
+                if (list.length > 0) {
+                    state.currentFlashcardIndex = (state.currentFlashcardIndex + 1) % list.length;
+                    state.isCardFlipped = false;
+                    renderApp();
+                }
+            },
+            prevFlashcard: () => {
+                const list = app.getFilteredFlashcards();
+                if (list.length > 0) {
+                    state.currentFlashcardIndex = (state.currentFlashcardIndex - 1 + list.length) % list.length;
+                    state.isCardFlipped = false;
+                    renderApp();
+                }
+            },
+            toggleMasteryFlashcard: (cardId) => {
+                const idx = state.masteredCards.indexOf(cardId);
+                if (idx >= 0) {
+                    state.masteredCards.splice(idx, 1);
+                } else {
+                    state.masteredCards.push(cardId);
+                }
+                localStorage.setItem('masteredFlashcards', JSON.stringify(state.masteredCards));
+                renderApp();
+            },
+            setFlashcardFilter: (cat) => {
+                state.flashcardFilter = cat;
+                state.currentFlashcardIndex = 0;
+                state.isCardFlipped = false;
+                renderApp();
+            },
+            getFilteredFlashcards: () => {
+                if (state.flashcardFilter === 'all') return flashcardsData;
+                if (state.flashcardFilter === 'mastered') return flashcardsData.filter(c => state.masteredCards.includes(c.id));
+                if (state.flashcardFilter === 'unmastered') return flashcardsData.filter(c => !state.masteredCards.includes(c.id));
+                return flashcardsData.filter(c => c.category === state.flashcardFilter);
+            },
+
+            // --- 3. STUDENT NOTES & STUDY JOURNAL METHODS ---
+            openNotesModal: () => {
+                state.isNotesModalOpen = true;
+                if (window.innerWidth < 1024 && state.isSidebarOpen) state.isSidebarOpen = false;
+                renderApp();
+            },
+            closeNotesModal: () => {
+                state.isNotesModalOpen = false;
+                renderApp();
+            },
+            saveSessionNote: (sessionId, noteText) => {
+                state.sessionNotes[sessionId] = noteText;
+                localStorage.setItem('studentSessionNotes', JSON.stringify(state.sessionNotes));
+                
+                // Show subtle auto-save badge update
+                const badge = document.getElementById(`autosave-badge-${sessionId}`);
+                if (badge) {
+                    badge.innerHTML = `<i data-lucide="check-circle" class="w-3 h-3 text-emerald-600 inline"></i> ذخیره شد`;
+                    badge.className = "text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold border border-emerald-200 inline-flex items-center gap-1 transition-all";
+                    lucide.createIcons();
+                }
+            },
+            copySessionNote: async (sessionId) => {
+                const note = state.sessionNotes[sessionId] || '';
+                if (!note.trim()) {
+                    app.showToast('هنوز یادداشتی برای این جلسه ثبت نشده است');
+                    return;
+                }
+                try {
+                    await navigator.clipboard.writeText(note);
+                    app.showToast('متن یادداشت در حافظه کلیپ‌بورد کپی شد 📋');
+                } catch (e) {
+                    app.showToast('خطا در کپی یادداشت');
+                }
+            },
+            downloadAllNotes: () => {
+                let textContent = `# دفترچه یادداشت‌های جامع سواد سلامت رسانه‌ای\nدانشجو: ${state.studentName || 'دانشجوی گرامی'}\nتاریخ خروجی: ${new Date().toLocaleDateString('fa-IR')}\nمدرس دوره: دکتر فاطمه زارعی - دانشگاه تربیت مدرس\n\n`;
+                let hasNotes = false;
+                sessions.forEach(s => {
+                    const note = state.sessionNotes[s.id];
+                    if (note && note.trim()) {
+                        hasNotes = true;
+                        textContent += `## جلسه ${s.id}: ${s.title}\n${note.trim()}\n\n---\n\n`;
+                    }
+                });
+
+                if (!hasNotes) {
+                    app.showToast('هنوز هیچ یادداشتی برای جلسات ثبت نشده است');
+                    return;
+                }
+
+                const blob = new Blob([textContent], { type: 'text/markdown;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `یادداشت_های_سواد_سلامت_${(state.studentName || 'دانشجو').replace(/\s+/g, '_')}.md`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                app.showToast('فایل یادداشت‌های شما با فرمت مارک‌داون دانلود شد 📥');
+            },
+
+            // --- 4. INTERACTIVE DILEMMAS METHODS ---
+            openDilemmasModal: () => {
+                state.isDilemmasModalOpen = true;
+                if (window.innerWidth < 1024 && state.isSidebarOpen) state.isSidebarOpen = false;
+                renderApp();
+            },
+            closeDilemmasModal: () => {
+                state.isDilemmasModalOpen = false;
+                renderApp();
+            },
+            selectDilemmaOption: (dilemmaId, optIdx) => {
+                state.dilemmaChoices[dilemmaId] = optIdx;
+                localStorage.setItem('dilemmaChoices', JSON.stringify(state.dilemmaChoices));
+                renderApp();
+            },
+            nextDilemma: () => {
+                state.currentDilemmaIndex = (state.currentDilemmaIndex + 1) % dilemmasData.length;
+                renderApp();
+            },
+            prevDilemma: () => {
+                state.currentDilemmaIndex = (state.currentDilemmaIndex - 1 + dilemmasData.length) % dilemmasData.length;
+                renderApp();
+            },
+            resetDilemmaChoices: () => {
+                state.dilemmaChoices = {};
+                localStorage.removeItem('dilemmaChoices');
+                renderApp();
+                app.showToast('پاسخ سناریوهای تصمیم‌گیری بازنشانی شد');
+            },
+
+            // --- 5. BACKUP & RESTORE DATA METHODS ---
+            openBackupModal: () => {
+                state.isBackupModalOpen = true;
+                if (window.innerWidth < 1024 && state.isSidebarOpen) state.isSidebarOpen = false;
+                renderApp();
+            },
+            closeBackupModal: () => {
+                state.isBackupModalOpen = false;
+                renderApp();
+            },
+            exportBackupJson: () => {
+                const backupPayload = {
+                    version: "2.5.0",
+                    app: "HealthMediaLiteracyTracker",
+                    exportDate: new Date().toISOString(),
+                    studentName: state.studentName || "",
+                    completedSessions: state.completedSessions || [],
+                    bookmarkedSessions: state.bookmarkedSessions || [],
+                    checkedObjectives: state.checkedObjectives || [],
+                    sessionNotes: state.sessionNotes || {},
+                    masteredCards: state.masteredCards || [],
+                    dilemmaChoices: state.dilemmaChoices || [],
+                    isDarkMode: state.isDarkMode
+                };
+
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupPayload, null, 2));
+                const dlAnchor = document.createElement('a');
+                dlAnchor.setAttribute("href", dataStr);
+                dlAnchor.setAttribute("download", `پشتیبان_پیشرفت_سواد_سلامت_${(state.studentName || 'دانشجو').replace(/\s+/g, '_')}_${new Date().toISOString().slice(0,10)}.json`);
+                document.body.appendChild(dlAnchor);
+                dlAnchor.click();
+                dlAnchor.remove();
+                app.showToast('فایل پشتیبان سوابق تحصیلی دانلود گردید 💾');
+            },
+            importBackupJson: (event) => {
+                const file = event.target.files && event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const parsed = JSON.parse(e.target.result);
+                        if (!parsed || (parsed.app !== "HealthMediaLiteracyTracker" && !parsed.completedSessions)) {
+                            throw new Error("فرمت فایل پشتیبان نامعتبر است");
+                        }
+
+                        if (Array.isArray(parsed.completedSessions)) {
+                            state.completedSessions = parsed.completedSessions;
+                            localStorage.setItem('completedSessions', JSON.stringify(state.completedSessions));
+                        }
+                        if (Array.isArray(parsed.bookmarkedSessions)) {
+                            state.bookmarkedSessions = parsed.bookmarkedSessions;
+                            localStorage.setItem('bookmarkedSessions', JSON.stringify(state.bookmarkedSessions));
+                        }
+                        if (Array.isArray(parsed.checkedObjectives)) {
+                            state.checkedObjectives = parsed.checkedObjectives;
+                            localStorage.setItem('checkedObjectives', JSON.stringify(state.checkedObjectives));
+                        }
+                        if (parsed.sessionNotes && typeof parsed.sessionNotes === 'object') {
+                            state.sessionNotes = parsed.sessionNotes;
+                            localStorage.setItem('studentSessionNotes', JSON.stringify(state.sessionNotes));
+                        }
+                        if (Array.isArray(parsed.masteredCards)) {
+                            state.masteredCards = parsed.masteredCards;
+                            localStorage.setItem('masteredFlashcards', JSON.stringify(state.masteredCards));
+                        }
+                        if (parsed.dilemmaChoices && typeof parsed.dilemmaChoices === 'object') {
+                            state.dilemmaChoices = parsed.dilemmaChoices;
+                            localStorage.setItem('dilemmaChoices', JSON.stringify(state.dilemmaChoices));
+                        }
+                        if (parsed.studentName) {
+                            state.studentName = parsed.studentName;
+                            localStorage.setItem('studentName', state.studentName);
+                        }
+                        if (typeof parsed.isDarkMode === 'boolean') {
+                            state.isDarkMode = parsed.isDarkMode;
+                            localStorage.setItem('isDarkMode', state.isDarkMode.toString());
+                            applyTheme();
+                        }
+
+                        state.isBackupModalOpen = false;
+                        renderApp();
+                        app.showToast('اطلاعات پشتیبان با موفقیت بازیابی شد! 🎉');
+                    } catch (err) {
+                        console.error('Backup import parse error:', err);
+                        app.showToast('خطا در خواندن فایل پشتیبان: ساختار فایل معتبر نیست');
+                    }
+                };
+                reader.readAsText(file);
+            },
+            resetAllUserData: () => {
+                if (confirm('آیا از بازنشانی کامل کلیه سوابق، آزمون‌ها، نشان‌ها و یادداشت‌های خود اطمینان دارید؟ این عملیات غیرقابل بازگشت است.')) {
+                    state.completedSessions = [];
+                    state.bookmarkedSessions = [];
+                    state.checkedObjectives = [];
+                    state.sessionNotes = {};
+                    state.masteredCards = [];
+                    state.dilemmaChoices = {};
+                    state.studentName = '';
+
+                    localStorage.removeItem('completedSessions');
+                    localStorage.removeItem('bookmarkedSessions');
+                    localStorage.removeItem('checkedObjectives');
+                    localStorage.removeItem('studentSessionNotes');
+                    localStorage.removeItem('masteredFlashcards');
+                    localStorage.removeItem('dilemmaChoices');
+                    localStorage.removeItem('studentName');
+
+                    state.isBackupModalOpen = false;
+                    renderApp();
+                    app.showToast('کلیه داده‌های محلی با موفقیت بازنشانی گردید');
+                }
             }
         };
 
@@ -3748,6 +4405,637 @@
             `;
         }
 
+        // --- 1. RENDER FACT-CHECK DIAGNOSTIC MODAL ---
+        function renderFactCheckModal() {
+            if (!state.isFactCheckModalOpen) return '';
+
+            const answers = state.factCheckAnswers || { source: 0, author: 0, tone: 0, evidence: 0, date: 0, bias: 0 };
+            const totalScore = (answers.source || 0) + (answers.author || 0) + (answers.tone || 0) + (answers.evidence || 0) + (answers.date || 0) + (answers.bias || 0);
+            const scorePercent = Math.round((totalScore / 120) * 100);
+
+            let statusColor = 'text-rose-600';
+            let statusBg = 'bg-rose-50 border-rose-200';
+            let statusBadge = '🔴 مشکوک / احتمال بالای شایعه یا فریب تجاری';
+            let statusTip = 'این ادعا فاقد استنادهای علمی معتبر و شفافیت است. اکیداً توصیه می‌شود از بازنشر آن خودداری نموده و از عمل به دستورالعمل‌های درمانی آن پرهیز نمایید.';
+
+            if (scorePercent >= 75) {
+                statusColor = 'text-emerald-700';
+                statusBg = 'bg-emerald-50 border-emerald-200';
+                statusBadge = '🟢 اعتبار علمی بالا / منطبق بر شواهد بالینی';
+                statusTip = 'این پیام واجد شرایط اولیه سواد سلامت و استناد علمی است. با این حال همواره تاریخ و بافتار انتشار را با پزشک یا نهاد مرجع مطابقت دهید.';
+            } else if (scorePercent >= 40) {
+                statusColor = 'text-amber-700';
+                statusBg = 'bg-amber-50 border-amber-200';
+                statusBadge = '🟡 احتیاط / نیازمند راستی‌آزمایی تکمیلی';
+                statusTip = 'بخشی از ادعا ممکن است ریشه در واقعیت داشته باشد، اما به دلیل مبالغه، انگیزه تجاری یا فقدان کارآزمایی انسانی، اتکای تنهایی به آن خطرناک است.';
+            }
+
+            return `
+                <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fade-in" onclick="if(event.target === this) app.closeFactCheckModal()">
+                    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden" onclick="event.stopPropagation()">
+                        
+                        <!-- Header -->
+                        <div class="px-6 py-4 bg-gradient-to-r from-[#271738] to-[#4B2E83] text-white flex items-center justify-between gap-3 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 border border-white/15">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-bold font-display">ابزار راستی‌آزمایی و حقیقت‌سنجی ادعاهای سلامت</h3>
+                                    <p class="text-[11px] text-[#DABFCC]">چک‌لیست تشخیصی غربالگری پیام‌های پزشکی و سنجش اعتبار با شاخص علمی</p>
+                                </div>
+                            </div>
+                            <button onclick="app.closeFactCheckModal()" class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Content Scroll Area -->
+                        <div class="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1 bg-[#F8F6F4]">
+                            
+                            <!-- Presets -->
+                            <div class="bg-white p-4 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-2xs">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                                        <i data-lucide="sparkles" class="w-4 h-4 text-[#7A5C9E]"></i>
+                                        بارگذاری نمونه‌های پرکاربرد فضای مجازی برای تمرین:
+                                    </span>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    ${factCheckPresets.map((preset, pIdx) => `
+                                        <button 
+                                            onclick="app.setFactCheckPreset(${pIdx})"
+                                            class="text-right p-2.5 rounded-xl border border-slate-200 hover:border-[#7A5C9E] bg-slate-50 hover:bg-[#F3ECF5]/40 transition-all text-xs text-slate-700 leading-snug flex items-center justify-between gap-2 group"
+                                        >
+                                            <span class="font-medium truncate group-hover:text-[#4B2E83]">${preset.title}</span>
+                                            <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-slate-400 group-hover:text-[#4B2E83] flex-shrink-0"></i>
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Claim Textarea -->
+                            <div class="bg-white p-4 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-2xs space-y-2">
+                                <label class="text-xs font-bold text-slate-800 flex items-center justify-between">
+                                    <span>متن خبر یا ادعای بهداشتی مورد نظر:</span>
+                                    <span class="text-[10px] text-slate-400 font-normal">می‌توانید پیام دریافتی را در کادر زیر جای‌گذاری (Paste) کنید</span>
+                                </label>
+                                <textarea 
+                                    rows="2"
+                                    oninput="app.setFactCheckClaim(this.value)"
+                                    placeholder="مثال: پیام ارسال‌شده در گروه تلگرام یا ادعای بلاگر اینستاگرامی درباره درمان بیماری با روش خاص..."
+                                    class="w-full p-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-[#7A5C9E] focus:ring-2 focus:ring-[#7A5C9E]/20 transition-all"
+                                >${state.factCheckClaim || ''}</textarea>
+                            </div>
+
+                            <!-- 6 Diagnostic Criteria List -->
+                            <div class="space-y-4">
+                                <h4 class="text-xs font-bold text-[#35224F] flex items-center gap-1.5">
+                                    <i data-lucide="list-checks" class="w-4 h-4 text-[#4B2E83]"></i>
+                                    ارزیابی ۶ معیار تشخیصی اعتبار علمی:
+                                </h4>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${factCheckCriteria.map(crit => {
+                                        const currentVal = answers[crit.key] || 0;
+                                        return `
+                                            <div class="bg-white p-4 rounded-2xl border border-[rgba(75,46,131,0.10)] shadow-2xs space-y-3">
+                                                <div>
+                                                    <h5 class="text-xs font-bold text-slate-800">${crit.label}</h5>
+                                                    <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">${crit.desc}</p>
+                                                </div>
+
+                                                <div class="space-y-1.5">
+                                                    ${crit.options.map(opt => `
+                                                        <label class="flex items-center gap-2 p-2 rounded-xl text-xs cursor-pointer transition-all border ${currentVal === opt.val ? 'bg-[#F3ECF5] border-[#7A5C9E] text-[#35224F] font-bold' : 'bg-slate-50/70 border-slate-200/80 text-slate-600 hover:bg-slate-100/60'}">
+                                                            <input 
+                                                                type="radio" 
+                                                                name="fc-${crit.key}" 
+                                                                value="${opt.val}" 
+                                                                ${currentVal === opt.val ? 'checked' : ''}
+                                                                onchange="app.setFactCheckScore('${crit.key}', this.value)"
+                                                                class="text-[#4B2E83] focus:ring-[#7A5C9E]"
+                                                            />
+                                                            <span class="text-[11px] leading-tight">${opt.label}</span>
+                                                        </label>
+                                                    `).join('')}
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Result Score & Verdict Box -->
+                            <div class="p-5 rounded-2xl border ${statusBg} shadow-sm space-y-3 animate-fade-in">
+                                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-14 h-14 rounded-2xl bg-white shadow-xs border border-slate-200 flex flex-col items-center justify-center flex-shrink-0">
+                                            <span class="text-lg font-black ${statusColor} font-mono">${scorePercent}%</span>
+                                            <span class="text-[9px] text-slate-400">امتیاز اعتبار</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-bold ${statusColor}">${statusBadge}</div>
+                                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">${statusTip}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full sm:w-48 bg-white/80 p-2.5 rounded-xl border border-slate-200 text-center flex-shrink-0">
+                                        <div class="text-[10px] text-slate-500 mb-1 font-medium">مجموع امتیاز تشخیصی</div>
+                                        <div class="text-sm font-bold text-slate-800 font-mono">${totalScore} از ۱۲۰ امتیاز</div>
+                                        <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden mt-1.5">
+                                            <div class="h-full bg-gradient-to-r from-purple-600 to-indigo-700 transition-all duration-300" style="width: ${scorePercent}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="px-6 py-3.5 bg-white border-t border-slate-200 flex items-center justify-between gap-3 flex-shrink-0">
+                            <button 
+                                onclick="app.resetFactCheck()"
+                                class="px-4 py-2 text-xs font-bold text-slate-600 hover:text-rose-700 hover:bg-rose-50 rounded-xl transition-colors inline-flex items-center gap-1.5"
+                            >
+                                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                                <span>پاکسازی و ارزیابی مجدد</span>
+                            </button>
+                            <button 
+                                onclick="app.closeFactCheckModal()"
+                                class="px-6 py-2 bg-[#4B2E83] hover:bg-[#3D256E] text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+                            >
+                                بستن پنجره
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- 2. RENDER HEALTH LITERACY FLASHCARDS MODAL ---
+        function renderFlashcardsModal() {
+            if (!state.isFlashcardsModalOpen) return '';
+
+            const list = app.getFilteredFlashcards();
+            const total = list.length;
+            const currentIdx = total > 0 ? (state.currentFlashcardIndex % total) : 0;
+            const card = list[currentIdx];
+            const masteredCount = state.masteredCards.length;
+            const isMastered = card ? state.masteredCards.includes(card.id) : false;
+            const isFlipped = !!state.isCardFlipped;
+
+            const categories = [
+                { id: 'all', label: 'همه کارت‌ها', count: flashcardsData.length },
+                { id: 'مفاهیم پایه', label: 'مفاهیم پایه' },
+                { id: 'آسیب‌شناسی اطلاعات', label: 'آسیب‌شناسی اطلاعات' },
+                { id: 'خطاهای شناختی', label: 'خطاهای شناختی' },
+                { id: 'سلامت روان دیجیتال', label: 'سلامت روان دیجیتال' },
+                { id: 'mastered', label: 'آموخته‌شده‌ها', count: masteredCount }
+            ];
+
+            return `
+                <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fade-in" onclick="if(event.target === this) app.closeFlashcardsModal()">
+                    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-3xl max-h-[92vh] flex flex-col overflow-hidden" onclick="event.stopPropagation()">
+                        
+                        <!-- Header -->
+                        <div class="px-6 py-4 bg-gradient-to-r from-[#271738] to-[#4B2E83] text-white flex items-center justify-between gap-3 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 border border-white/15">
+                                    <i data-lucide="layers" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-bold font-display">فلش‌کارت‌های تعاملی مفاهیم سواد سلامت</h3>
+                                    <p class="text-[11px] text-[#DABFCC]">مرور سریع و به خاطر سپاری اصطلاحات تخصصی، خطاهای شناختی و آسیب‌های رسانه‌ای</p>
+                                </div>
+                            </div>
+                            <button onclick="app.closeFlashcardsModal()" class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Filter Tabs -->
+                        <div class="px-6 py-2.5 bg-[#F8F6F4] border-b border-[rgba(75,46,131,0.10)] flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-shrink-0">
+                            ${categories.map(cat => `
+                                <button 
+                                    onclick="app.setFlashcardFilter('${cat.id}')"
+                                    class="px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 ${state.flashcardFilter === cat.id ? 'bg-[#4B2E83] text-white font-bold shadow-xs' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}"
+                                >
+                                    <span>${cat.label}</span>
+                                    ${cat.count !== undefined ? `<span class="text-[10px] px-1 py-0.2 rounded-full ${state.flashcardFilter === cat.id ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}">${cat.count}</span>` : ''}
+                                </button>
+                            `).join('')}
+                        </div>
+
+                        <!-- Card Viewport -->
+                        <div class="p-6 flex-1 flex flex-col items-center justify-center bg-[#F1EFEC]/60 overflow-y-auto min-h-[360px]">
+                            ${card ? `
+                                <!-- 3D Flip Card Container -->
+                                <div class="w-full max-w-lg perspective-1000 cursor-pointer" onclick="app.toggleCardFlip()">
+                                    <div class="relative w-full min-h-[300px] transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}">
+                                        
+                                        <!-- Front of Card -->
+                                        <div class="absolute inset-0 bg-white rounded-3xl border-2 border-[rgba(75,46,131,0.16)] shadow-xl p-6 sm:p-8 flex flex-col justify-between backface-hidden">
+                                            <div class="flex items-center justify-between">
+                                                <span class="px-2.5 py-1 rounded-lg bg-[#F3ECF5] text-[#4B2E83] text-xs font-bold border border-[#7A5C9E]/20">
+                                                    ${card.category}
+                                                </span>
+                                                <span class="text-xs text-slate-400 font-mono">
+                                                    کارت ${currentIdx + 1} از ${total}
+                                                </span>
+                                            </div>
+
+                                            <div class="text-center my-auto py-6">
+                                                <h4 class="text-2xl sm:text-3xl font-black text-[#27232A] font-display mb-2">${card.term}</h4>
+                                                <p class="text-sm font-medium text-[#7A5C9E] font-mono tracking-wider">${card.enTerm}</p>
+                                            </div>
+
+                                            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                                                <span class="inline-flex items-center gap-1.5">
+                                                    <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
+                                                    برای مشاهده تعریف علمی و نمونه کلیک کنید
+                                                </span>
+                                                ${isMastered ? `
+                                                    <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold text-[10px] border border-emerald-200">آموزش‌دیده ✓</span>
+                                                ` : ''}
+                                            </div>
+                                        </div>
+
+                                        <!-- Back of Card -->
+                                        <div class="absolute inset-0 bg-gradient-to-br from-[#271738] to-[#3B205C] text-white rounded-3xl border-2 border-[#7A5C9E]/40 shadow-xl p-6 sm:p-8 flex flex-col justify-between backface-hidden rotate-y-180 overflow-y-auto">
+                                            <div>
+                                                <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+                                                    <span class="text-xs font-bold text-[#DABFCC]">${card.term} (${card.enTerm})</span>
+                                                    <span class="text-[10px] text-white/50">تعریف و کاربرد</span>
+                                                </div>
+
+                                                <p class="text-xs sm:text-sm text-slate-100 leading-relaxed font-serif mb-4">
+                                                    ${card.definition}
+                                                </p>
+
+                                                <div class="bg-white/10 p-3 rounded-xl border border-white/10 mb-3 text-xs leading-relaxed text-slate-200">
+                                                    <strong class="text-amber-300 block text-[11px] mb-0.5">📌 نمونه عینی در فضای سلامت:</strong>
+                                                    ${card.example}
+                                                </div>
+
+                                                <div class="bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-500/30 text-xs text-emerald-200">
+                                                    <strong class="text-emerald-300 block text-[11px] mb-0.5">💡 توصیه مهارتی سواد سلامت:</strong>
+                                                    ${card.tip}
+                                                </div>
+                                            </div>
+
+                                            <div class="pt-3 text-center text-[11px] text-white/50 border-t border-white/10">
+                                                کلیک مجدد برای برگشت به عنوان
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ` : `
+                                <div class="text-center py-12 text-slate-500">
+                                    <i data-lucide="inbox" class="w-12 h-12 mx-auto mb-2 text-slate-300"></i>
+                                    <p class="text-sm font-medium">کارتی در این دسته‌بندی یافت نشد.</p>
+                                </div>
+                            `}
+                        </div>
+
+                        <!-- Card Navigation & Mastery Toolbar -->
+                        <div class="px-6 py-3.5 bg-white border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
+                            <div class="flex items-center gap-2">
+                                <button 
+                                    onclick="app.prevFlashcard()"
+                                    class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors inline-flex items-center gap-1 text-xs font-bold"
+                                    title="کارت قبلی"
+                                >
+                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    <span class="hidden sm:inline">قبلی</span>
+                                </button>
+                                <button 
+                                    onclick="app.toggleCardFlip()"
+                                    class="px-4 py-2 bg-[#F3ECF5] hover:bg-[#E7DCED] text-[#4B2E83] rounded-xl transition-colors text-xs font-bold inline-flex items-center gap-1.5"
+                                >
+                                    <i data-lucide="rotate-3d" class="w-4 h-4"></i>
+                                    <span>چرخش کارت</span>
+                                </button>
+                                <button 
+                                    onclick="app.nextFlashcard()"
+                                    class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-colors inline-flex items-center gap-1 text-xs font-bold"
+                                    title="کارت بعدی"
+                                >
+                                    <span class="hidden sm:inline">بعدی</span>
+                                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+
+                            ${card ? `
+                                <button 
+                                    onclick="app.toggleMasteryFlashcard(${card.id})"
+                                    class="px-4 py-2 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 ${isMastered ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200 hover:border-emerald-300'}"
+                                >
+                                    <i data-lucide="${isMastered ? 'check-check' : 'check'}" class="w-4 h-4"></i>
+                                    <span>${isMastered ? 'یاد گرفتم (حذف نشان)' : 'علامت‌گذاری: یاد گرفتم'}</span>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- 3. RENDER ALL STUDENT NOTES MODAL ---
+        function renderNotesModal() {
+            if (!state.isNotesModalOpen) return '';
+
+            const notes = state.sessionNotes || {};
+            const totalNotesCount = Object.keys(notes).filter(k => (notes[k] || '').trim().length > 0).length;
+
+            return `
+                <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fade-in" onclick="if(event.target === this) app.closeNotesModal()">
+                    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden" onclick="event.stopPropagation()">
+                        
+                        <!-- Header -->
+                        <div class="px-6 py-4 bg-gradient-to-r from-[#271738] to-[#4B2E83] text-white flex items-center justify-between gap-3 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 border border-white/15">
+                                    <i data-lucide="notebook-pen" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-bold font-display">دفترچه یادداشت و ژورنال مطالعه دانشجو</h3>
+                                    <p class="text-[11px] text-[#DABFCC]">مجموعه یادداشت‌ها، تحلیل‌ها و نکات کلیدی ثبت‌شده در تمامی ۱۰ جلسه دوره</p>
+                                </div>
+                            </div>
+                            <button onclick="app.closeNotesModal()" class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Top Toolbar -->
+                        <div class="px-6 py-3 bg-[#F8F6F4] border-b border-[rgba(75,46,131,0.10)] flex items-center justify-between gap-3 flex-shrink-0">
+                            <span class="text-xs text-slate-600 font-medium">
+                                ثبت یادداشت برای <strong class="text-[#4B2E83]">${totalNotesCount}</strong> از ۱۰ جلسه
+                            </span>
+                            <button 
+                                onclick="app.downloadAllNotes()"
+                                class="px-3.5 py-1.5 bg-[#4B2E83] hover:bg-[#3D256E] text-white rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 shadow-2xs"
+                            >
+                                <i data-lucide="file-down" class="w-3.5 h-3.5"></i>
+                                <span>دانلود کل یادداشت‌ها (Markdown)</span>
+                            </button>
+                        </div>
+
+                        <!-- Notes List Scroll Area -->
+                        <div class="p-6 overflow-y-auto space-y-4 flex-1 bg-[#F1EFEC]/50">
+                            ${sessions.map(s => {
+                                const noteVal = notes[s.id] || '';
+                                return `
+                                    <div class="bg-white rounded-2xl border border-[rgba(75,46,131,0.12)] p-4 shadow-2xs space-y-2">
+                                        <div class="flex items-center justify-between gap-2">
+                                            <div class="flex items-center gap-2 min-w-0">
+                                                <span class="w-6 h-6 rounded-lg bg-[#F3ECF5] text-[#4B2E83] flex items-center justify-center text-xs font-bold flex-shrink-0">
+                                                    ${s.id}
+                                                </span>
+                                                <h4 class="text-xs font-bold text-[#27232A] truncate">${s.title}</h4>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <span id="autosave-badge-${s.id}" class="text-[10px] text-slate-400">
+                                                    ${noteVal.trim() ? 'ذخیره شده' : 'بدون یادداشت'}
+                                                </span>
+                                                <button 
+                                                    onclick="app.copySessionNote(${s.id})"
+                                                    title="کپی متن یادداشت این جلسه"
+                                                    class="p-1 hover:bg-slate-100 rounded text-slate-400 hover:text-[#4B2E83]"
+                                                >
+                                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <textarea 
+                                            rows="2"
+                                            oninput="app.saveSessionNote(${s.id}, this.value)"
+                                            placeholder="نکات تحلیلی، بازاندیشی‌ها یا سؤالات شما برای جلسه ${s.id}..."
+                                            class="w-full p-3 text-xs bg-slate-50/70 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:border-[#7A5C9E] focus:ring-2 focus:ring-[#7A5C9E]/20 transition-all font-serif"
+                                        >${noteVal}</textarea>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="px-6 py-3.5 bg-white border-t border-slate-200 flex items-center justify-end flex-shrink-0">
+                            <button 
+                                onclick="app.closeNotesModal()"
+                                class="px-6 py-2 bg-[#4B2E83] hover:bg-[#3D256E] text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+                            >
+                                بازگشت به درسنامه
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- 4. RENDER INTERACTIVE DILEMMAS MODAL ---
+        function renderDilemmasModal() {
+            if (!state.isDilemmasModalOpen) return '';
+
+            const currentIdx = state.currentDilemmaIndex || 0;
+            const item = dilemmasData[currentIdx] || dilemmasData[0];
+            const total = dilemmasData.length;
+            const selectedOptIdx = state.dilemmaChoices ? state.dilemmaChoices[item.id] : undefined;
+
+            return `
+                <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fade-in" onclick="if(event.target === this) app.closeDilemmasModal()">
+                    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-3xl max-h-[92vh] flex flex-col overflow-hidden" onclick="event.stopPropagation()">
+                        
+                        <!-- Header -->
+                        <div class="px-6 py-4 bg-gradient-to-r from-[#271738] to-[#4B2E83] text-white flex items-center justify-between gap-3 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 border border-white/15">
+                                    <i data-lucide="compass" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-bold font-display">شبیه‌ساز سناریوهای تصمیم‌گیری سلامت</h3>
+                                    <p class="text-[11px] text-[#DABFCC]">مواجهه با دوراهی‌های واقعی در فضای مجازی و انتخاب بهترین کنش مهارتی</p>
+                                </div>
+                            </div>
+                            <button onclick="app.closeDilemmasModal()" class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Progress Steps -->
+                        <div class="px-6 py-3 bg-[#F8F6F4] border-b border-[rgba(75,46,131,0.10)] flex items-center justify-between flex-shrink-0">
+                            <span class="text-xs font-bold text-slate-700">سناریوی ${currentIdx + 1} از ${total}: <span class="text-[#4B2E83]">${item.title}</span></span>
+                            <div class="flex items-center gap-1.5">
+                                ${dilemmasData.map((d, i) => `
+                                    <button 
+                                        onclick="state.currentDilemmaIndex = ${i}; renderApp();"
+                                        class="w-6 h-6 rounded-full text-[10px] font-bold transition-all flex items-center justify-center ${state.currentDilemmaIndex === i ? 'bg-[#4B2E83] text-white shadow-xs' : (state.dilemmaChoices[d.id] !== undefined ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600')}"
+                                    >
+                                        ${i + 1}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="p-6 overflow-y-auto space-y-5 flex-1 bg-[#F1EFEC]/40">
+                            <!-- Scenario Context Card -->
+                            <div class="bg-purple-50/70 border-r-4 border-[#4B2E83] p-4 rounded-l-2xl">
+                                <span class="text-[11px] font-bold text-[#7A5C9E] block mb-1">📋 شرح موقعیت واقعی:</span>
+                                <p class="text-xs sm:text-sm text-slate-800 leading-relaxed font-serif">${item.context}</p>
+                            </div>
+
+                            <h4 class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                                <i data-lucide="help-circle" class="w-4 h-4 text-[#7A5C9E]"></i>
+                                ${item.question}
+                            </h4>
+
+                            <!-- Options -->
+                            <div class="space-y-3">
+                                ${item.options.map((opt, oIdx) => {
+                                    const isSelected = selectedOptIdx === oIdx;
+                                    return `
+                                        <button 
+                                            onclick="app.selectDilemmaOption(${item.id}, ${oIdx})"
+                                            class="w-full text-right p-4 rounded-2xl border transition-all ${isSelected ? (opt.isCorrect ? 'bg-emerald-50 border-emerald-500 shadow-xs' : 'bg-rose-50 border-rose-400 shadow-xs') : 'bg-white border-slate-200 hover:border-[#7A5C9E] hover:bg-[#F3ECF5]/30'}"
+                                        >
+                                            <div class="flex items-start gap-2.5">
+                                                <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${isSelected ? (opt.isCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white') : 'bg-slate-100 text-slate-600'}">
+                                                    ${String.fromCharCode(1575 + oIdx)}
+                                                </span>
+                                                <div class="min-w-0 flex-1">
+                                                    <p class="text-xs font-semibold text-slate-800 leading-relaxed">${opt.text}</p>
+                                                    ${isSelected ? `
+                                                        <div class="mt-2.5 pt-2 border-t border-slate-200/70 text-[11px] leading-relaxed ${opt.isCorrect ? 'text-emerald-800 font-medium' : 'text-rose-800'}">
+                                                            <strong class="block mb-0.5">${opt.isCorrect ? '✓ بازخورد تحلیلی صحیح:' : '✗ نقد و آسیب‌شناسی تصمیم:'}</strong>
+                                                            ${opt.feedback}
+                                                        </div>
+                                                    ` : ''}
+                                                </div>
+                                            </div>
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="px-6 py-3.5 bg-white border-t border-slate-200 flex items-center justify-between gap-3 flex-shrink-0">
+                            <button 
+                                onclick="app.prevDilemma()"
+                                class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold inline-flex items-center gap-1"
+                            >
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                <span>سناریوی قبلی</span>
+                            </button>
+
+                            <button 
+                                onclick="app.nextDilemma()"
+                                class="px-4 py-2 bg-[#4B2E83] hover:bg-[#3D256E] text-white rounded-xl text-xs font-bold inline-flex items-center gap-1 shadow-xs"
+                            >
+                                <span>سناریوی بعدی</span>
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- 5. RENDER BACKUP & RESTORE MODAL ---
+        function renderBackupModal() {
+            if (!state.isBackupModalOpen) return '';
+
+            return `
+                <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/80 backdrop-blur-md animate-fade-in" onclick="if(event.target === this) app.closeBackupModal()">
+                    <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 w-full max-w-xl max-h-[92vh] flex flex-col overflow-hidden" onclick="event.stopPropagation()">
+                        
+                        <!-- Header -->
+                        <div class="px-6 py-4 bg-gradient-to-r from-[#271738] to-[#4B2E83] text-white flex items-center justify-between gap-3 flex-shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-amber-300 border border-white/15">
+                                    <i data-lucide="database-backup" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-bold font-display">پشتیبان‌گیری و همگام‌سازی اطلاعات</h3>
+                                    <p class="text-[11px] text-[#DABFCC]">انتقال پیشرفت، آزمون‌ها، یادداشت‌ها و نشان‌ها میان مرورگرها و دستگاه‌ها</p>
+                                </div>
+                            </div>
+                            <button onclick="app.closeBackupModal()" class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6 overflow-y-auto space-y-4 flex-1 bg-[#F8F6F4]">
+                            
+                            <!-- Export Box -->
+                            <div class="bg-white p-4 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-2xs space-y-2">
+                                <div class="flex items-center gap-2 text-xs font-bold text-[#27232A]">
+                                    <i data-lucide="download" class="w-4 h-4 text-[#4B2E83]"></i>
+                                    <span>۱. دانلود فایل پشتیبان (Export Backup)</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    کلیه سوابق آزمون‌ها، اهداف تیک‌خورده، یادداشت‌های شخصی و کارت‌های آموخته‌شده در قالب یک فایل سبک <strong class="font-mono">JSON</strong> ذخیره می‌شود.
+                                </p>
+                                <button 
+                                    onclick="app.exportBackupJson()"
+                                    class="w-full py-2.5 px-4 bg-[#4B2E83] hover:bg-[#3D256E] text-white rounded-xl text-xs font-bold transition-all shadow-xs inline-flex items-center justify-center gap-2"
+                                >
+                                    <i data-lucide="hard-drive-download" class="w-4 h-4"></i>
+                                    <span>دانلود فایل پشتیبان (.json)</span>
+                                </button>
+                            </div>
+
+                            <!-- Import Box -->
+                            <div class="bg-white p-4 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-2xs space-y-2">
+                                <div class="flex items-center gap-2 text-xs font-bold text-[#27232A]">
+                                    <i data-lucide="upload" class="w-4 h-4 text-emerald-700"></i>
+                                    <span>۲. بازیابی اطلاعات از فایل قبلی (Restore Backup)</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    فایل پشتیبان دانلودشده قبلی را برای بازگردانی وضعیت تحصیلی خود در این مرورگر انتخاب کنید:
+                                </p>
+                                <label class="w-full py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100/70 border border-emerald-300 text-emerald-900 rounded-xl text-xs font-bold transition-all inline-flex items-center justify-center gap-2 cursor-pointer">
+                                    <i data-lucide="file-up" class="w-4 h-4 text-emerald-700"></i>
+                                    <span>انتخاب و بارگذاری فایل پشتیبان</span>
+                                    <input type="file" accept=".json" onchange="app.importBackupJson(event)" class="hidden" />
+                                </label>
+                            </div>
+
+                            <!-- Reset Cache -->
+                            <div class="bg-white p-4 rounded-2xl border border-rose-100 shadow-2xs space-y-2">
+                                <div class="flex items-center gap-2 text-xs font-bold text-rose-800">
+                                    <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600"></i>
+                                    <span>۳. پاکسازی و شروع مجدد</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    در صورت نیاز به شروع دوباره دوره از ابتدا، می‌توانید حافظه محلی را بازنشانی کنید:
+                                </p>
+                                <button 
+                                    onclick="app.resetAllUserData()"
+                                    class="w-full py-2 px-3 bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold transition-colors inline-flex items-center justify-center gap-1.5"
+                                >
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                                    <span>بازنشانی کامل داده‌های محلی</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="px-6 py-3.5 bg-white border-t border-slate-200 flex items-center justify-end flex-shrink-0">
+                            <button 
+                                onclick="app.closeBackupModal()"
+                                class="px-6 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                            >
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // --- RENDER FUNCTIONS ---
         function renderApp() {
             const root = document.getElementById('app-root');
@@ -3773,9 +5061,23 @@
                 ${renderSidebar()}
                 ${mainHtml}
                 ${renderPdfExportModal()}
+                ${renderFactCheckModal()}
+                ${renderFlashcardsModal()}
+                ${renderNotesModal()}
+                ${renderDilemmasModal()}
+                ${renderBackupModal()}
             `;
             
             // Initialize Icons
+            lucide.createIcons();
+
+            // Restore scroll position so font size or theme toggle doesn't jump
+            if (prevScrollTop !== null) {
+                const newMainContent = document.getElementById('main-content');
+                if (newMainContent) {
+                    newMainContent.scrollTop = prevScrollTop;
+                }
+            }
             lucide.createIcons();
 
             // Restore scroll position so font size or theme toggle doesn't jump
@@ -4075,6 +5377,68 @@
                     <!-- Sessions List (Full height, all 10 sessions easily visible) -->
                     <div class="flex-1 overflow-y-auto no-scrollbar py-1">
                         ${listHtml}
+
+                        <!-- Interactive Health Literacy Toolbox in Sidebar -->
+                        <div class="p-3 m-2 bg-gradient-to-br from-[#FAF8F6] via-[#F3ECF5]/40 to-[#FAF8F6] rounded-2xl border border-[rgba(75,46,131,0.16)] shadow-2xs space-y-2">
+                            <div class="flex items-center justify-between pb-1.5 border-b border-[rgba(75,46,131,0.10)]">
+                                <span class="text-xs font-bold text-[#35224F] flex items-center gap-1.5">
+                                    <i data-lucide="wrench" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
+                                    جعبه‌ابزار یادگیری تعاملی
+                                </span>
+                                <span class="text-[9px] bg-[#4B2E83] text-white px-1.5 py-0.2 rounded-md font-bold">جدید</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-1.5">
+                                <button 
+                                    onclick="app.openFactCheckModal()"
+                                    class="p-2 rounded-xl bg-white hover:bg-[#F3ECF5] border border-[rgba(75,46,131,0.12)] hover:border-[#7A5C9E] text-right transition-all flex flex-col justify-between group"
+                                    title="چک‌لیست حقیقت‌سنجی اخبار و ادعاهای سلامت"
+                                >
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-700 mb-1 group-hover:scale-110 transition-transform"></i>
+                                    <span class="text-[11px] font-bold text-slate-800 leading-tight">حقیقت‌سنجی</span>
+                                    <span class="text-[9px] text-slate-400">غربالگری ادعا</span>
+                                </button>
+
+                                <button 
+                                    onclick="app.openFlashcardsModal()"
+                                    class="p-2 rounded-xl bg-white hover:bg-[#F3ECF5] border border-[rgba(75,46,131,0.12)] hover:border-[#7A5C9E] text-right transition-all flex flex-col justify-between group"
+                                    title="فلش‌کارت‌های تعاملی اصطلاحات سواد سلامت"
+                                >
+                                    <i data-lucide="layers" class="w-4 h-4 text-[#7A5C9E] mb-1 group-hover:scale-110 transition-transform"></i>
+                                    <span class="text-[11px] font-bold text-slate-800 leading-tight">فلش‌کارت‌ها</span>
+                                    <span class="text-[9px] text-slate-400">${flashcardsData.length} اصطلاح کلیدی</span>
+                                </button>
+
+                                <button 
+                                    onclick="app.openNotesModal()"
+                                    class="p-2 rounded-xl bg-white hover:bg-[#F3ECF5] border border-[rgba(75,46,131,0.12)] hover:border-[#7A5C9E] text-right transition-all flex flex-col justify-between group"
+                                    title="دفترچه یادداشت‌ها و ژورنال مطالعه دانشجو"
+                                >
+                                    <i data-lucide="notebook-pen" class="w-4 h-4 text-indigo-700 mb-1 group-hover:scale-110 transition-transform"></i>
+                                    <span class="text-[11px] font-bold text-slate-800 leading-tight">یادداشت‌های من</span>
+                                    <span class="text-[9px] text-slate-400">ژورنال جلسات</span>
+                                </button>
+
+                                <button 
+                                    onclick="app.openDilemmasModal()"
+                                    class="p-2 rounded-xl bg-white hover:bg-[#F3ECF5] border border-[rgba(75,46,131,0.12)] hover:border-[#7A5C9E] text-right transition-all flex flex-col justify-between group"
+                                    title="شبیه‌ساز سناریوهای تصمیم‌گیری و حل مسئله"
+                                >
+                                    <i data-lucide="compass" class="w-4 h-4 text-amber-700 mb-1 group-hover:scale-110 transition-transform"></i>
+                                    <span class="text-[11px] font-bold text-slate-800 leading-tight">سناریوها</span>
+                                    <span class="text-[9px] text-slate-400">دوراهی‌های بالینی</span>
+                                </button>
+                            </div>
+
+                            <button 
+                                onclick="app.openBackupModal()"
+                                class="w-full py-1.5 px-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-[10px] font-bold transition-all flex items-center justify-center gap-1.5"
+                                title="خروجی و همگام‌سازی اطلاعات سوابق"
+                            >
+                                <i data-lucide="database-backup" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
+                                <span>پشتیبان‌گیری و انتقال داده‌ها</span>
+                            </button>
+                        </div>
 
                         <!-- Course Syllabus Book / Document Download (Right Below Session 10) -->
                         <div class="p-3 m-2 bg-gradient-to-br from-[#FAF8F6] via-[#F3ECF5]/70 to-[#FAF8F6] rounded-2xl border border-[rgba(75,46,131,0.16)] shadow-2xs">
