@@ -1925,6 +1925,25 @@
                     "استناد به مراجع علمی بین‌المللی: برگرفته از مدل نظری واردل و درخشان (Wardle & Derakhshan, 2017) و سازمان جهانی بهداشت (WHO, 2022)"
                 ],
                 description: "اینفوگرافیک تحلیلی و راهبردی برای کالبدشکافی انواع اطلاعات مسئله‌دار در بحران‌های سلامت بر اساس ماتریس دوبعدی صحت محتوا و قصد آسیب، تدوین‌شده جهت تقویت سواد سلامت رسانه‌ای."
+            },
+            {
+                id: 7,
+                number: "۷",
+                title: "اینفوگرافیک ۷: کاربرد رسانه در انواع آموزش‌های سلامت",
+                subtitle: "رسانه، پلی میان علم و زندگی — کاربرد هدفمند رسانه در آموزش رسمی، غیررسمی، خودآموزی و یادگیری مادام‌العمر",
+                topic: "رسانه و یادگیری سلامت",
+                localSrc: "/infographic_07.jpg",
+                remoteSrc: "https://uploadkon.ir/uploads/7cf705_26Presentation1.jpg",
+                thumbSrc: "https://uploadkon.ir/uploads/thumbs/7cf705_26Presentation1.jpg",
+                badge: "ارتقای آموزش سلامت",
+                points: [
+                    "مزایای راهبردی رسانه: کاهش نابرابری‌های دسترسی، شخصی‌سازی مسیر یادگیری، افزایش انگیزه، تقویت یادگیری چندرسانه‌ای و ارتباط مؤثر",
+                    "پوشش انواع آموزش: آموزش رسمی (کلاس‌های مجازی و سامانه‌های یادگیری)، آموزش غیررسمی سازمان‌یافته (وبینارها و پادکست‌ها)، آموزش غیررسمی روزمره (شبکه‌های اجتماعی)، خودآموزی و یادگیری مادام‌العمر",
+                    "اصول پنج‌گانه استفاده مؤثر: مخاطب‌محوری، محتوای معتبر و مبتنی بر شواهد علمی، طراحی جذاب و قابل فهم، تعامل و مشارکت، ارزیابی مستمر و رعایت اخلاق و سواد رسانه‌ای",
+                    "شعار محوری: «آموزش آگاهانه‌تر، جامعه سالم‌تر، آینده روشن‌تر» — رسانه به عنوان ابزار توانمندسازی فردی و اجتماعی",
+                    "استناد به مراجع علمی بین‌المللی: برگرفته از رهنمودهای سازمان جهانی بهداشت (WHO, 2021) و یونسکو (UNESCO, 2022)، تدوین‌شده توسط دکتر فاطمه زارعی"
+                ],
+                description: "اینفوگرافیک آموزشی جامع تبیین‌کننده نقش و کاربرد رسانه‌های نوین در ارتقای انواع آموزش‌های سلامت و یادگیری اثربخش و مادام‌العمر."
             }
         ];
 
@@ -4049,7 +4068,7 @@
                         >
                             <i data-lucide="sparkles" class="w-3.5 h-3.5 ${state.currentView === 'infographics' ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
                             <span>اینفوگرافیک‌ها</span>
-                            <span class="text-[9px] px-1 py-0.2 rounded-full ${state.currentView === 'infographics' ? 'bg-white/20 text-white' : 'bg-[#F3ECF5] text-[#4B2E83]'}">۶</span>
+                            <span class="text-[9px] px-1 py-0.2 rounded-full ${state.currentView === 'infographics' ? 'bg-white/20 text-white' : 'bg-[#F3ECF5] text-[#4B2E83]'}">${infographics.length}</span>
                         </button>
                     </div>
 
@@ -4156,74 +4175,95 @@
                     <div class="max-w-4xl mx-auto p-4 md:p-8 pb-32">
                         
                         <!-- Header Stats & Quick Toolbar -->
-                        <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAF8F6] backdrop-blur-sm p-4 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-[0_4px_20px_rgba(48,32,61,0.03)]">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-[#F3ECF5] border border-[rgba(75,46,131,0.14)] flex items-center justify-center text-[#4B2E83]">
-                                    <i data-lucide="book-open-check" class="w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">دوره تخصصی دانشگاهی سواد سلامت</h2>
-                                    <div class="text-xs text-slate-600 font-semibold flex items-center gap-1.5">
-                                        <span>مدرس: دکتر فاطمه زارعی</span>
-                                        <span class="text-slate-300">•</span>
-                                        <span class="text-[#4B2E83] font-bold">۱۰ درس تعاملی</span>
+                        <div class="mb-6 bg-[#FAF8F6] backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-[rgba(75,46,131,0.12)] shadow-[0_4px_20px_rgba(48,32,61,0.03)] space-y-4">
+                            <!-- Top Row: Course Identity & Overall Progress -->
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3.5 border-b border-[rgba(75,46,131,0.08)]">
+                                <!-- Right: Course Title & Author -->
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <div class="w-11 h-11 rounded-xl bg-[#F3ECF5] border border-[rgba(75,46,131,0.14)] flex items-center justify-center text-[#4B2E83] flex-shrink-0 shadow-2xs">
+                                        <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5 truncate">دوره تخصصی دانشگاهی سواد سلامت</h2>
+                                        <div class="text-xs text-slate-700 font-semibold flex items-center gap-1.5 flex-wrap">
+                                            <span>مدرس: دکتر فاطمه زارعی</span>
+                                            <span class="text-slate-300">•</span>
+                                            <span class="text-[#4B2E83] font-bold">۱۰ درس تعاملی</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="flex items-center gap-2 self-end sm:self-auto flex-wrap sm:flex-nowrap">
-                                <button 
-                                    onclick="app.toggleDarkMode()"
-                                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-[#F3EDF6] text-slate-700 border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
-                                    title="${state.isDarkMode ? 'تغییر به حالت روز (روشن)' : 'تغییر به حالت شب (تیره)'}"
-                                >
-                                    <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-4 h-4 ${state.isDarkMode ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
-                                    <span>${state.isDarkMode ? 'حالت روز' : 'حالت شب'}</span>
-                                </button>
-
-                                <button 
-                                    onclick="app.showInfographicsView()" 
-                                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F3EDF6] hover:bg-[#E7DCED] text-[#4B2E83] border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
-                                    title="مشاهده ۶ اینفوگرافیک علمی و تحلیلی دوره"
-                                >
-                                    <i data-lucide="sparkles" class="w-4 h-4 text-[#7A5C9E]"></i>
-                                    <span>اینفوگرافیک‌ها (${infographics.length})</span>
-                                </button>
-
-                                <a 
-                                    href="https://dideban-tau.vercel.app/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-emerald-700 to-teal-800 hover:from-emerald-800 hover:to-teal-900 text-white rounded-xl text-xs font-bold shadow-2xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
-                                    title="ورود به بازی تعاملی دیدبان (سنجش و راستی‌آزمایی اخبار سلامت)"
-                                >
-                                    <i data-lucide="gamepad-2" class="w-4 h-4 text-emerald-200"></i>
-                                    <span>بازی دیدبان</span>
-                                </a>
-
-                                <button 
-                                    onclick="app.openPdfExportModal()"
-                                    class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-[#4B2E83] to-[#35224F] hover:from-[#3D256E] hover:to-[#27232A] text-white rounded-xl text-xs font-bold shadow-xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
-                                    title="دریافت کارنامه تحصیلی و گزارش پیشرفت به صورت فایل PDF"
-                                >
-                                    <i data-lucide="file-down" class="w-4 h-4"></i>
-                                    <span class="hidden sm:inline">گزارش و کارنامه PDF</span>
-                                    <span class="sm:hidden">کارنامه PDF</span>
-                                </button>
-
-                                <div class="text-left sm:text-right">
-                                    <div class="flex items-center gap-2">
+                                <!-- Left (RTL): Overall Progress Indicator -->
+                                <div class="bg-white px-3.5 py-2.5 rounded-xl border border-[rgba(75,46,131,0.12)] flex-shrink-0 self-stretch sm:self-auto sm:min-w-[200px] shadow-2xs">
+                                    <div class="flex items-center justify-between gap-3 mb-1.5">
                                         <span class="text-xs font-bold text-[#35224F]">
-                                            پیشرفت کل: ${progress}%
+                                            پیشرفت کل: <span class="text-[#4B2E83]">${progress}٪</span>
                                         </span>
-                                        <span class="text-[10px] text-slate-400">(${state.completedSessions.length} از ۱۰)</span>
+                                        <span class="text-[11px] font-medium text-slate-500">(${state.completedSessions.length} از ۱۰)</span>
                                     </div>
-                                    <div class="w-28 sm:w-36 h-2 bg-[#EFECE8] rounded-full overflow-hidden mt-1 border border-[rgba(75,46,131,0.10)]">
+                                    <div class="w-full h-2.5 bg-[#EFECE8] rounded-full overflow-hidden border border-[rgba(75,46,131,0.08)]">
                                         <div 
                                             class="h-full bg-gradient-to-l from-[#7A5C9E] to-[#4B2E83] transition-all duration-500 ease-out"
                                             style="width: ${progress}%"
                                         ></div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Row: Quick Access Action Buttons -->
+                            <div class="flex flex-wrap items-center justify-between gap-2.5 pt-0.5">
+                                <div class="text-[11px] text-slate-500 font-medium hidden md:flex items-center gap-1.5">
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#7A5C9E]"></i>
+                                    <span>ابزارهای سریع و منابع تعاملی دوره:</span>
+                                </div>
+
+                                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto justify-start sm:justify-end">
+                                    <button 
+                                        onclick="app.toggleDarkMode()"
+                                        class="inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-[#F3EDF6] text-slate-700 border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
+                                        title="${state.isDarkMode ? 'تغییر به حالت روز (روشن)' : 'تغییر به حالت شب (تیره)'}"
+                                    >
+                                        <i data-lucide="${state.isDarkMode ? 'sun' : 'moon'}" class="w-4 h-4 ${state.isDarkMode ? 'text-amber-300' : 'text-[#7A5C9E]'}"></i>
+                                        <span>${state.isDarkMode ? 'حالت روز' : 'حالت شب'}</span>
+                                    </button>
+
+                                    <button 
+                                        onclick="app.showInfographicsView()" 
+                                        class="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F3EDF6] hover:bg-[#E7DCED] text-[#4B2E83] border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
+                                        title="مشاهده ${infographics.length} اینفوگرافیک علمی و تحلیلی دوره"
+                                    >
+                                        <i data-lucide="sparkles" class="w-4 h-4 text-[#7A5C9E]"></i>
+                                        <span>اینفوگرافیک‌ها (${infographics.length})</span>
+                                    </button>
+
+                                    <a 
+                                        href="https://dideban-tau.vercel.app/" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        class="inline-flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-emerald-700 to-teal-800 hover:from-emerald-800 hover:to-teal-900 text-white rounded-xl text-xs font-bold shadow-2xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
+                                        title="ورود به بازی تعاملی دیدبان (سنجش و راستی‌آزمایی اخبار سلامت)"
+                                    >
+                                        <i data-lucide="gamepad-2" class="w-4 h-4 text-emerald-200"></i>
+                                        <span>بازی دیدبان</span>
+                                    </a>
+
+                                    <button 
+                                        onclick="app.openPdfExportModal()"
+                                        class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-[#4B2E83] to-[#35224F] hover:from-[#3D256E] hover:to-[#27232A] text-white rounded-xl text-xs font-bold shadow-xs hover:shadow transition-all duration-200 cursor-pointer flex-shrink-0"
+                                        title="دریافت کارنامه تحصیلی و گزارش پیشرفت به صورت فایل PDF"
+                                    >
+                                        <i data-lucide="file-down" class="w-4 h-4"></i>
+                                        <span>گزارش و کارنامه PDF</span>
+                                    </button>
+
+                                    <button 
+                                        onclick="app.printReport()"
+                                        class="print:hidden inline-flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-[#F3EDF6] text-slate-700 hover:text-[#4B2E83] border border-[rgba(75,46,131,0.16)] rounded-xl text-xs font-bold shadow-2xs transition-all cursor-pointer flex-shrink-0"
+                                        title="چاپ فوری کارنامه و گزارش دوره (Print)"
+                                    >
+                                        <i data-lucide="printer" class="w-4 h-4 text-[#7A5C9E]"></i>
+                                        <span class="hidden sm:inline">چاپ</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -5052,7 +5092,7 @@
                                     </div>
                                     <h2 class="text-2xl md:text-3xl font-black text-white font-display">تالار نگاره‌ها و اینفوگرافیک‌های سواد سلامت</h2>
                                     <p class="text-xs md:text-sm text-[#FAF8F6]/85 max-w-2xl leading-relaxed font-serif">
-                                        ۶ اثر تصویری با کیفیت بالا و تحلیلی برای تثبیت مفاهیم راهبردی سواد سلامت، مهار اینفودمیک و تکنیک‌های راستی‌آزمایی علمی، تدوین‌شده توسط دکتر فاطمه زارعی.
+                                        ${infographics.length} اثر تصویری با کیفیت بالا و تحلیلی برای تثبیت مفاهیم راهبردی سواد سلامت، مهار اینفودمیک، کاربرد رسانه در آموزش و تکنیک‌های راستی‌آزمایی علمی، تدوین‌شده توسط دکتر فاطمه زارعی.
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-3 flex-shrink-0">
